@@ -8,7 +8,7 @@ var ctxWidth = 600;
 var ctxHeight = 600;
 var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
-
+ 
 //voiture rouge
 // var redCar;
 const redCarImage = new Image();
@@ -19,7 +19,7 @@ redCarImage.src = "redCarIm.png";
 // ButtonPause.addEventListener("click", pauseActive);
 // function pauseActive(){
 //     ButtonPause.classList.toggle("active");
-// }
+// }  
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
 function init() {
