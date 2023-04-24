@@ -1,0 +1,42 @@
+<!-- Jeu Rush-Hour, créer par Magnin Julie et Cuinet Antoine, page HTML -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Lien vers la page css -->
+        <link rel="stylesheet" href="style.css">
+        <!-- Balises meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Nom du jeu -->
+        <title>Rush-Hour</title>
+    </head>
+    <!-- Appel de la fonction "init()" lorsque la page à fini de charger -->
+    <body onload="init()">
+
+         <!-- Boutons -->
+    <div class="buttons">
+        <button type="button" aria-label="toggle curtain navigation" class="pause">
+            <span class="button-1"></span>
+        </button>
+
+        <button type="button" aria-label="toggle curtain navigation" class="refresh">
+            <span class="button-1"></span>
+        </button>
+
+        <button type="button" aria-label="toggle curtain navigation" class="aide">
+            <span class="button-1"></span>
+        </button>
+
+        <button type="button" aria-label="toggle curtain navigation" class="param">
+            <span class="button-1"></span>
+        </button>
+    </div>
+    
+        <!-- Création du Canvas -->
+        <canvas id="cvs" ></canvas>
+        <!-- Lien vers la page js -->
+        <script src="script.js"></script>
+    </body>
+</html>
