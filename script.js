@@ -8,18 +8,21 @@ var ctxWidth = 600;
 var ctxHeight = 600;
 var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
- 
+
 //voiture rouge
 // var redCar;
 const redCarImage = new Image();
 redCarImage.src = "redCarIm.png";
     
 // Bouton pause
-// const ButtonPause = document.querySelector(".pause");
-// ButtonPause.addEventListener("click", pauseActive);
-// function pauseActive(){
-//     ButtonPause.classList.toggle("active");
-// }  
+const ButtonPause = document.querySelector(".pause");
+const modal = document.querySelector(".modal");
+ButtonPause.addEventListener("click", pauseActive);
+function pauseActive(){
+    ButtonPause.classList.toggle("active");
+    if (modal.style.display == "block") modal.style.display = "none";
+    else modal.style.display = "block";
+}  
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
 function init() {

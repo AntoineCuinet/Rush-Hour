@@ -3,7 +3,7 @@
 /* Création + délimitation du Canvas */
 *, ::before, ::after {
     box-sizing: border-box;
-}
+} 
 html {
     position: relative;
     z-index: 1;
@@ -11,7 +11,6 @@ html {
     height: 100%;
     width: 100%;
     display: flex;
-    pointer-events: none;
     justify-content: left;
     align-items: center;
     background: rgb(230, 137, 60) center / cover no-repeat;
@@ -51,15 +50,17 @@ body{
     height: 100px;
     border-radius: 50%;
     background: #afafaf; 
-}
-
-.pause.active{
-    background: rebeccapurple;
-}
-
-.pause.hover{
     cursor: pointer;
 }
+
+.pause:active{
+    background: rebeccapurple;
+}
+/* 
+.pause:hover{
+    background: #000;
+} */
+
 
 .refresh{
     margin: 10px;
@@ -87,4 +88,12 @@ body{
     height: 100px;
     border-radius: 50%;
     background: #afafaf; 
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    background: #000;
 }
