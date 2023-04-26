@@ -138,7 +138,7 @@ body{
     font-family: 'Noto_Serif';
     display: block;
     background-color: #D91E36;
-    background-image: url("icons8-paramètres-50.png");
+    background-image: url("icons8-rafraîchir-64.png");
     background-size: 90px;
     background-repeat: no-repeat;
     background-position: center;
@@ -157,11 +157,11 @@ body{
     text-decoration: none; 
 }
 .refresh:hover{
-    background: red;
+    background: red; 
     width: 110px;
     height: 110px;
     line-height: 55px;
-    background-image: url("icons8-paramètres-50.png");
+    background-image: url("icons8-rafraîchir-64.png");
     background-repeat: fill;
     background-size: 90px;
     background-repeat: no-repeat;
