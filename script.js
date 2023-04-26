@@ -15,13 +15,13 @@ const redCarImage = new Image();
 redCarImage.src = "redCarIm.png";
     
 // Bouton pause
-const ButtonPause = document.querySelector(".pause");
+const ButtonPause = document.querySelector(".param");
 const modal = document.querySelector(".modal");
 ButtonPause.addEventListener("click", pauseActive);
 function pauseActive(){
     ButtonPause.classList.toggle("active");
-    if (modal.style.display == "block") modal.style.display = "none";
-    else modal.style.display = "block";
+    if (modal.style.display == "flex") modal.style.display = "none";
+    else modal.style.display = "flex";
 }  
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    

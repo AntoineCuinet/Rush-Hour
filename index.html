@@ -15,29 +15,34 @@
     <!-- Appel de la fonction "init()" lorsque la page à fini de charger -->
     <body onload="init()">
 
-        
+        <!-- Titre -->
+        <a href="." class="nav-icone" aria-label="visit homepage" aria-current="page">
+            Rush-Hour
+        </a> 
+
+        <!-- fenettres modales -->
         <div class="modal"></div>
 
-         <!-- Boutons -->
-    <div class="buttons">
 
-        <button type="button" aria-label="toggle curtain navigation" class="pause">
-            <span class="button-1"></span>
-        </button>
-    
+        <!-- Boutons -->
+        <div class="buttons">
 
-        <button type="button" aria-label="toggle curtain navigation" class="refresh">
-            <span class="button-1"></span>
-        </button>
+            <button type="button" aria-label="toggle curtain navigation" class="param">
+                <span class="button-1"></span>
+            </button>
+        
+            <button type="button" aria-label="toggle curtain navigation" class="refresh">
+                <span class="button-1"></span>
+            </button>
 
-        <button type="button" aria-label="toggle curtain navigation" class="aide">
-            <span class="button-1"></span>
-        </button>
+            <button type="button" aria-label="toggle curtain navigation" class="levels">
+                <span class="button-1"></span>
+            </button>
 
-        <button type="button" aria-label="toggle curtain navigation" class="param">
-            <span class="button-1"></span>
-        </button>
-    </div>
+            <button type="button" aria-label="toggle curtain navigation" class="pause">
+                <span class="button-1"></span>
+            </button>
+        </div>
     
         <!-- Création du Canvas -->
         <canvas id="cvs" ></canvas>
