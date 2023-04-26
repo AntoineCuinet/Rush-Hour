@@ -17,11 +17,19 @@ redCarImage.src = "redCarIm.png";
 // Bouton parametre de son
 const ButtonParam = document.querySelector(".param");
 const modal = document.querySelector(".modal");
-ButtonParam.addEventListener("click", pauseActive);
-function pauseActive(){
+ButtonParam.addEventListener("click", paramActive);
+function paramActive(){
     // ButtonParam.classList.toggle("active");
     if (modal.style.display == "flex") modal.style.display = "none";
     else modal.style.display = "flex";
+}  
+// Bouton affichage levels
+const ButtonLevels = document.querySelector(".levels");
+const level = document.querySelector(".modal1");
+ButtonLevels.addEventListener("click", levelsActive);
+function levelsActive(){
+    if (level.style.display == "flex") level.style.display = "none";
+    else level.style.display = "flex";
 }  
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
