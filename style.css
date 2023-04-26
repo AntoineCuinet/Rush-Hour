@@ -13,7 +13,7 @@ html {
     display: flex;
     justify-content: left;
     align-items: center;
-    background: rgb(230, 137, 60) center / cover no-repeat;
+    background: rgb(233, 145, 72) center / cover no-repeat;
 }
 body{ 
     font-family: Poppins, Montserrat, Helvetica, sans-serif;
@@ -30,7 +30,8 @@ body{
     transform: translate(0%, -50%);
     width: 600px;
     height: 600px;
-    border: 10px solid  orange;
+    border: 6px solid  beige;
+    border-radius: 12px;
     
 }
 
@@ -40,53 +41,74 @@ body{
     z-index: 12;
     left: 2%;
     top: 2%;
-    color: rgb(195, 196, 198);
+    color: rgb(214, 211, 211);
     cursor: pointer;
     font-size: clamp(30px, 1vw, 20px);
     font-weight: bold;
     text-decoration: none;
     display: flex;
     justify-content: right;
-    font-family: 'Noto_Serif';
+    /* animation */
+    line-height: 50px;
+    transform-origin: center top;
+    transition-property:
+       font-size, line-height;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 3ms;
 }
 .nav-icone:hover{
-    color: white;
+    color: aliceblue;
     font-size: clamp(32px, 2vw, 22px);
+    line-height: 55px;
 }
+
+/* div score */
+.score{
+    width: 400px;
+    height: 200px;
+    top: 10%;
+    left: 20%;
+    position: fixed;
+    z-index: 1;
+    background-color: red;
+    border-radius: 12px;
+    border: 6px black solid;
+}
+.moves{
+    background: #00000032;
+    text-align: center;
+
+}
+
 
 /* div  des boutons */
 .buttons{
-    width: 300px;
-    height: 300px;
-    top: 450px;
-    left: 300px;
+    width: 400px;
+    height: 400px;
+    top: 40%;
+    left: 20%;
     position: fixed;
-    z-index: 1;
+    z-index: 1; 
+    padding: 30px;
     background-color: transparent;
-    
 }
 
 /* bouton parametre */
 .param{
-    margin: 10px;
-    border: 3px black solid;
+    border: 4px black solid;
     width: 100px;
     height: 100px;
     border-radius: 50%;
     cursor: pointer;
-    margin-left: 180px;
-    font-family: 'Noto_Serif';
     display: block;
     background-color: #D91E36;
     background-image: url("icons8-paramètres-50.png");
     background-size: 90px;
     background-repeat: no-repeat;
     background-position: center;
-    color: aliceblue;
-    font-size: 20px;
-    margin-top: calc(1vmin + 5px);
-    margin-bottom: calc(1vmin + 5px);
     text-align: center;
+    /* animation */
     line-height: 50px;
     transform-origin: center top;
     transition-property:
@@ -124,29 +146,42 @@ body{
     box-shadow: 10px 10px 15px black;
     background: beige;
 }
+.titre{
+    background: gray;
+        position: relative;
+        top: calc(50% - 500px);
+        left: calc(50% - 250px);
+        width: 250px;
+        border: 4px solid black;
+        border-radius: 10px;
+        text-align: center;
+}
+
+p{
+    font-size: 34px;
+    font-weight: bold;
+    font-family: 'Poppins';
+}
+
 
 
 /* bouton refresh */
 .refresh{
-    margin: 10px;
-    border: 3px black solid;
+    border: 4px black solid;
     width: 100px;
     height: 100px;
     border-radius: 50%;
     cursor: pointer;
-    margin-left: 180px;
-    font-family: 'Noto_Serif';
     display: block;
     background-color: #D91E36;
-    background-image: url("icons8-rafraîchir-64.png");
+    background-image: url("icons8-rafraîchir-64\ \(1\).png");
     background-size: 90px;
     background-repeat: no-repeat;
     background-position: center;
-    color: aliceblue;
-    font-size: 20px;
     margin-top: calc(1vmin + 5px);
     margin-bottom: calc(1vmin + 5px);
     text-align: center;
+    /* animation */
     line-height: 50px;
     transform-origin: center top;
     transition-property:
@@ -161,7 +196,7 @@ body{
     width: 110px;
     height: 110px;
     line-height: 55px;
-    background-image: url("icons8-rafraîchir-64.png");
+    background-image: url("icons8-rafraîchir-64\ \(1\).png");
     background-repeat: fill;
     background-size: 90px;
     background-repeat: no-repeat;
@@ -171,25 +206,21 @@ body{
 
 /* bouton qui affiche les différents levels */
 .levels{
-    margin: 10px;
-    border: 3px black solid;
+    border: 4px black solid;
     width: 100px;
     height: 100px;
     border-radius: 50%;
     cursor: pointer;
-    margin-left: 180px;
-    font-family: 'Noto_Serif';
     display: block;
     background-color: #D91E36;
     background-image: url("icons8-stars-58.png");
     background-size: 72px;
     background-repeat: no-repeat;
     background-position: center;
-    color: aliceblue;
-    font-size: 20px;
     margin-top: calc(1vmin + 5px);
     margin-bottom: calc(1vmin + 5px);
     text-align: center;
+    /* animation */
     line-height: 50px;
     transform-origin: center top;
     transition-property:
@@ -225,4 +256,14 @@ body{
     border: 3px black solid;
     box-shadow: 10px 10px 15px black;
     background: orange;
+}
+.titre1{
+    background: gray;
+        position: relative;
+        top: calc(50% - 500px);
+        left: calc(50% - 250px);
+        width: 250px;
+        border: 4px solid black;
+        border-radius: 10px;
+        text-align: center;
 }
