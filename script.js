@@ -14,12 +14,12 @@ var heightInBlocks = ctxHeight/blockSize;
 const redCarImage = new Image();
 redCarImage.src = "redCarIm.png";
     
-// Bouton pause
-const ButtonPause = document.querySelector(".param");
+// Bouton parametre de son
+const ButtonParam = document.querySelector(".param");
 const modal = document.querySelector(".modal");
-ButtonPause.addEventListener("click", pauseActive);
+ButtonParam.addEventListener("click", pauseActive);
 function pauseActive(){
-    ButtonPause.classList.toggle("active");
+    // ButtonParam.classList.toggle("active");
     if (modal.style.display == "flex") modal.style.display = "none";
     else modal.style.display = "flex";
 }  
@@ -61,8 +61,15 @@ function boucleDeJeu() {
   requestAnimationFrame(boucleDeJeu);
 }
 
-// Fonction "update", met à jour le jeu
+// Fonction "update", met à jour le jeu (ne marche pas, pas fini)
 function update(d) {
+
+  // refresh
+  const ButtonRefresh = document.querySelector(".refresh");
+  ButtonRefresh.addEventListener("click", Refreshective);
+  function Refreshective(){
+    // faire le rafraichissement ici
+  }
 }
 
 // Fonction réalisant le rendu de l'état du jeu

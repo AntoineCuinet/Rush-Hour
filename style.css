@@ -51,6 +51,7 @@ body{
 }
 .nav-icone:hover{
     color: white;
+    font-size: clamp(32px, 2vw, 22px);
 }
 
 /* div  des boutons */
@@ -87,7 +88,7 @@ body{
     margin-bottom: calc(1vmin + 5px);
     text-align: center;
     line-height: 50px;
-    transform-origin: center;
+    transform-origin: center top;
     transition-property:
        width, height, line-height;
     transition-duration: 0.3s;
@@ -107,52 +108,7 @@ body{
     background-position: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.refresh{
-    margin: 10px;
-    border: none;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: #afafaf; 
-}
-
-.aide{
-    margin: 10px;
-    border: none;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: #afafaf; 
-}
-
-.pause{
-    margin: 10px;
-
-    border: none;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: #afafaf; 
-}
-
+/* fenetre modale pour parametre */
 .modal{
     display: none;
     position: fixed;
@@ -167,4 +123,45 @@ body{
     border: 3px black solid;
     box-shadow: 10px 10px 15px black;
     background: beige;
+}
+
+/* bouton refresh */
+.refresh{
+    margin: 10px;
+    border: none;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #afafaf; 
+}
+
+/* bouton qui affiche les différents levels */
+.levels{
+    margin: 10px;
+    border: 3px black solid;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 180px;
+    font-family: 'Noto_Serif';
+    display: block;
+    background-color: #D91E36;
+    background-image: url("icons8-paramètres-50.png");
+    background-size: 90px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: aliceblue;
+    font-size: 20px;
+    margin-top: calc(1vmin + 5px);
+    margin-bottom: calc(1vmin + 5px);
+    text-align: center;
+    line-height: 50px;
+    transform-origin: center top;
+    transition-property:
+       width, height, line-height;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 3ms;
+    text-decoration: none;
 }
