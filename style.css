@@ -13,7 +13,8 @@ html {
     display: flex;
     justify-content: left;
     align-items: center;
-    background: rgb(151, 140, 111) center / cover no-repeat;
+    /* background: url(pattern-5.PNG) rgb(151, 140, 111) center / cover repeat; */
+    background: url(pattern-5.PNG) rgb(151, 140, 111);
 }
 body{ 
     font-family: Poppins, Montserrat, Helvetica, sans-serif;
@@ -194,6 +195,11 @@ p{
     background: rgba(0, 0, 0, 0.85);
     transition: 0.3s;
 }
+@keyframes toggleAnim {
+    0% {transform: scaleY(1);}
+    50% {transform: scaleY(0.5);}
+    100% {transform: scaleY(1);}
+}
 #buttonAudio.active{
     background: rgb(214, 211, 211);
 }
@@ -201,6 +207,11 @@ p{
 #buttonAudio.active #toggleAudio{
     /* left: 36px; */
     transform: translateX(35px);
+    /* animation: toggleAnim 0.3s; */
+}
+
+.bumped{
+    animation: toggleAnim 0.3s;
 }
 
 /* bouton refresh */

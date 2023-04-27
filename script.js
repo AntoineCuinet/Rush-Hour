@@ -13,6 +13,9 @@ var heightInBlocks = ctxHeight/blockSize;
 // var redCar;
 const redCarImage = new Image();
 redCarImage.src = "redCarIm.png";
+
+//toggleAudio
+// const toggleAudio = document.getElementById("toggleAudio");
     
 // Bouton parametre de son
 const ButtonParam = document.querySelector(".param");
@@ -31,6 +34,12 @@ let isPaused = true;
 // annimation musique
 buttonAudio.addEventListener("click", function() { 
   buttonAudio.classList.toggle("active");
+  // if (toggleAudio.classList.contains("bumped")) {
+  //   toggleAudio.classList.remove("bumped");
+  // }
+  // else {
+  //   toggleAudio.classList.add("bumped");
+  // }
 });
 
 buttonAudio.addEventListener('click', function(){
