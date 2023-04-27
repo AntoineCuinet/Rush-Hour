@@ -35,6 +35,13 @@ body{
     
 }
 
+/* mise en forme paragrphe */
+p{
+    font-size: 34px;
+    font-weight: bold;
+    font-family: 'Poppins';
+}
+
 /* logo */
 .nav-icone{
     position: absolute;
@@ -157,13 +164,11 @@ body{
         text-align: center;
 }
 
-p{
-    font-size: 34px;
-    font-weight: bold;
-    font-family: 'Poppins';
+/* bouton de la musique */
+#buttonAudio{
+    width: 100px;
+    height: 50px;
 }
-
-
 
 /* bouton refresh */
 .refresh{

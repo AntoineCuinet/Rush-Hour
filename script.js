@@ -23,6 +23,15 @@ function paramActive(){
     if (modal.style.display == "flex") modal.style.display = "none";
     else modal.style.display = "flex";
 }  
+// Bouton pour activer la musique
+const buttonAudio = document.getElementById('buttonAudio');
+let audio1 = new Audio();
+audio1.src = '';
+
+buttonAudio.addEventListener('click', function(){
+  console.log('click');
+})
+
 // Bouton affichage levels
 const ButtonLevels = document.querySelector(".levels");
 const level = document.querySelector(".modal1");
