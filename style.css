@@ -273,7 +273,7 @@ p{
     background-repeat: fill;
     background-size: 72px;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; 
 }
 /* fenetre modale pour les levels */
 .modal1{
