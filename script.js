@@ -91,14 +91,14 @@ function boucleDeJeu() {
   requestAnimationFrame(boucleDeJeu);
 }
 
-// Fonction "update", met à jour le jeu (ne marche pas, pas fini)
+// Fonction "update", met à jour le jeu 
 function update(d) {
 
   // refresh
   const ButtonRefresh = document.querySelector(".refresh");
   ButtonRefresh.addEventListener("click", Refreshective);
   function Refreshective(){
-    // faire le rafraichissement ici
+    location.reload();
   }
 }
 

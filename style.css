@@ -13,7 +13,7 @@ html {
     display: flex;
     justify-content: left;
     align-items: center;
-    background: rgb(233, 145, 72) center / cover no-repeat;
+    background: rgb(151, 140, 111) center / cover no-repeat;
 }
 body{ 
     font-family: Poppins, Montserrat, Helvetica, sans-serif;
@@ -23,14 +23,14 @@ body{
 
 /* Canvas */
 #cvs{
-    background: grey center / cover no-repeat;
+    background: rgb(139, 139, 139) center / cover no-repeat;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(0%, -50%);
     width: 600px;
     height: 600px;
-    border: 6px solid  beige;
+    border: 6px solid  rgb(207, 205, 205);
     border-radius: 12px;
     
 }
@@ -77,14 +77,15 @@ p{
     left: 20%;
     position: fixed;
     z-index: 1;
-    background-color: red;
+    background-color: rgb(214, 211, 211);
     border-radius: 12px;
-    border: 6px black solid;
+    border: 4px black solid;
 }
 .moves{
     position: relative;
     text-align: center;
     top: 0;
+    margin-top: 10px;
 }
 
 .moves > p{
@@ -111,7 +112,7 @@ p{
     border-radius: 50%;
     cursor: pointer;
     display: block;
-    background-color: #D91E36;
+    background-color: rgb(214, 211, 211);
     background-image: url("icons8-paramètres-50.png");
     background-size: 90px;
     background-repeat: no-repeat;
@@ -127,7 +128,7 @@ p{
     text-decoration: none;
 }
 .param:hover{
-    background: red;
+    background: beige;
     transform: scale(1.1);
     transform-origin: center;
     background-image: url("icons8-paramètres-50.png");
@@ -154,15 +155,15 @@ p{
     background: beige;
 }
 .titre{
-    background: gray;
-        position: fixed;
-        top: calc(50% - 305px);
-        left: calc(50% - 125px);
-        width: 250px;
-        height: 110px;
-        border: 4px solid black;
-        border-radius: 10px;
-        text-align: center;
+    background: rgb(214, 211, 211);
+    position: fixed;
+    top: calc(50% - 305px);
+    left: calc(50% - 125px);
+    width: 250px;
+    height: 110px;
+    border: 4px solid black;
+    border-radius: 10px;
+    text-align: center;
 }
 
 /* bouton de la musique */
@@ -194,7 +195,7 @@ p{
     transition: 0.3s;
 }
 #buttonAudio.active{
-    background: rgba(0, 149, 255, 0.722);
+    background: rgb(214, 211, 211);
 }
 
 #buttonAudio.active #toggleAudio{
@@ -210,7 +211,7 @@ p{
     border-radius: 50%;
     cursor: pointer;
     display: block;
-    background-color: #D91E36;
+    background-color: rgb(214, 211, 211);
     background-image: url("icons8-rafraîchir-64\ \(1\).png");
     background-size: 90px;
     background-repeat: no-repeat;
@@ -228,7 +229,7 @@ p{
     text-decoration: none;
 }
 .refresh:hover{
-    background: red; 
+    background: beige; 
     transform: scale(1.1);
     transform-origin: center;
     background-image: url("icons8-rafraîchir-64\ \(1\).png");
@@ -247,7 +248,7 @@ p{
     border-radius: 50%;
     cursor: pointer;
     display: block;
-    background-color: #D91E36;
+    background-color: rgb(214, 211, 211);
     background-image: url("icons8-stars-58.png");
     background-size: 72px;
     background-repeat: no-repeat;
@@ -265,7 +266,7 @@ p{
     text-decoration: none;
 }
 .levels:hover{
-    background: red;
+    background: beige;
     transform: scale(1.1);
     transform-origin: center;
     background-image: url("icons8-stars-58.png");
@@ -288,15 +289,32 @@ p{
     border-radius: 12px;
     border: 3px black solid;
     box-shadow: 10px 10px 15px black;
-    background: orange;
+    background: beige;
 }
 .titre1{
-    background: gray;
-        position: relative;
-        top: calc(50% - 500px);
-        left: calc(50% - 250px);
-        width: 250px;
-        border: 4px solid black;
-        border-radius: 10px;
-        text-align: center;
+    background: rgb(214, 211, 211);
+    position: fixed;
+    top: calc(50% - 305px);
+    left: calc(50% - 125px);
+    width: 250px;
+    height: 110px;
+    border: 4px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* cases levels */
+.wrapper{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    gap: 30px;
+}
+.caseLevel{
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    border-radius: 5px;
 }
