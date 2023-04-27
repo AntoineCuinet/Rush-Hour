@@ -86,12 +86,29 @@ p{
     position: relative;
     text-align: center;
     top: 0;
-    margin-top: 10px;
 }
-
 .moves > p{
+    margin: 0;
+}
+.moveActuel{
+    text-align: center;
+    margin-top: 20px;
+}
+.moveActuel > p{
+    font-size: 40px;
     margin-top: 0;
 }
+.bestScore{
+    position: absolute;
+    margin-left: 5px;
+    bottom: 0;
+}
+.bestScore > p{
+    margin: 0;
+    color: #2f2f2f;
+}
+
+
 
 /* div  des boutons */
 .buttons{
@@ -172,6 +189,7 @@ p{
     display: flex;
     height: 100px;
     width: 400px;
+    margin-left: 130px;
     align-items: center;
 }
 #buttonAudio{
@@ -318,5 +336,5 @@ p{
     width: 90px;
     height: 90px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 6px;
 }

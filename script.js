@@ -1,18 +1,9 @@
 // Jeu Rush-Hour, créer par Magnin Julie et Cuinet Antoine, page js
 
-// Déclaration des variable
-let context = null;
-// Dimentions du document et d'une case
-var blockSize = 100;
-var ctxWidth = 600;
-var ctxHeight = 600;
-var widthInBlocks = ctxWidth/blockSize;
-var heightInBlocks = ctxHeight/blockSize;
-
-//voiture rouge
-// var redCar;
-const redCarImage = new Image();
-redCarImage.src = "redCarIm.png";
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Front ///
 
 // Bouton parametre de son
 const ButtonParam = document.querySelector(".param");
@@ -53,6 +44,26 @@ function levelsActive(){
     else level.style.display = "flex";
 }  
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Début du code du jeux à proprement parler ///
+
+// Déclaration des variable
+let context = null;
+// Dimentions du document et d'une case
+var blockSize = 100;
+var ctxWidth = 600;
+var ctxHeight = 600;
+var widthInBlocks = ctxWidth/blockSize;
+var heightInBlocks = ctxHeight/blockSize;
+
+//voiture rouge
+// var redCar;
+const redCarImage = new Image();
+redCarImage.src = "redCarIm.png";
+
+
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
 function init() {
   // instanciation de la variable globale contenant le contexte
@@ -73,10 +84,14 @@ function init() {
   boucleDeJeu()
 }
 
+
+
 // Fonction qui créer une voiture
 function Car(body){
   
 }
+
+
 
 // Fontion "boucleDeJeu()", comme son nom l'indique, créer la boucle du jeu
 function boucleDeJeu() {
@@ -90,6 +105,8 @@ function boucleDeJeu() {
   requestAnimationFrame(boucleDeJeu);
 }
 
+
+
 // Fonction "update", met à jour le jeu 
 function update(d) {
 
@@ -101,6 +118,8 @@ function update(d) {
   }
 }
 
+
+
 // Fonction réalisant le rendu de l'état du jeu
 function render() {
   // effacement de l'écran
@@ -110,12 +129,16 @@ function render() {
   //affichage des véhicules
 }
 
+
 // fontion qui dessine un block sur la grille
 // function drawBlock(position){
 //   var x = position[0]* blockSize;
 //   var y = position[1]* blockSize;
 //   context.fillRect(x,y,blockSize,blockSize);
 // }
+
+
+
 
 // Fonction appelée lorsqu'une touche du clavier est appuyée
 // Associée à l'événement "keyDown"
