@@ -92,10 +92,10 @@ p{
 }
 .moveActuel{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .moveActuel > p{
-    font-size: 40px;
+    font-size: 60px;
     margin-top: 0;
 }
 .bestScore{
@@ -336,5 +336,26 @@ p{
     width: 90px;
     height: 90px;
     text-align: center;
+    border: 2px black solid;
     border-radius: 6px;
+    /* animation */
+    transform-origin: center;
+    transition-property:
+       line-height, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 3ms;
+    text-decoration: none;
+ }
+ .caseLevel:hover{
+    background: beige; 
+    transform: scale(1.1);
+    transform-origin: center;
+    background-repeat: fill;
+    background-size: 90px;
+    background-repeat: no-repeat;
+    background-position: center;
+ }
+.caseLevel div{
+    font-size: 30px;
 }

@@ -114,7 +114,7 @@ function update(d) {
   const ButtonRefresh = document.querySelector(".refresh");
   ButtonRefresh.addEventListener("click", Refreshective);
   function Refreshective(){
-    location.reload();
+    // a faire
   }
 }
 
