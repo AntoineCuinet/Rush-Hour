@@ -14,15 +14,11 @@ var heightInBlocks = ctxHeight/blockSize;
 const redCarImage = new Image();
 redCarImage.src = "redCarIm.png";
 
-//toggleAudio
-// const toggleAudio = document.getElementById("toggleAudio");
-    
 // Bouton parametre de son
 const ButtonParam = document.querySelector(".param");
 const modal = document.querySelector(".modal");
 ButtonParam.addEventListener("click", paramActive);
 function paramActive(){
-    // ButtonParam.classList.toggle("active");
     if (modal.style.display == "flex") modal.style.display = "none";
     else modal.style.display = "flex";
 }  
@@ -34,12 +30,6 @@ let isPaused = true;
 // annimation musique
 buttonAudio.addEventListener("click", function() { 
   buttonAudio.classList.toggle("active");
-  // if (toggleAudio.classList.contains("bumped")) {
-  //   toggleAudio.classList.remove("bumped");
-  // }
-  // else {
-  //   toggleAudio.classList.add("bumped");
-  // }
 });
 
 buttonAudio.addEventListener('click', function(){
