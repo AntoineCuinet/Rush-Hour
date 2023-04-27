@@ -39,7 +39,6 @@ body{
 p{
     font-size: 34px;
     font-weight: bold;
-    font-family: 'Poppins';
 }
 
 /* logo */
@@ -83,11 +82,14 @@ p{
     border: 6px black solid;
 }
 .moves{
-    background: #00000032;
+    position: relative;
     text-align: center;
-
+    top: 0;
 }
 
+.moves > p{
+    margin-top: 0;
+}
 
 /* div  des boutons */
 .buttons{
@@ -116,10 +118,9 @@ p{
     background-position: center;
     text-align: center;
     /* animation */
-    line-height: 50px;
-    transform-origin: center top;
+    transform-origin: center;
     transition-property:
-       width, height, line-height;
+       line-height, transform;
     transition-duration: 0.3s;
     transition-timing-function: ease;
     transition-delay: 3ms;
@@ -127,9 +128,8 @@ p{
 }
 .param:hover{
     background: red;
-    width: 110px;
-    height: 110px;
-    line-height: 55px;
+    transform: scale(1.1);
+    transform-origin: center;
     background-image: url("icons8-paramètres-50.png");
     background-repeat: fill;
     background-size: 90px;
@@ -155,19 +155,51 @@ p{
 }
 .titre{
     background: gray;
-        position: relative;
-        top: calc(50% - 500px);
-        left: calc(50% - 250px);
+        position: fixed;
+        top: calc(50% - 305px);
+        left: calc(50% - 125px);
         width: 250px;
+        height: 110px;
         border: 4px solid black;
         border-radius: 10px;
         text-align: center;
 }
 
 /* bouton de la musique */
+.divAudio{
+    display: flex;
+    height: 100px;
+    width: 400px;
+    align-items: center;
+}
 #buttonAudio{
-    width: 100px;
+    margin-left: 20px;
+    top: 0;
+    left: 0;
+    width: 90px;
     height: 50px;
+    border-radius: 30px;
+    background: aliceblue;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#toggleAudio{
+    position: relative;
+    top: 5;
+    left: 5;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.85);
+    transition: 0.3s;
+}
+#buttonAudio.active{
+    background: rgba(0, 149, 255, 0.722);
+}
+
+#buttonAudio.active #toggleAudio{
+    /* left: 36px; */
+    transform: translateX(35px);
 }
 
 /* bouton refresh */
@@ -187,20 +219,18 @@ p{
     margin-bottom: calc(1vmin + 5px);
     text-align: center;
     /* animation */
-    line-height: 50px;
-    transform-origin: center top;
+    transform-origin: center;
     transition-property:
-       width, height, line-height;
+       line-height, transform;
     transition-duration: 0.3s;
     transition-timing-function: ease;
     transition-delay: 3ms;
-    text-decoration: none; 
+    text-decoration: none;
 }
 .refresh:hover{
     background: red; 
-    width: 110px;
-    height: 110px;
-    line-height: 55px;
+    transform: scale(1.1);
+    transform-origin: center;
     background-image: url("icons8-rafraîchir-64\ \(1\).png");
     background-repeat: fill;
     background-size: 90px;
@@ -226,10 +256,9 @@ p{
     margin-bottom: calc(1vmin + 5px);
     text-align: center;
     /* animation */
-    line-height: 50px;
-    transform-origin: center top;
+    transform-origin: center;
     transition-property:
-       width, height, line-height;
+       line-height, transform;
     transition-duration: 0.3s;
     transition-timing-function: ease;
     transition-delay: 3ms;
@@ -237,9 +266,8 @@ p{
 }
 .levels:hover{
     background: red;
-    width: 110px;
-    height: 110px;
-    line-height: 55px;
+    transform: scale(1.1);
+    transform-origin: center;
     background-image: url("icons8-stars-58.png");
     background-repeat: fill;
     background-size: 72px;

@@ -26,10 +26,23 @@ function paramActive(){
 // Bouton pour activer la musique
 const buttonAudio = document.getElementById('buttonAudio');
 let audio1 = new Audio();
-audio1.src = '';
+audio1.src = 'taxi.mp3';
+let isPaused = true;
+// annimation musique
+buttonAudio.addEventListener("click", function() { 
+  buttonAudio.classList.toggle("active");
+});
 
 buttonAudio.addEventListener('click', function(){
-  console.log('click');
+  if(isPaused){
+    audio1.play();
+  }else{
+    audio1.pause();
+  }
+  isPaused = !isPaused;
+  audio1.addEventListener('playing', function(){
+    console.log('click');
+  });
 })
 
 // Bouton affichage levels
