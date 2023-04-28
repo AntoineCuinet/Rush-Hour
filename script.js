@@ -63,6 +63,17 @@ const redCarImage1 = new Image();
 redCarImage1.src = "Car2Part1D.png";
 const redCarImage2 = new Image();
 redCarImage2.src = "Car2Part2D.png";
+//voiture bleu horizontale
+const blueCarImage1H = new Image();
+blueCarImage1H.src = "Car1Part1D.png";
+const blueCarImage2H = new Image();
+blueCarImage2H.src = "Car1Part2D.png";
+//voiture bleu verticale
+const blueCarImage1V = new Image();
+blueCarImage1V.src = "Car1Part1_90.png";
+const blueCarImage2V = new Image();
+blueCarImage2V.src = "Car1Part2_90.png";
+
 
 let pos={i:0,j:0};
 let levels=[]; //tableau contenant des instances de lv 
@@ -109,7 +120,15 @@ let c = car(1,0,2);
 grild [0][2] = c.numV;
 grild [1][2] = c.numV;
 
+// Placement d'une voiture verticale
+let cv1 = car(2,1,2);
+grild[3][3] = cv1.numV;
+grild[3][4] = cv1.numV;
 
+// Placement d'une voiture horizontale sur la grille
+let ch1 = car(3,0,2);
+grild [4][1] = ch1.numV;
+grild [5][1] = ch1.numV;
 
 
 // Fonction qui créer une voiture
@@ -152,20 +171,20 @@ function render() {
   context.clearRect(0, 0, context.width, context.height);
 
   //affichage des véhicules
+
+  // Voiture principale  
   let ind = rechercheVehicule(grild, c);
-  drawBlock(ind);
-  afficherCaseApres(grild, ind, c);
+  afficherCases(grild, ind, c);
+
+  // voiture horizontale1
+  let indcv1 = rechercheVehicule(grild, cv1);
+  afficherCases(grild, indcv1, cv1);
+
+  // voiture verticale1
+  let indch1 = rechercheVehicule(grild, ch1);
+  afficherCases(grild, indch1, ch1);
 }
 
-
-// fontion qui dessine un block sur la grille
-function drawBlock(pos){
-  var x = pos.i * blockSize;
-  var y = pos.j * blockSize;
-  // context.fillRect(x,y,blockSize,blockSize);
-  context.drawImage(redCarImage1, x, y, blockSize, blockSize);
-
-}
 
 
 // Toujours la position de la première case du véhicule
@@ -181,17 +200,34 @@ function rechercheVehicule(grild, car){
 }
 
 // affiche les autre cases
-function afficherCaseApres(grild, ind, c){
-  if(c.orient==0){
+function afficherCases(grild, ind, c){
+  // affichage voiture principale (affichage spéciale car elle est rouge)
+  if(c.orient==0 && c.taille==2 && c.numV == 1){
+    //affichage première case
+    context.drawImage(redCarImage1, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    //affichage seconde case
     if (grild[ind.i+1][ind.j]==c.numV){
       ind.i=ind.i+1;
-      // drawBlock(ind);
-      var x = ind.i * blockSize;
-      var y = ind.j * blockSize; 
-      context.drawImage(redCarImage2, x, y, blockSize, blockSize);
+      context.drawImage(redCarImage2, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
     }
-  } else {
-
+  }
+  // si horizontale de taille 2
+  if(c.orient==0 && c.taille==2 && c.numV != 1){
+    //affichage première case
+    context.drawImage(blueCarImage1H, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    //affichage seconde case
+    if (grild[ind.i+1][ind.j]==c.numV){
+      ind.i=ind.i+1;
+      context.drawImage(blueCarImage2H, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    }
+  } else if (c.orient==1 && c.taille==2){ // si vertical de taille 2
+    //affichage première case
+    context.drawImage(blueCarImage1V, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    //affichage seconde case
+    if (grild[ind.i][ind.j+1]==c.numV){
+      ind.j=ind.j+1;
+      context.drawImage(blueCarImage2V, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    }
   }
 }
 
