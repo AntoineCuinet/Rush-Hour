@@ -63,6 +63,15 @@ var heightInBlocks = ctxHeight/blockSize;
 const redCarImage = new Image();
 redCarImage.src = "redCarIm.png";
 
+let position={i:0,j:0};
+let levels=[]; //tableau contenant des instances de lv 
+let lv ={numLV :null, nbCoupMin:null, 'vTab':[], nbMouv:0, bestScore:null, 'carTab' : [] };
+let grild= [[]];
+let win=false;
+let car={numV:null,orient:0}; //pour orient 0 : horizontal et 1 : vertical
+
+
+
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
 function init() {
