@@ -8,11 +8,11 @@ html {
     position: relative;
     z-index: 1;
     font-family: 'Noto_Serif', Helvetica, sans-serif;
-    height: 100%;
-    width: 100%;
-    display: flex;
+    height: 100vh;
+    width: 100vw;
+    /* display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: center; */
     /* background: url(pattern-5.PNG) rgb(151, 140, 111) center / cover repeat; */
     background: url(pattern-5.PNG) rgb(151, 140, 111);
 }
@@ -45,7 +45,7 @@ p{
 /* logo */
 .nav-icone{
     position: absolute;
-    z-index: 12;
+    z-index: 1200;
     left: 2%;
     top: 2%;
     color: rgb(214, 211, 211);
@@ -358,4 +358,45 @@ p{
  }
 .caseLevel div{
     font-size: 30px;
+}
+
+
+.accueil{
+    /* display: none; */
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: -2px;
+    left: -2px;
+    position: fixed;
+    z-index: 1000;
+    background: url(pattern-5.PNG) rgb(151, 140, 111);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+} 
+.buttonAccueil{
+    border: 4px black solid;
+    width: 400px;
+    height: 200px;
+    border-radius: 13px;
+    cursor: pointer;
+    background-color: rgb(214, 211, 211);
+    margin-top: 50%;
+    margin-bottom: 50%;
+    text-align: center;
+    /* animation */
+    transform-origin: center;
+    transition-property:
+       line-height, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 3ms;
+    text-decoration: none;
+    font-size: 50px;
+}
+.buttonAccueil:hover{
+    background: beige;
+    transform: scale(1.1);
+    transform-origin: center;
 }

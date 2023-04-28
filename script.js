@@ -5,6 +5,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Front ///
 
+// Bouton accueil
+const ButtonAccueil = document.querySelector(".buttonAccueil");
+const accueuil = document.querySelector(".accueil");
+ButtonAccueil.addEventListener("click", acceuilActive);
+function acceuilActive(){
+    if (accueuil.style.display == "none") accueuil.style.display = "flex";
+    else accueuil.style.display = "none";
+}  
+
+
 // Bouton parametre de son
 const ButtonParam = document.querySelector(".param");
 const modal = document.querySelector(".modal");
