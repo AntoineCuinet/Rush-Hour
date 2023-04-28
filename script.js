@@ -60,9 +60,9 @@ var heightInBlocks = ctxHeight/blockSize;
 
 //voiture rouge
 const redCarImage1 = new Image();
-redCarImage1.src = "Car1Part1D.png";
+redCarImage1.src = "Car2Part1D.png";
 const redCarImage2 = new Image();
-redCarImage2.src = "Car1Part2D.png";
+redCarImage2.src = "Car2Part2D.png";
 
 let pos={i:0,j:0};
 let levels=[]; //tableau contenant des instances de lv 
