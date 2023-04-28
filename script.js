@@ -59,8 +59,10 @@ var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
 
 //voiture rouge
-const redCarImage = new Image();
-redCarImage.src = "redCarIm.png";
+const redCarImage1 = new Image();
+redCarImage1.src = "Car1Part1D.png";
+const redCarImage2 = new Image();
+redCarImage2.src = "Car1Part2D.png";
 
 let pos={i:0,j:0};
 let levels=[]; //tableau contenant des instances de lv 
@@ -161,7 +163,7 @@ function drawBlock(pos){
   var x = pos.i * blockSize;
   var y = pos.j * blockSize;
   // context.fillRect(x,y,blockSize,blockSize);
-  context.drawImage(redCarImage, x, y, blockSize, blockSize);
+  context.drawImage(redCarImage1, x, y, blockSize, blockSize);
 
 }
 
@@ -183,7 +185,10 @@ function afficherCaseApres(grild, ind, c){
   if(c.orient==0){
     if (grild[ind.i+1][ind.j]==c.numV){
       ind.i=ind.i+1;
-      drawBlock(ind);
+      // drawBlock(ind);
+      var x = ind.i * blockSize;
+      var y = ind.j * blockSize; 
+      context.drawImage(redCarImage2, x, y, blockSize, blockSize);
     }
   } else {
 
