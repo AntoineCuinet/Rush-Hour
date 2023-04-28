@@ -73,6 +73,21 @@ const blueCarImage1V = new Image();
 blueCarImage1V.src = "Car1Part1_90.png";
 const blueCarImage2V = new Image();
 blueCarImage2V.src = "Car1Part2_90.png";
+// Camion vertical
+const camion1V = new Image();
+camion1V.src = "00.png";
+const camion2V = new Image();
+camion2V.src = "01.png";
+const camion3V = new Image();
+camion3V.src = "02.png";
+// Camion horizontal
+const camion1H = new Image();
+camion1H.src = "00 copie.png";
+const camion2H = new Image();
+camion2H.src = "01 copie.png";
+const camion3H = new Image();
+camion3H.src = "02 copie.png";
+
 
 
 let pos={i:0,j:0};
@@ -92,29 +107,6 @@ function car(numV, orient, taille){
 
 
 
-
-// Initialisation (appelée au chargement du corps du document <body onload="init">)    
-function init() {
-  // instanciation de la variable globale contenant le contexte
-  context = document.getElementById("cvs").getContext("2d");
-  context.width = document.getElementById("cvs").width = ctxWidth;
-  context.height = document.getElementById("cvs").height = ctxHeight;
-
-  // 2 écouteurs pour le clavier (appui/relâchement d'une touche)
-  document.addEventListener("keydown", captureAppuiToucheClavier)
-  document.addEventListener("keyup", captureRelacheToucheClavier)
-  // on associe au document un écouteur d'événements souris
-  document.addEventListener("click", captureClicSouris)
-  // --> ces événements vont appeler les fonctions captureXYZ définies après.
-
-  
-
-
-  boucleDeJeu()
-}
-
-
-
 // Placement de la voiture rouge sur la grille
 let c = car(1,0,2);
 grild [0][2] = c.numV;
@@ -130,12 +122,37 @@ let ch1 = car(3,0,2);
 grild [4][1] = ch1.numV;
 grild [5][1] = ch1.numV;
 
+// Placement d'un camion horizontal sur la grille
+let ch2 = car(4,1,3);
+grild [5][3] = ch2.numV;
+grild [5][4] = ch2.numV;
+grild [5][5] = ch2.numV; 
 
-// Fonction qui créer une voiture
-function Car(body){
-  
+// Placement d'un camion vertical sur la grille
+let cv2 = car(5,0,3);
+grild [0][0] = cv2.numV;
+grild [1][0] = cv2.numV;
+grild [2][0] = cv2.numV;
+
+
+
+
+// Initialisation (appelée au chargement du corps du document <body onload="init">)    
+function init() {
+  // instanciation de la variable globale contenant le contexte
+  context = document.getElementById("cvs").getContext("2d");
+  context.width = document.getElementById("cvs").width = ctxWidth;
+  context.height = document.getElementById("cvs").height = ctxHeight;
+
+  // 2 écouteurs pour le clavier (appui/relâchement d'une touche)
+  document.addEventListener("keydown", captureAppuiToucheClavier)
+  document.addEventListener("keyup", captureRelacheToucheClavier)
+  // on associe au document un écouteur d'événements souris
+  document.addEventListener("click", captureClicSouris)
+  // --> ces événements vont appeler les fonctions captureXYZ définies après.
+
+  boucleDeJeu()
 }
-
 
 
 // Fontion "boucleDeJeu()", comme son nom l'indique, créer la boucle du jeu
@@ -183,9 +200,14 @@ function render() {
   // voiture verticale1
   let indch1 = rechercheVehicule(grild, ch1);
   afficherCases(grild, indch1, ch1);
+
+  // camion horizontal
+  let indch2 = rechercheVehicule(grild, ch2);
+  afficherCases(grild, indch2, ch2);
+  // camion vertical
+  let indcv2 = rechercheVehicule(grild, cv2);
+  afficherCases(grild, indcv2, cv2);
 }
-
-
 
 // Toujours la position de la première case du véhicule
 function rechercheVehicule(grild, car){
@@ -198,6 +220,7 @@ function rechercheVehicule(grild, car){
   };
   console.log(grild, car);
 }
+
 
 // affiche les autre cases
 function afficherCases(grild, ind, c){
@@ -227,6 +250,34 @@ function afficherCases(grild, ind, c){
     if (grild[ind.i][ind.j+1]==c.numV){
       ind.j=ind.j+1;
       context.drawImage(blueCarImage2V, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    }
+  }
+  if(c.orient==0 && c.taille==3){ //pour un camion horizontal
+    //affichage première case
+    context.drawImage(camion1H, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    //affichage seconde case
+    if (grild[ind.i+1][ind.j]==c.numV){
+      ind.i=ind.i+1;
+      context.drawImage(camion2H, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    }
+    //affichage troisième case
+    if (grild[ind.i+1][ind.j]==c.numV){
+      ind.i=ind.i+1;
+      context.drawImage(camion3H, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    }
+  }
+  if(c.orient==1 && c.taille==3){ //pour un camion vertical
+    //affichage première case
+    context.drawImage(camion1V, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    //affichage seconde case
+    if (grild[ind.i][ind.j+1]==c.numV){
+      ind.j=ind.j+1;
+      context.drawImage(camion2V, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
+    }
+    //affichage troisième case
+    if (grild[ind.i][ind.j+1]==c.numV){
+      ind.j=ind.j+1;
+      context.drawImage(camion3V, ind.i * blockSize, ind.j * blockSize, blockSize, blockSize);
     }
   }
 }
