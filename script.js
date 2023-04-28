@@ -59,7 +59,6 @@ var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
 
 //voiture rouge
-// var redCar;
 const redCarImage = new Image();
 redCarImage.src = "redCarIm.png";
 
