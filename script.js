@@ -62,12 +62,20 @@ var heightInBlocks = ctxHeight/blockSize;
 const redCarImage = new Image();
 redCarImage.src = "redCarIm.png";
 
-let position={i:0,j:0};
+let pos={i:0,j:0};
 let levels=[]; //tableau contenant des instances de lv 
 let lv ={numLV :null, nbCoupMin:null, 'vTab':[], nbMouv:0, bestScore:null, 'carTab' : [] };
-let grild= [[]];
+let grild= Array(widthInBlocks);
+for(let i =0; i<widthInBlocks; i++){
+  grild[i]=Array(widthInBlocks);
+  for(let j =0; j<widthInBlocks; j++){
+    grild [i][j] = 0;
+  };
+};
 let win=false;
-let car={numV:null,orient:0}; //pour orient 0 : horizontal et 1 : vertical
+function car(numV, orient, taille){
+  return {numV,orient, taille};
+} //pour orient 0 : horizontal et 1 : vertical
 
 
 
@@ -86,11 +94,19 @@ function init() {
   document.addEventListener("click", captureClicSouris)
   // --> ces événements vont appeler les fonctions captureXYZ définies après.
 
-  // Placement de la voiture rouge sur la grille
   
+
 
   boucleDeJeu()
 }
+
+
+
+// Placement de la voiture rouge sur la grille
+let c = car(1,0,2);
+grild [0][2] = c.numV;
+grild [1][2] = c.numV;
+
 
 
 
@@ -127,7 +143,6 @@ function update(d) {
 }
 
 
-
 // Fonction réalisant le rendu de l'état du jeu
 function render() {
   // effacement de l'écran
@@ -135,17 +150,45 @@ function render() {
   context.clearRect(0, 0, context.width, context.height);
 
   //affichage des véhicules
+  let ind = rechercheVehicule(grild, c);
+  drawBlock(ind);
+  afficherCaseApres(grild, ind, c);
 }
 
 
 // fontion qui dessine un block sur la grille
-// function drawBlock(position){
-//   var x = position[0]* blockSize;
-//   var y = position[1]* blockSize;
-//   context.fillRect(x,y,blockSize,blockSize);
-// }
+function drawBlock(pos){
+  var x = pos.i * blockSize;
+  var y = pos.j * blockSize;
+  // context.fillRect(x,y,blockSize,blockSize);
+  context.drawImage(redCarImage, x, y, blockSize, blockSize);
+
+}
 
 
+// Toujours la position de la première case du véhicule
+function rechercheVehicule(grild, car){
+  for(let i = 0; i<widthInBlocks; i++){
+    for(let j = 0; j<widthInBlocks; j++){
+      if (grild[i][j]==car.numV) {
+        return {i,j};
+      }
+    };
+  };
+  console.log(grild, car);
+}
+
+// affiche les autre cases
+function afficherCaseApres(grild, ind, c){
+  if(c.orient==0){
+    if (grild[ind.i+1][ind.j]==c.numV){
+      ind.i=ind.i+1;
+      drawBlock(ind);
+    }
+  } else {
+
+  }
+}
 
 
 // Fonction appelée lorsqu'une touche du clavier est appuyée
