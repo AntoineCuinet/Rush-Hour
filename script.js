@@ -207,7 +207,9 @@ grild [0][0] = cv2.numV;
 grild [1][0] = cv2.numV;
 grild [2][0] = cv2.numV;
 
-
+//fonction qui place les voitures dans la grille à partir d'une case i et j, qui est la première case du véhicule, entrée en paramètres
+//elle verifie si i et j sont bien compris entre 0 et 5 et si on peut bien placer le vehicule a l'endroit souhaite 
+//function placementV(grild,car,i,j){}
 
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
@@ -356,30 +358,60 @@ function afficherCases(grild, ind, c){
 }
 
 //regarde si le déplacement est possible et déplacer la voiture
+//beaucoup de repetitions donc a essayer d'opti
 function deplacementV(grild, car){
   let indv=rechercheVehicule(grild,car);
+  let temp;
   
   if (car.orient==0){
-    if (arrowLeft){
-      //déplacement impossible
-      if((indv.j-1)<0||[indv.i][indv.j-1]!=0){
+    if(arrowLeft){
+      //déplacement impossible vers la gauche impossible
+      if((indv.j-1)<0||grild[indv.i][indv.j-1]!=0){
+        return false
+      } else {
+        //echanger la place de la voiture
+        for(let k=0;k<car.taille;k++){
+          temp=grild[indv.i][indv.j+k-1];
+          grild[indv.i][indv.j+k-1]=grild[indv.i][indv.j+k];
+          grild[indv.i][indv.j+k]=temp;
+        }
+      }
+    } 
+    if (arrowRight){
+      indv.j+=(car.taille-1);
+      if((indv.j+1)>=widthInBlocks||grild[indv.i][indv.j+1]){
+        return false;
+      } else {
+        temp=grild[indv.i][ind.j-k+1];
+        grild[indv.i][indv.j-k+1]=grild[indv.i][indv.j-k];
+        grild[indv.i][indv.j-k]=temp;
+      }
+    }
+  } else {
+    if(arrowUp){
+      //déplacement vers le haut impossible
+      if((indv.i-1)<0||grild[indv.i-1][indv.j]!=0){
         return false
       } else {
         //échanger la place de la voiture
-        let temp;
-        for(let i=0;i<car.taille;i++){
-          temp=grille[indv.i][indv.j-1];
-          grille[indv.i][indv.j-1]=grille[indv.i][indv.j];
-          grille[indv.i][indv.j]=temp;
+        for(let k=0;k<car.taille;k++){
+          temp=grild[indv.i+k-1][indv.j];
+          grild[indv.i+k-1][indv.j]=grild[indv.i+k][indv.j];
+          grild[indv.i+k][indv.j]=temp;
         }
-        
       }
-
     } 
-    if (arrowRight){
-
+    if(arrowDown){
+      ind.i+=(car.taille-1);
+      if((ind.i+1)>=heightInBlocks||grild[indv.i+1][indv.j]!=0){
+        return false;
+      } else {
+        temp=grild[indv.i-k+1][ind.j];
+        grild[indv.i-k+1][indv.j]=grild[indv.i-k][indv.j];
+        grild[indv.i-k][indv.j]=temp;
+      }
     }
-  } 
+  }
   
 
 
