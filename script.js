@@ -209,7 +209,18 @@ grild [2][0] = cv2.numV;
 
 //fonction qui place les voitures dans la grille à partir d'une case i et j, qui est la première case du véhicule, entrée en paramètres
 //elle verifie si i et j sont bien compris entre 0 et 5 et si on peut bien placer le vehicule a l'endroit souhaite 
-//function placementV(grild,car,i,j){}
+function placementV(grild,car,i,j){
+  //i et j sont correct
+  if((i>=0 && i<=5)&&(j>=0 && j<=5)){
+    for(let k=0;k<car.taille;k++){
+      if(car.orient==0){
+        grild[i][j+k]=car.numV;
+      } else {
+        grild[i+k][j]=car.numV;
+      }
+    }
+  }
+}
 
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
