@@ -71,8 +71,10 @@ ButtonParam.addEventListener("click", function(){
 // Bouton pour activer la musique
 const buttonAudio = document.getElementById('buttonAudio');
 let audio1 = new Audio();
-audio1.src = 'taxi.mp3';
+audio1.src = 'musique.mp3';
 let isPaused = true;
+let loopTime = 94800;
+let intervalId = null;
 // annimation musique
 buttonAudio.addEventListener("click", function() { 
   buttonAudio.classList.toggle("active");
@@ -80,7 +82,9 @@ buttonAudio.addEventListener("click", function() {
 
 buttonAudio.addEventListener('click', function(){
   if(isPaused){
+    intervalId = setInterval(doLoop, loopTime);
     audio1.play();
+    audio1.currentTime = 0;
     // son du bouton 
   buttonAudio.addEventListener("click", function(){
     if(isPaused2){
@@ -101,7 +105,9 @@ buttonAudio.addEventListener('click', function(){
     console.log('click');
   });
 })
-
+function doLoop(){
+  audio1.currentTime = 0;  
+}
 // Bouton affichage levels
 const ButtonLevels = document.querySelector(".levels");
 const level = document.querySelector(".modal1");
