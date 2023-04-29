@@ -355,10 +355,59 @@ function afficherCases(grild, ind, c){
   }
 }
 
+//regarde si le déplacement est possible et déplacer la voiture
+function deplacementV(grild, car){
+  let indv=rechercheVehicule(grild,car);
+  
+  if (car.orient==0){
+    if (arrowLeft){
+      //déplacement impossible
+      if((indv.j-1)<0||[indv.i][indv.j-1]!=0){
+        return false
+      } else {
+        //échanger la place de la voiture
+        let temp;
+        for(let i=0;i<car.taille;i++){
+          temp=grille[indv.i][indv.j-1];
+          grille[indv.i][indv.j-1]=grille[indv.i][indv.j];
+          grille[indv.i][indv.j]=temp;
+        }
+        
+      }
 
+    } 
+    if (arrowRight){
+
+    }
+  } 
+  
+
+
+}
+
+
+
+let arrowLeft=false;
+let arrowRight=false;
+let arrowUp=false;
+let arrowDown=false;
 // Fonction appelée lorsqu'une touche du clavier est appuyée
 // Associée à l'événement "keyDown"
 function captureAppuiToucheClavier(event) {
+  switch(event.code){
+    case "ArrowRight":
+        arrowRight=true;
+        break;
+    case "ArrowLeft":
+        arrowLeft=true;
+          break;
+    case "ArrowUp":
+        arrowUp=true;
+        break;
+    case "ArrowDown":
+        arrowDown=true;
+        break;
+  }
 }
 
 // Fonction appelée lorsqu'une touche du clavier est relâchée
