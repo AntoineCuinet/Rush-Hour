@@ -5,17 +5,55 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Front ///
 
+// Bouton pour activer le son
+const buttonAudio2 = document.getElementById('buttonAudio2');
+let audio2=new Audio();
+audio2.src= 'click.mp3';
+let isPaused2 = false;
+// annimation son
+buttonAudio2.addEventListener("click", function() { 
+  buttonAudio2.classList.toggle("active");
+});
+
+buttonAudio2.addEventListener('click', function(){
+  if(isPaused2){
+    audio2.pause();
+  }else{
+    audio2.play();
+  }
+  isPaused2 = !isPaused2;
+  audio1.addEventListener('playing', function(){
+    console.log('click');
+  });
+})
+
+
+
+
+// son du bouton rush-hour
+const refresh = document.querySelector(".refresh");
+refresh.addEventListener("click", function(){
+  if(isPaused2){
+    audio2.play();
+  }
+});
+
 // Bouton accueil
 const ButtonAccueil = document.querySelector(".buttonAccueil");
 const accueuil = document.querySelector(".accueil");
+// son du bouton d'acceil
+ButtonAccueil.addEventListener("click", function(){
+  if(isPaused2){
+    audio2.play();
+  }
+});
 ButtonAccueil.addEventListener("click", acceuilActive);
 function acceuilActive(){
     if (accueuil.style.display == "none") accueuil.style.display = "flex";
     else accueuil.style.display = "none";
 }  
 
-
-// Bouton parametre de son
+// Bouton parametre de musique
 const ButtonParam = document.querySelector(".param");
 const modal = document.querySelector(".modal");
 ButtonParam.addEventListener("click", paramActive);
@@ -23,6 +61,13 @@ function paramActive(){
     if (modal.style.display == "flex") modal.style.display = "none";
     else modal.style.display = "flex";
 }  
+// son du bouton 
+ButtonParam.addEventListener("click", function(){
+  if(isPaused2){
+    audio2.play();
+  }
+});
+
 // Bouton pour activer la musique
 const buttonAudio = document.getElementById('buttonAudio');
 let audio1 = new Audio();
@@ -36,8 +81,20 @@ buttonAudio.addEventListener("click", function() {
 buttonAudio.addEventListener('click', function(){
   if(isPaused){
     audio1.play();
+    // son du bouton 
+  buttonAudio.addEventListener("click", function(){
+    if(isPaused2){
+      audio2.play();
+    }
+});
   }else{
     audio1.pause();
+    // son du bouton 
+  buttonAudio.addEventListener("click", function(){
+    if(isPaused2){
+      audio2.play();
+    }
+});
   }
   isPaused = !isPaused;
   audio1.addEventListener('playing', function(){
@@ -53,6 +110,12 @@ function levelsActive(){
     if (level.style.display == "flex") level.style.display = "none";
     else level.style.display = "flex";
 }  
+// son du bouton 
+ButtonLevels.addEventListener("click", function(){
+  if(isPaused2){
+    audio2.play();
+  }
+});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
