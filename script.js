@@ -22,13 +22,10 @@ buttonAudio2.addEventListener('click', function(){
     audio2.play();
   }
   isPaused2 = !isPaused2;
-  audio1.addEventListener('playing', function(){
-    console.log('click');
-  });
+  // audio1.addEventListener('playing', function(){
+  //   console.log('click');
+  // });
 })
-
-
-
 
 // son du bouton rush-hour
 const refresh = document.querySelector(".refresh");
@@ -101,9 +98,9 @@ buttonAudio.addEventListener('click', function(){
 });
   }
   isPaused = !isPaused;
-  audio1.addEventListener('playing', function(){
-    console.log('click');
-  });
+  // audio1.addEventListener('playing', function(){
+  //   console.log('click');
+  // });
 })
 function doLoop(){
   audio1.currentTime = 0;  
@@ -136,7 +133,6 @@ var ctxWidth = 600;
 var ctxHeight = 600;
 var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
-let clic = { x: 0, y: 0 };
 
 //voiture rouge
 const redCarImage1 = new Image();
@@ -484,24 +480,22 @@ function captureRelacheToucheClavier(event) {
 //Fonction appelée lorsque la sourie est appuyée
 // Associée à l'événement "click"
 function captureClicSouris(event) {
-  // calcul des coordonnées de la souris dans le canvas
+  // calcul des coordonnées de la souris dans le canvas + conversion des clic en entier i: ligne et j: colonne
   if (event.target.id == "cvs") {
-    clic.x = event.pageX - event.target.offsetLeft;
-    clic.y = event.pageY - event.target.offsetTop;
+    pos.i = Math.floor((event.pageX - event.target.offsetLeft)/(blockSize)); 
+    pos.j = Math.floor((event.pageY - event.target.offsetTop)/(blockSize));
   }
-  //conversion des clic en entier i, ligne et j,colonne
-  let ligne=  Math.floor(clic.x/(blockSize)); 
-  let colonne= Math.floor(clic.y/(blockSize));
-
-  let valeurCase=grild[ligne][colonne];
-  if(valeurCase!=0){
-    //utiliser un while à la place du for
-    //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
-    //peut être mettre ce que je viens de faire dans une fonction à part
-    for(let i=0;i<vTab.length;i++){
-      if(vTab[i].numV==valeurCase){
-        return vtab[i];
-      }
-    }
-  }
+  return pos;
+  
+  // let valeurCase=grild[ligne][colonne];
+  // if(valeurCase!=0){
+  //   //utiliser un while à la place du for
+  //   //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
+  //   //peut être mettre ce que je viens de faire dans une fonction à part
+  //   for(let i=0;i<vTab.length;i++){
+  //     if(vTab[i].numV==valeurCase){
+  //       return vtab[i];
+  //     }
+  //   }
+  // }
 }
