@@ -172,8 +172,12 @@ var heightInBlocks = ctxHeight/blockSize;
 // Déclaration des variable
 let context = null;
 let pos={i:0,j:0};
-let levels=[]; //tableau contenant des instances de lv 
-let lv ={numLV :null, nbCoupMin:null, vTab:[], nbMouv:0, bestScore:null};
+let levels= Array(8); //tableau contenant des instances de lv 
+for(let i =0; i<levels.length; i++){
+  let lv ={numLV :null, nbCoupMin:null, vTab:Array(10), nbMouv:0, bestScore:null};
+  levels[i]= lv;
+};
+
 let grild= Array(widthInBlocks);
 for(let i =0; i<widthInBlocks; i++){
   grild[i]=Array(widthInBlocks);
@@ -185,43 +189,6 @@ let win=false;
 function car(numV, orient, taille){
   return {numV,orient, taille};
 } //pour orient 0 : horizontal et 1 : vertical
-
-
-
-// Placement de la voiture rouge sur la grille
-let c = car(1,0,2);
-placementV(grild, c, 0,2);
-
-// Placement d'une voiture verticale
-let cv1 = car(2,1,2);
-placementV(grild, cv1, 3,3);
-
-// Placement d'une voiture horizontale sur la grille
-let ch1 = car(3,0,2);
-placementV(grild, ch1, 4,1);
-
-// Placement d'un camion horizontal sur la grille
-let ch2 = car(4,1,3);
-placementV(grild, ch2, 5,3);
-
-// Placement d'un camion vertical sur la grille
-let cv2 = car(5,0,3);
-placementV(grild, cv2, 0, 0);
-
-//fonction qui place les voitures dans la grille à partir d'une case i et j, qui est la première case du véhicule, entrée en paramètres
-//elle verifie si i et j sont bien compris entre 0 et 5 et si on peut bien placer le vehicule a l'endroit souhaite 
-function placementV(grild,car,i,j){
-  //i et j sont correct
-  if((i>=0 && i<=5)&&(j>=0 && j<=5)){
-    for(let k=0;k<car.taille;k++){
-      if(car.orient==0){
-        grild[i+k][j]=car.numV;
-      } else {
-        grild[i][j+k]=car.numV;
-      }
-    }
-  }
-}
 
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
@@ -274,6 +241,37 @@ function render() {
   context.fillStyle = "red";
   context.clearRect(0, 0, context.width, context.height);
 
+
+  const caseLevel = document.querySelector(".lv1");
+  caseLevel.addEventListener("click", function(){
+  // Placement de la voiture rouge sur la grille
+    let c = car(1,0,2);
+    placementV(grild, c, 0,2);
+
+  // Placement d'une voiture verticale
+    let cv1 = car(2,1,2);
+    placementV(grild, cv1, 3,3);
+
+  // Placement d'une voiture horizontale sur la grille
+    let ch1 = car(3,0,2);
+    placementV(grild, ch1, 4,1);
+
+  // Placement d'un camion horizontal sur la grille
+    let ch2 = car(4,1,3);
+    placementV(grild, ch2, 5,3);
+
+  // Placement d'un camion vertical sur la grille
+    let cv2 = car(5,0,3);
+    placementV(grild, cv2, 0, 0);
+
+// level 1
+// levels[0].numLV = 1;
+// levels[0].vTab[0] = c;
+// levels[0].vTab[1] = cv1;
+// levels[0].vTab[2] = ch1;
+// levels[0].vTab[3] = ch2;
+// levels[0].vTab[4] = cv2;
+
   //affichage des véhicules
 
   // Voiture principale  
@@ -294,6 +292,24 @@ function render() {
   // camion vertical
   let indcv2 = rechercheVehicule(grild, cv2);
   afficherCases(grild, indcv2, cv2);
+
+  });
+}
+
+
+//fonction qui place les voitures dans la grille à partir d'une case i et j, qui est la première case du véhicule, entrée en paramètres
+//elle verifie si i et j sont bien compris entre 0 et 5 et si on peut bien placer le vehicule a l'endroit souhaite 
+function placementV(grild,car,i,j){
+  //i et j sont correct
+  if((i>=0 && i<=5)&&(j>=0 && j<=5)){
+    for(let k=0;k<car.taille;k++){
+      if(car.orient==0){
+        grild[i+k][j]=car.numV;
+      } else {
+        grild[i][j+k]=car.numV;
+      }
+    }
+  }
 }
 
 // Toujours la position de la première case du véhicule
@@ -305,7 +321,6 @@ function rechercheVehicule(grild, car){
       }
     };
   };
-  console.log(grild, car);
 }
 
 
@@ -425,7 +440,6 @@ function deplacementV(grild, car){
     }
   }
 }
-
 
 
 let arrowLeft=false;
