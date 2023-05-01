@@ -472,4 +472,21 @@ function captureClicSouris(event) {
     clic.x = event.pageX - event.target.offsetLeft;
     clic.y = event.pageY - event.target.offsetTop;
   }
+  //conversion des clic en entier i, ligne et j,colonne
+  let ligne=(int) (clic.x/(ctxWidth/widthInBlocks)); //peut être remplacé par blockSize
+  let colonne=(int) (clic.y/(ctxHeight/heightInBlocks));
+
+  let valeurCase=grild[ligne][colonne];
+  if(valeurCase==0){
+    return null; //je sais pas si c'est possible de ne rien retourner 
+  } else {
+    //utiliser un while à la place du for
+    //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
+    //peut être mettre ce que je viens de faire dans une fonction à part
+    for(let i=0;i<vTab.length;i++){
+      if(vTab[i].numV==valeurCase){
+        return vtab[i];
+      }
+    }
+  }
 }
