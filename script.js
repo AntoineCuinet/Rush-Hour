@@ -172,7 +172,7 @@ var heightInBlocks = ctxHeight/blockSize;
 // Déclaration des variable
 let context = null;
 let pos={i:0,j:0};
-let levels= Array(8); //tableau contenant des instances de lv 
+let levels= Array(9); //tableau contenant des instances de lv 
 for(let i =0; i<levels.length; i++){
   let lv ={numLV :null, nbCoupMin:null, vTab:Array(10), nbMouv:0, bestScore:null};
   levels[i]= lv;
@@ -237,62 +237,256 @@ function update(d) {
 
 // Fonction réalisant le rendu de l'état du jeu
 function render() {
-  // effacement de l'écran
-  context.fillStyle = "red";
-  context.clearRect(0, 0, context.width, context.height);
 
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 1  ///////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
 
-  const caseLevel = document.querySelector(".lv1");
-  caseLevel.addEventListener("click", function(){
-  // Placement de la voiture rouge sur la grille
+  const caseLevel1 = document.querySelector(".lv1");
+  caseLevel1.addEventListener("click", function(){
+    // effacement de l'écran
+    context.fillStyle = "red";
+    context.clearRect(0, 0, context.width, context.height);
+
+    // Placement de la voiture rouge sur la grille
     let c = car(1,0,2);
     placementV(grild, c, 0,2);
 
-  // Placement d'une voiture verticale
+    // Placement d'une voiture verticale
     let cv1 = car(2,1,2);
     placementV(grild, cv1, 3,3);
 
-  // Placement d'une voiture horizontale sur la grille
+    // Placement d'une voiture horizontale sur la grille
     let ch1 = car(3,0,2);
     placementV(grild, ch1, 4,1);
 
-  // Placement d'un camion horizontal sur la grille
+    // Placement d'un camion horizontal sur la grille
     let ch2 = car(4,1,3);
     placementV(grild, ch2, 5,3);
 
-  // Placement d'un camion vertical sur la grille
+    // Placement d'un camion vertical sur la grille
     let cv2 = car(5,0,3);
     placementV(grild, cv2, 0, 0);
 
-// level 1
-// levels[0].numLV = 1;
-// levels[0].vTab[0] = c;
-// levels[0].vTab[1] = cv1;
-// levels[0].vTab[2] = ch1;
-// levels[0].vTab[3] = ch2;
-// levels[0].vTab[4] = cv2;
+    // level 1
+    levels[0].numLV = 1;
+    levels[0].vTab[0] = c;
+    levels[0].vTab[1] = cv1;
+    levels[0].vTab[2] = ch1;
+    levels[0].vTab[3] = ch2;
+    levels[0].vTab[4] = cv2;
 
-  //affichage des véhicules
+    //affichage des véhicules
 
-  // Voiture principale  
-  let ind = rechercheVehicule(grild, c);
-  afficherCases(grild, ind, c);
+    // Voiture principale  
+    let ind = rechercheVehicule(grild, c);
+    afficherCases(grild, ind, c);
 
-  // voiture horizontale1
-  let indcv1 = rechercheVehicule(grild, cv1);
-  afficherCases(grild, indcv1, cv1);
+    // voiture horizontale1
+    let indcv1 = rechercheVehicule(grild, cv1);
+    afficherCases(grild, indcv1, cv1);
 
-  // voiture verticale1
-  let indch1 = rechercheVehicule(grild, ch1);
-  afficherCases(grild, indch1, ch1);
+    // voiture verticale1
+    let indch1 = rechercheVehicule(grild, ch1);
+    afficherCases(grild, indch1, ch1);
 
-  // camion horizontal
-  let indch2 = rechercheVehicule(grild, ch2);
-  afficherCases(grild, indch2, ch2);
-  // camion vertical
-  let indcv2 = rechercheVehicule(grild, cv2);
-  afficherCases(grild, indcv2, cv2);
+    // camion horizontal
+    let indch2 = rechercheVehicule(grild, ch2);
+    afficherCases(grild, indch2, ch2);
+    // camion vertical
+    let indcv2 = rechercheVehicule(grild, cv2);
+    afficherCases(grild, indcv2, cv2);
+  });
 
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 2  ///////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  const caseLevel2 = document.querySelector(".lv2");
+  caseLevel2.addEventListener("click", function(){
+    // effacement de l'écran
+    context.fillStyle = "red";
+    context.clearRect(0, 0, context.width, context.height);
+  
+    // Placement de la voiture rouge sur la grille
+    let c = car(1,0,2);
+    placementV(grild, c, 0,2);
+
+    // level 2
+    levels[1].numLV = 2;
+    levels[1].vTab[0] = c;
+
+    // Voiture principale  
+    let ind = rechercheVehicule(grild, c);
+    afficherCases(grild, ind, c);
+  });
+
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 3  ///////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  const caseLevel3 = document.querySelector(".lv3");
+  caseLevel3.addEventListener("click", function(){
+    // effacement de l'écran
+    context.fillStyle = "red";
+    context.clearRect(0, 0, context.width, context.height);
+  
+    // Placement de la voiture rouge sur la grille
+    let c = car(1,0,2);
+    placementV(grild, c, 0,2);
+
+    // level 3
+    levels[2].numLV = 3;
+    levels[2].vTab[0] = c;
+
+    // Voiture principale  
+    let ind = rechercheVehicule(grild, c);
+    afficherCases(grild, ind, c);
+  });
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 4  ///////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  const caseLevel4 = document.querySelector(".lv4");
+  caseLevel4.addEventListener("click", function(){
+    // effacement de l'écran
+    context.fillStyle = "red";
+    context.clearRect(0, 0, context.width, context.height);
+  
+    // Placement de la voiture rouge sur la grille
+    let c = car(1,0,2);
+    placementV(grild, c, 0,2);
+
+    // level 4
+    levels[3].numLV = 4;
+    levels[3].vTab[0] = c;
+
+    // Voiture principale  
+    let ind = rechercheVehicule(grild, c);
+    afficherCases(grild, ind, c);
+  });
+
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 5  ///////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  const caseLevel5 = document.querySelector(".lv5");
+  caseLevel5.addEventListener("click", function(){
+    // effacement de l'écran
+    context.fillStyle = "red";
+    context.clearRect(0, 0, context.width, context.height);
+  
+    // Placement de la voiture rouge sur la grille
+    let c = car(1,0,2);
+    placementV(grild, c, 0,2);
+
+    // level 5
+    levels[4].numLV = 5;
+    levels[4].vTab[0] = c;
+
+    // Voiture principale  
+    let ind = rechercheVehicule(grild, c);
+    afficherCases(grild, ind, c);
+  });
+
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 6  ///////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  const caseLevel6 = document.querySelector(".lv6");
+  caseLevel6.addEventListener("click", function(){
+    // effacement de l'écran
+    context.fillStyle = "red";
+    context.clearRect(0, 0, context.width, context.height);
+  
+    // Placement de la voiture rouge sur la grille
+    let c = car(1,0,2);
+    placementV(grild, c, 0,2);
+
+    // level 6
+    levels[5].numLV = 6;
+    levels[5].vTab[0] = c;
+
+    // Voiture principale  
+    let ind = rechercheVehicule(grild, c);
+    afficherCases(grild, ind, c);
+  });
+
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 7  ///////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  const caseLevel7 = document.querySelector(".lv7");
+  caseLevel7.addEventListener("click", function(){
+    // effacement de l'écran
+    context.fillStyle = "red";
+    context.clearRect(0, 0, context.width, context.height);
+  
+    // Placement de la voiture rouge sur la grille
+    let c = car(1,0,2);
+    placementV(grild, c, 0,2);
+
+    // level 7
+    levels[6].numLV = 7;
+    levels[6].vTab[0] = c;
+
+    // Voiture principale  
+    let ind = rechercheVehicule(grild, c);
+    afficherCases(grild, ind, c);
+  });
+
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 8  ///////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  const caseLevel8 = document.querySelector(".lv8");
+  caseLevel8.addEventListener("click", function(){
+    // effacement de l'écran
+    context.fillStyle = "red";
+    context.clearRect(0, 0, context.width, context.height);
+  
+    // Placement de la voiture rouge sur la grille
+    let c = car(1,0,2);
+    placementV(grild, c, 0,2);
+
+    // level 8
+    levels[7].numLV = 8;
+    levels[7].vTab[0] = c;
+
+    // Voiture principale  
+    let ind = rechercheVehicule(grild, c);
+    afficherCases(grild, ind, c);
+  });
+
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 9  ///////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  const caseLevel9 = document.querySelector(".lv9");
+  caseLevel9.addEventListener("click", function(){
+    // effacement de l'écran
+    context.fillStyle = "red";
+    context.clearRect(0, 0, context.width, context.height);
+  
+    // Placement de la voiture rouge sur la grille
+    let c = car(1,0,2);
+    placementV(grild, c, 0,2);
+
+    // level 9
+    levels[8].numLV = 9;
+    levels[8].vTab[0] = c;
+
+    // Voiture principale  
+    let ind = rechercheVehicule(grild, c);
+    afficherCases(grild, ind, c);
   });
 }
 
