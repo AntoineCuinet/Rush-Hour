@@ -136,6 +136,7 @@ var ctxWidth = 600;
 var ctxHeight = 600;
 var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
+let clic = { x: 0, y: 0 };
 
 //voiture rouge
 const redCarImage1 = new Image();
@@ -171,7 +172,7 @@ camion3H.src = "02 copie.png";
 
 let pos={i:0,j:0};
 let levels=[]; //tableau contenant des instances de lv 
-let lv ={numLV :null, nbCoupMin:null, 'vTab':[], nbMouv:0, bestScore:null};
+let lv ={numLV :null, nbCoupMin:null, vTab:[], nbMouv:0, bestScore:null};
 let grild= Array(widthInBlocks);
 for(let i =0; i<widthInBlocks; i++){
   grild[i]=Array(widthInBlocks);
@@ -419,8 +420,8 @@ function deplacementV(grild, car){
       }
     } 
     if(arrowDown){
-      ind.i+=(car.taille-1);
-      if((ind.i+1)>=heightInBlocks||grild[indv.i+1][indv.j]!=0){
+      indv.i+=(car.taille-1);
+      if((indv.i+1)>=heightInBlocks||grild[indv.i+1][indv.j]!=0){
         return false;
       } else {
         temp=grild[indv.i-k+1][ind.j];
@@ -429,9 +430,6 @@ function deplacementV(grild, car){
       }
     }
   }
-  
-
-
 }
 
 
@@ -466,20 +464,24 @@ function captureRelacheToucheClavier(event) {
   switch(event.code){
     case "ArrowRight":
         arrowRight=false;
+        nbMouv +=1;
         break;
     case "ArrowLeft":
         arrowLeft=false;
+        nbMouv +=1;
         break;
     case "ArrowUp":
         arrowUp=false;
+        nbMouv +=1;
         break;
     case "ArrowDown":
         arrowDown=false;
+        nbMouv +=1;
         break;
 }
 }
 
-//Fonction appelée lorsqu'une touche du clavier est relâchée
+//Fonction appelée lorsque la sourie est appuyée
 // Associée à l'événement "click"
 function captureClicSouris(event) {
   // calcul des coordonnées de la souris dans le canvas
@@ -488,13 +490,11 @@ function captureClicSouris(event) {
     clic.y = event.pageY - event.target.offsetTop;
   }
   //conversion des clic en entier i, ligne et j,colonne
-  let ligne=(int) (clic.x/(ctxWidth/widthInBlocks)); //peut être remplacé par blockSize
-  let colonne=(int) (clic.y/(ctxHeight/heightInBlocks));
+  let ligne=  Math.floor(clic.x/(blockSize)); 
+  let colonne= Math.floor(clic.y/(blockSize));
 
   let valeurCase=grild[ligne][colonne];
-  if(valeurCase==0){
-    return null; //je sais pas si c'est possible de ne rien retourner 
-  } else {
+  if(valeurCase!=0){
     //utiliser un while à la place du for
     //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
     //peut être mettre ce que je viens de faire dans une fonction à part
