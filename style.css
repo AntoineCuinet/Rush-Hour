@@ -261,9 +261,20 @@ p{
     border: 4px solid white;
 }
 
+#buttonAudio2.inactive{
+    background: aliceblue;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 3px solid rgb(214, 211, 211);
+}
+
 #buttonAudio2.active #toggleAudio2{
     transform: translateX(38px);
     background: #444444a8;
+}
+#buttonAudio2.inactive #toggleAudio2{
+    transform: translateX(0px);
+    background: #444;
 }
 
 /* bouton refresh */

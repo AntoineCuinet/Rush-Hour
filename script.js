@@ -7,12 +7,13 @@
 
 // Bouton pour activer le son
 const buttonAudio2 = document.getElementById('buttonAudio2');
+buttonAudio2.classList.toggle("active")
 let audio2=new Audio();
 audio2.src= 'click.mp3';
 let isPaused2 = true;
 // annimation son
 buttonAudio2.addEventListener("click", function() { 
-  buttonAudio2.classList.toggle("active");
+  buttonAudio2.classList.toggle("inactive");
 });
 
 buttonAudio2.addEventListener('click', function(){
