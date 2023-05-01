@@ -172,6 +172,7 @@ var heightInBlocks = ctxHeight/blockSize;
 
 // Déclaration des variable
 let context = null;
+let win=false;
 let pos={i:0,j:0};
 let levels= Array(9); //tableau contenant des instances de lv 
 for(let i =0; i<levels.length; i++){
@@ -186,7 +187,6 @@ for(let i =0; i<widthInBlocks; i++){
     grild [i][j] = 0;
   };
 };
-let win=false;
 function car(numV, orient, taille){
   return {numV,orient, taille};
 } //pour orient 0 : horizontal et 1 : vertical
@@ -234,7 +234,25 @@ function update(d) {
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
   }
+
+  // gagne
+  isWin(win);
 }
+
+// affiche un écran modal lors de la victoire
+function isWin(win){
+  const modalWin = document.querySelector(".modalWin");
+  if(win){
+    if (modalWin.style.display == "none") modalWin.style.display = "flex";
+    else (modalWin.style.display = "flex");
+  }
+}
+const buttonNext = document.getElementById('butonNextLevel');
+buttonNext.addEventListener("click", buttonNextActive);
+function buttonNextActive(){
+      modalWin.style.display = "none";
+      win = false;
+}  
 
 
 // Fonction réalisant le rendu de l'état du jeu
