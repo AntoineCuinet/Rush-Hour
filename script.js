@@ -243,15 +243,14 @@ function update(d) {
 function isWin(win){
   const modalWin = document.querySelector(".modalWin");
   if(win){
-    if (modalWin.style.display == "none") modalWin.style.display = "flex";
-    else (modalWin.style.display = "flex");
+    modalWin.style.display = "flex"; 
   }
 }
 const buttonNext = document.getElementById('butonNextLevel');
 buttonNext.addEventListener("click", buttonNextActive);
 function buttonNextActive(){
-      modalWin.style.display = "none";
       win = false;
+      modalWin.style.display = "none";
 }  
 
 
