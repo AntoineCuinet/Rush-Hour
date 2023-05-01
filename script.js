@@ -9,7 +9,7 @@
 const buttonAudio2 = document.getElementById('buttonAudio2');
 let audio2=new Audio();
 audio2.src= 'click.mp3';
-let isPaused2 = false;
+let isPaused2 = true;
 // annimation son
 buttonAudio2.addEventListener("click", function() { 
   buttonAudio2.classList.toggle("active");
@@ -230,7 +230,8 @@ function update(d) {
   const ButtonRefresh = document.querySelector(".refresh");
   ButtonRefresh.addEventListener("click", Refreshective);
   function Refreshective(){
-    // a faire
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
   }
 }
 
@@ -244,6 +245,10 @@ function render() {
 
   const caseLevel1 = document.querySelector(".lv1");
   caseLevel1.addEventListener("click", function(){
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
@@ -305,6 +310,10 @@ function render() {
 
   const caseLevel2 = document.querySelector(".lv2");
   caseLevel2.addEventListener("click", function(){
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
@@ -329,6 +338,10 @@ function render() {
 
   const caseLevel3 = document.querySelector(".lv3");
   caseLevel3.addEventListener("click", function(){
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
@@ -352,6 +365,10 @@ function render() {
 
   const caseLevel4 = document.querySelector(".lv4");
   caseLevel4.addEventListener("click", function(){
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
@@ -376,6 +393,10 @@ function render() {
 
   const caseLevel5 = document.querySelector(".lv5");
   caseLevel5.addEventListener("click", function(){
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
@@ -400,6 +421,10 @@ function render() {
 
   const caseLevel6 = document.querySelector(".lv6");
   caseLevel6.addEventListener("click", function(){
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
@@ -424,6 +449,10 @@ function render() {
 
   const caseLevel7 = document.querySelector(".lv7");
   caseLevel7.addEventListener("click", function(){
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
@@ -448,6 +477,10 @@ function render() {
 
   const caseLevel8 = document.querySelector(".lv8");
   caseLevel8.addEventListener("click", function(){
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
@@ -472,6 +505,10 @@ function render() {
 
   const caseLevel9 = document.querySelector(".lv9");
   caseLevel9.addEventListener("click", function(){
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
