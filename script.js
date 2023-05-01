@@ -171,7 +171,7 @@ camion3H.src = "02 copie.png";
 
 let pos={i:0,j:0};
 let levels=[]; //tableau contenant des instances de lv 
-let lv ={numLV :null, nbCoupMin:null, 'vTab':[], nbMouv:0, bestScore:null, 'carTab' : [] };
+let lv ={numLV :null, nbCoupMin:null, 'vTab':[], nbMouv:0, bestScore:null};
 let grild= Array(widthInBlocks);
 for(let i =0; i<widthInBlocks; i++){
   grild[i]=Array(widthInBlocks);
@@ -461,7 +461,22 @@ function captureAppuiToucheClavier(event) {
 
 // Fonction appelée lorsqu'une touche du clavier est relâchée
 // Associée à l'événement "keyUp"
+//à chaque relachement de la flèche nbMouv s'agrémente de 1 
 function captureRelacheToucheClavier(event) {
+  switch(event.code){
+    case "ArrowRight":
+        arrowRight=false;
+        break;
+    case "ArrowLeft":
+        arrowLeft=false;
+        break;
+    case "ArrowUp":
+        arrowUp=false;
+        break;
+    case "ArrowDown":
+        arrowDown=false;
+        break;
+}
 }
 
 //Fonction appelée lorsqu'une touche du clavier est relâchée
