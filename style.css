@@ -514,3 +514,12 @@ p{
     transform: scale(1.1);
     transform-origin: center;
 }
+
+.instruction{
+    position: fixed;
+    bottom: 0;
+    left: calc(25%);
+}
+.instruction > p{
+    font-size: 20px;
+}

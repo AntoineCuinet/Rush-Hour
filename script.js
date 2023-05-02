@@ -721,21 +721,17 @@ function captureRelacheToucheClavier(event) {
   switch(event.code){
     case "ArrowRight":
         arrowRight=false;
-        nbMouv +=1;
         break;
     case "ArrowLeft":
         arrowLeft=false;
-        nbMouv +=1;
         break;
     case "ArrowUp":
         arrowUp=false;
-        nbMouv +=1;
         break;
     case "ArrowDown":
         arrowDown=false;
-        nbMouv +=1;
         break;
-}
+  }
 }
 
 //Fonction appelée lorsque la sourie est appuyée
