@@ -176,9 +176,12 @@ let win=false;
 let pos={i:0,j:0};
 let levels= Array(9); //tableau contenant des instances de lv 
 for(let i =0; i<levels.length; i++){
-  let lv ={numLV :null, nbCoupMin:null, vTab:Array(10), nbMouv:0, bestScore:null};
-  levels[i]= lv;
+  levels[i]= {numLV :null, nbCoupMin:null, vTab:Array(), nbMouv:0, bestScore:null};
 };
+
+// function lv(numLV, nbCoupMin, vTab ){
+//   return {numLV, nbCoupMin, vTab, nbMouv : 0, bestscore : null};
+// }
 
 let grild= Array(widthInBlocks);
 for(let i =0; i<widthInBlocks; i++){
@@ -190,6 +193,44 @@ for(let i =0; i<widthInBlocks; i++){
 function car(numV, orient, taille){
   return {numV,orient, taille};
 } //pour orient 0 : horizontal et 1 : vertical
+
+
+
+//lv1
+
+// Placement de la voiture rouge sur la grille
+let c = car(1,0,2);
+placementV(grild, c, 0,2);
+
+// Placement d'une voiture verticale
+let cv1 = car(2,1,2);
+placementV(grild, cv1, 3,3);
+
+// Placement d'une voiture horizontale sur la grille
+let ch1 = car(3,0,2);
+placementV(grild, ch1, 4,1);
+
+// Placement d'un camion horizontal sur la grille
+let ch2 = car(4,1,3);
+placementV(grild, ch2, 5,3);
+
+// Placement d'un camion vertical sur la grille
+let cv2 = car(5,0,3);
+placementV(grild, cv2, 0, 0);
+
+// level 1
+levels[0].numLV = 1;
+levels[0].vTab[0] = c;
+levels[0].vTab[1] = cv1;
+levels[0].vTab[2] = ch1;
+levels[0].vTab[3] = ch2;
+levels[0].vTab[4] = cv2;
+
+let currentLevel = 0;
+let bufferVec = false;
+
+
+
 
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
@@ -235,6 +276,7 @@ function update(d) {
     context.clearRect(0, 0, context.width, context.height);
   }
 
+
   // gagne
   isWin(win);
 }
@@ -261,6 +303,7 @@ function render() {
   /////////////////////////////////  Level 1  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  currentLevel = 0;
   const caseLevel1 = document.querySelector(".lv1");
   caseLevel1.addEventListener("click", function(){
     // son click
@@ -270,34 +313,6 @@ function render() {
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-
-    // Placement de la voiture rouge sur la grille
-    let c = car(1,0,2);
-    placementV(grild, c, 0,2);
-
-    // Placement d'une voiture verticale
-    let cv1 = car(2,1,2);
-    placementV(grild, cv1, 3,3);
-
-    // Placement d'une voiture horizontale sur la grille
-    let ch1 = car(3,0,2);
-    placementV(grild, ch1, 4,1);
-
-    // Placement d'un camion horizontal sur la grille
-    let ch2 = car(4,1,3);
-    placementV(grild, ch2, 5,3);
-
-    // Placement d'un camion vertical sur la grille
-    let cv2 = car(5,0,3);
-    placementV(grild, cv2, 0, 0);
-
-    // level 1
-    levels[0].numLV = 1;
-    levels[0].vTab[0] = c;
-    levels[0].vTab[1] = cv1;
-    levels[0].vTab[2] = ch1;
-    levels[0].vTab[3] = ch2;
-    levels[0].vTab[4] = cv2;
 
     //affichage des véhicules
 
@@ -336,13 +351,7 @@ function render() {
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
   
-    // Placement de la voiture rouge sur la grille
-    let c = car(1,0,2);
-    placementV(grild, c, 0,2);
-
-    // level 2
-    levels[1].numLV = 2;
-    levels[1].vTab[0] = c;
+    
 
     // Voiture principale  
     let ind = rechercheVehicule(grild, c);
@@ -364,14 +373,7 @@ function render() {
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
   
-    // Placement de la voiture rouge sur la grille
-    let c = car(1,0,2);
-    placementV(grild, c, 0,2);
-
-    // level 3
-    levels[2].numLV = 3;
-    levels[2].vTab[0] = c;
-
+    
     // Voiture principale  
     let ind = rechercheVehicule(grild, c);
     afficherCases(grild, ind, c);
@@ -391,14 +393,7 @@ function render() {
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
   
-    // Placement de la voiture rouge sur la grille
-    let c = car(1,0,2);
-    placementV(grild, c, 0,2);
-
-    // level 4
-    levels[3].numLV = 4;
-    levels[3].vTab[0] = c;
-
+    
     // Voiture principale  
     let ind = rechercheVehicule(grild, c);
     afficherCases(grild, ind, c);
@@ -419,14 +414,7 @@ function render() {
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
   
-    // Placement de la voiture rouge sur la grille
-    let c = car(1,0,2);
-    placementV(grild, c, 0,2);
-
-    // level 5
-    levels[4].numLV = 5;
-    levels[4].vTab[0] = c;
-
+   
     // Voiture principale  
     let ind = rechercheVehicule(grild, c);
     afficherCases(grild, ind, c);
@@ -447,14 +435,7 @@ function render() {
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
   
-    // Placement de la voiture rouge sur la grille
-    let c = car(1,0,2);
-    placementV(grild, c, 0,2);
-
-    // level 6
-    levels[5].numLV = 6;
-    levels[5].vTab[0] = c;
-
+    
     // Voiture principale  
     let ind = rechercheVehicule(grild, c);
     afficherCases(grild, ind, c);
@@ -475,13 +456,6 @@ function render() {
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
   
-    // Placement de la voiture rouge sur la grille
-    let c = car(1,0,2);
-    placementV(grild, c, 0,2);
-
-    // level 7
-    levels[6].numLV = 7;
-    levels[6].vTab[0] = c;
 
     // Voiture principale  
     let ind = rechercheVehicule(grild, c);
@@ -503,14 +477,7 @@ function render() {
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
   
-    // Placement de la voiture rouge sur la grille
-    let c = car(1,0,2);
-    placementV(grild, c, 0,2);
-
-    // level 8
-    levels[7].numLV = 8;
-    levels[7].vTab[0] = c;
-
+   
     // Voiture principale  
     let ind = rechercheVehicule(grild, c);
     afficherCases(grild, ind, c);
@@ -531,14 +498,7 @@ function render() {
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
   
-    // Placement de la voiture rouge sur la grille
-    let c = car(1,0,2);
-    placementV(grild, c, 0,2);
-
-    // level 9
-    levels[8].numLV = 9;
-    levels[8].vTab[0] = c;
-
+  
     // Voiture principale  
     let ind = rechercheVehicule(grild, c);
     afficherCases(grild, ind, c);
@@ -654,13 +614,17 @@ function deplacementV(grild, car){
       }
     } 
     if (arrowRight){
+      console.log(car);
       indv.j+=(car.taille-1);
       if((indv.j+1)>=widthInBlocks||grild[indv.i][indv.j+1]){
         return false;
       } else {
-        temp=grild[indv.i][ind.j-k+1];
-        grild[indv.i][indv.j-k+1]=grild[indv.i][indv.j-k];
-        grild[indv.i][indv.j-k]=temp;
+        for(let k=0;k<car.taille;k++){
+          temp=grild[indv.i][indv.j-k+1];
+          grild[indv.i][indv.j-k+1]=grild[indv.i][indv.j-k];
+          grild[indv.i][indv.j-k]=temp;
+        }
+        
       }
     }
   } else {
@@ -682,9 +646,11 @@ function deplacementV(grild, car){
       if((indv.i+1)>=heightInBlocks||grild[indv.i+1][indv.j]!=0){
         return false;
       } else {
-        temp=grild[indv.i-k+1][ind.j];
-        grild[indv.i-k+1][indv.j]=grild[indv.i-k][indv.j];
-        grild[indv.i-k][indv.j]=temp;
+        for(let k=0;k<car.taille;k++){
+          temp=grild[indv.i-k+1][indv.j];
+          grild[indv.i-k+1][indv.j]=grild[indv.i-k][indv.j];
+          grild[indv.i-k][indv.j]=temp;
+        }
       }
     }
   }
@@ -712,6 +678,7 @@ function captureAppuiToucheClavier(event) {
         arrowDown=true;
         break;
   }
+  deplacementV(grild, bufferVec);
 }
 
 // Fonction appelée lorsqu'une touche du clavier est relâchée
@@ -742,17 +709,17 @@ function captureClicSouris(event) {
     pos.i = Math.floor((event.pageX - event.target.offsetLeft)/(blockSize)); 
     pos.j = Math.floor((event.pageY - event.target.offsetTop)/(blockSize));
   }
-  return pos;
   
-  // let valeurCase=grild[ligne][colonne];
-  // if(valeurCase!=0){
-  //   //utiliser un while à la place du for
-  //   //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
-  //   //peut être mettre ce que je viens de faire dans une fonction à part
-  //   for(let i=0;i<vTab.length;i++){
-  //     if(vTab[i].numV==valeurCase){
-  //       return vtab[i];
-  //     }
-  //   }
-  // }
+  let valeurCase=grild[pos.j][pos.i];
+  console.log(grild);
+  if(valeurCase!=0){
+    //utiliser un while à la place du for
+    //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
+    //peut être mettre ce que je viens de faire dans une fonction à part
+    for(let i=0;i<levels[currentLevel].vTab.length;i++){
+      if(levels[currentLevel].vTab[i].numV==valeurCase){
+        bufferVec = levels[currentLevel].vTab[i];
+      }
+    }
+  }
 }
