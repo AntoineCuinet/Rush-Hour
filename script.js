@@ -163,6 +163,8 @@ camion3H.src = "02 copie.png";
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Début du code du jeux à proprement parler ///
 
+let canvas = document.getElementById("cvs");
+
 // Dimentions du document et d'une case
 var blockSize = 100;
 var ctxWidth = 600;
@@ -173,15 +175,11 @@ var heightInBlocks = ctxHeight/blockSize;
 // Déclaration des variable
 let context = null;
 let win=false;
-let pos={i:0,j:0};
+// let pos={i:0,j:0};
 let levels= Array(9); //tableau contenant des instances de lv 
 for(let i =0; i<levels.length; i++){
   levels[i]= {numLV :null, nbCoupMin:null, vTab:Array(), nbMouv:0, bestScore:null};
 };
-
-// function lv(numLV, nbCoupMin, vTab ){
-//   return {numLV, nbCoupMin, vTab, nbMouv : 0, bestscore : null};
-// }
 
 let grild= Array(widthInBlocks);
 for(let i =0; i<widthInBlocks; i++){
@@ -194,14 +192,22 @@ function car(numV, orient, taille){
   return {numV,orient, taille};
 } //pour orient 0 : horizontal et 1 : vertical
 
+function newPos(i, j){
+  return {i, j};
+}
+
+let currentLevel = 0;
+let bufferVec = false;
 
 
-//lv1
 
-// Placement de la voiture rouge sur la grille
+// Placement de la voiture rouge sur la grille (pour tout les niveaux)
 let c = car(1,0,2);
 placementV(grild, c, 0,2);
 
+
+//////////////////////////////////////////////////////////////////////
+///////////////////////   lv1 placement initial   ////////////////////
 // Placement d'une voiture verticale
 let cv1 = car(2,1,2);
 placementV(grild, cv1, 3,3);
@@ -226,8 +232,6 @@ levels[0].vTab[2] = ch1;
 levels[0].vTab[3] = ch2;
 levels[0].vTab[4] = cv2;
 
-let currentLevel = 0;
-let bufferVec = false;
 
 
 
@@ -244,7 +248,7 @@ function init() {
   document.addEventListener("keydown", captureAppuiToucheClavier)
   document.addEventListener("keyup", captureRelacheToucheClavier)
   // on associe au document un écouteur d'événements souris
-  document.addEventListener("click", captureClicSouris)
+  canvas.addEventListener("click", captureClicSouris)
   // --> ces événements vont appeler les fonctions captureXYZ définies après.
 
   boucleDeJeu()
@@ -315,25 +319,16 @@ function render() {
     context.clearRect(0, 0, context.width, context.height);
 
     //affichage des véhicules
-
-    // Voiture principale  
-    let ind = rechercheVehicule(grild, c);
-    afficherCases(grild, ind, c);
-
-    // voiture horizontale1
-    let indcv1 = rechercheVehicule(grild, cv1);
-    afficherCases(grild, indcv1, cv1);
-
-    // voiture verticale1
-    let indch1 = rechercheVehicule(grild, ch1);
-    afficherCases(grild, indch1, ch1);
-
-    // camion horizontal
-    let indch2 = rechercheVehicule(grild, ch2);
-    afficherCases(grild, indch2, ch2);
-    // camion vertical
-    let indcv2 = rechercheVehicule(grild, cv2);
-    afficherCases(grild, indcv2, cv2);
+    // Voiture principale
+    afficherCases(grild, c);
+    // // voiture horizontale1
+    afficherCases(grild, cv1); 
+    // // voiture verticale1
+    afficherCases(grild, ch1);
+    // // camion horizontal
+    afficherCases(grild, ch2);
+    // // camion vertical
+    afficherCases(grild, cv2);
   });
 
 
@@ -341,6 +336,7 @@ function render() {
   /////////////////////////////////  Level 2  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  currentLevel = 1;
   const caseLevel2 = document.querySelector(".lv2");
   caseLevel2.addEventListener("click", function(){
     // son click
@@ -348,14 +344,9 @@ function render() {
       audio2.play();
     }
     // effacement de l'écran
-    context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-  
-    
-
     // Voiture principale  
-    let ind = rechercheVehicule(grild, c);
-    afficherCases(grild, ind, c);
+    afficherCases(grild, c);
   });
 
 
@@ -363,6 +354,7 @@ function render() {
   /////////////////////////////////  Level 3  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  currentLevel = 2;
   const caseLevel3 = document.querySelector(".lv3");
   caseLevel3.addEventListener("click", function(){
     // son click
@@ -370,19 +362,16 @@ function render() {
       audio2.play();
     }
     // effacement de l'écran
-    context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-  
-    
     // Voiture principale  
-    let ind = rechercheVehicule(grild, c);
-    afficherCases(grild, ind, c);
+    afficherCases(grild, c);
   });
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 4  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  currentLevel = 3;
   const caseLevel4 = document.querySelector(".lv4");
   caseLevel4.addEventListener("click", function(){
     // son click
@@ -390,13 +379,9 @@ function render() {
       audio2.play();
     }
     // effacement de l'écran
-    context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-  
-    
     // Voiture principale  
-    let ind = rechercheVehicule(grild, c);
-    afficherCases(grild, ind, c);
+    afficherCases(grild, c);
   });
 
 
@@ -404,6 +389,7 @@ function render() {
   /////////////////////////////////  Level 5  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  currentLevel = 4;
   const caseLevel5 = document.querySelector(".lv5");
   caseLevel5.addEventListener("click", function(){
     // son click
@@ -411,13 +397,9 @@ function render() {
       audio2.play();
     }
     // effacement de l'écran
-    context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-  
-   
     // Voiture principale  
-    let ind = rechercheVehicule(grild, c);
-    afficherCases(grild, ind, c);
+    afficherCases(grild, c);
   });
 
 
@@ -425,6 +407,7 @@ function render() {
   /////////////////////////////////  Level 6  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  currentLevel = 5;
   const caseLevel6 = document.querySelector(".lv6");
   caseLevel6.addEventListener("click", function(){
     // son click
@@ -432,13 +415,9 @@ function render() {
       audio2.play();
     }
     // effacement de l'écran
-    context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-  
-    
-    // Voiture principale  
-    let ind = rechercheVehicule(grild, c);
-    afficherCases(grild, ind, c);
+    // Voiture principale
+    afficherCases(grild, c);
   });
 
 
@@ -446,6 +425,7 @@ function render() {
   /////////////////////////////////  Level 7  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  currentLevel = 6;
   const caseLevel7 = document.querySelector(".lv7");
   caseLevel7.addEventListener("click", function(){
     // son click
@@ -453,13 +433,9 @@ function render() {
       audio2.play();
     }
     // effacement de l'écran
-    context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-  
-
     // Voiture principale  
-    let ind = rechercheVehicule(grild, c);
-    afficherCases(grild, ind, c);
+    afficherCases(grild, c);
   });
 
 
@@ -467,6 +443,7 @@ function render() {
   /////////////////////////////////  Level 8  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  currentLevel = 7;
   const caseLevel8 = document.querySelector(".lv8");
   caseLevel8.addEventListener("click", function(){
     // son click
@@ -474,13 +451,9 @@ function render() {
       audio2.play();
     }
     // effacement de l'écran
-    context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-  
-   
     // Voiture principale  
-    let ind = rechercheVehicule(grild, c);
-    afficherCases(grild, ind, c);
+    afficherCases(grild, c);
   });
 
 
@@ -488,6 +461,7 @@ function render() {
   /////////////////////////////////  Level 9  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  currentLevel = 8;
   const caseLevel9 = document.querySelector(".lv9");
   caseLevel9.addEventListener("click", function(){
     // son click
@@ -495,13 +469,9 @@ function render() {
       audio2.play();
     }
     // effacement de l'écran
-    context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-  
-  
     // Voiture principale  
-    let ind = rechercheVehicule(grild, c);
-    afficherCases(grild, ind, c);
+    afficherCases(grild, c);
   });
 }
 
@@ -523,9 +493,10 @@ function placementV(grild,car,i,j){
 
 // Toujours la position de la première case du véhicule
 function rechercheVehicule(grild, car){
-  for(let i = 0; i<widthInBlocks; i++){
+  for(let i = 0; i<widthInBlocks; i++){ //tabeau commence par les colonnes donc i=colonne
     for(let j = 0; j<widthInBlocks; j++){
       if (grild[i][j]==car.numV) {
+        if (car.numV == 1) return{i, j};
         return {i,j};
       }
     };
@@ -534,7 +505,10 @@ function rechercheVehicule(grild, car){
 
 
 // affiche les autre cases
-function afficherCases(grild, ind, c){
+function afficherCases(grild, c){
+  let ind = newPos(0,0); 
+  ind = rechercheVehicule(grild, c);    
+  // console.log(ind);
   // affichage voiture principale (affichage spéciale car elle est rouge)
   if(c.orient==0 && c.taille==2 && c.numV == 1){
     //affichage première case
@@ -614,18 +588,20 @@ function deplacementV(grild, car){
       }
     } 
     if (arrowRight){
-      console.log(car);
-      indv.j+=(car.taille-1);
-      if((indv.j+1)>=widthInBlocks||grild[indv.i][indv.j+1]){
-        return false;
-      } else {
-        for(let k=0;k<car.taille;k++){
-          temp=grild[indv.i][indv.j-k+1];
-          grild[indv.i][indv.j-k+1]=grild[indv.i][indv.j-k];
-          grild[indv.i][indv.j-k]=temp;
-        }
+      grild[indv.i][indv.j] = 0;
+      grild[indv.i + car.taille][indv.j] = car.numV;
+      // console.log(indv);
+      // indv.j+=(car.taille-1);
+      // if((indv.j+1)>=widthInBlocks||grild[indv.i][indv.j+1]){
+      //   return false;
+      // } else {
+      //   for(let k=0;k<car.taille;k++){
+      //     temp=grild[indv.i][indv.j-k+1];
+      //     grild[indv.i][indv.j-k+1]=grild[indv.i][indv.j-k];
+      //     grild[indv.i][indv.j-k]=temp;
+      //   }
         
-      }
+      // }
     }
   } else {
     if(arrowUp){
@@ -705,13 +681,13 @@ function captureRelacheToucheClavier(event) {
 // Associée à l'événement "click"
 function captureClicSouris(event) {
   // calcul des coordonnées de la souris dans le canvas + conversion des clic en entier i: ligne et j: colonne
+  let pos = newPos(0, 0);
   if (event.target.id == "cvs") {
-    pos.i = Math.floor((event.pageX - event.target.offsetLeft)/(blockSize)); 
-    pos.j = Math.floor((event.pageY - event.target.offsetTop)/(blockSize));
+    pos.i = Math.floor(event.offsetX/(blockSize)); 
+    pos.j = Math.floor(event.offsetY/(blockSize));
   }
-  
-  let valeurCase=grild[pos.j][pos.i];
-  console.log(grild);
+  //j: column && i: row
+  let valeurCase=grild[pos.i][pos.j];
   if(valeurCase!=0){
     //utiliser un while à la place du for
     //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
