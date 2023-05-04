@@ -513,7 +513,7 @@ function rechercheVehicule(grild, car){
 // affiche les autre cases
 function afficherCases(grild, c){
   let ind = newPos(0,0); 
-  ind = rechercheVehicule(grild, c);    
+  ind = rechercheVehicule(grild, c); /////// ind n'est pas bon (donne 1,2) alors que la fonction renvoie bien 0,1 --> incompréensible
   // console.log(ind);
   // affichage voiture principale (affichage spéciale car elle est rouge)
   if(c.orient==0 && c.taille==2 && c.numV == 1){
@@ -579,7 +579,7 @@ function afficherCases(grild, c){
 //beaucoup de repetitions donc a essayer d'opti
 function deplacementV(grild, car){
   let indv=rechercheVehicule(grild,car);
-  let temp;
+  let temp; // variable auxiliaire
   
   if (car.orient==0){
     if(arrowLeft){
@@ -598,7 +598,6 @@ function deplacementV(grild, car){
     if (arrowRight){
       grild[indv.i][indv.j] = 0;
       grild[indv.i + car.taille][indv.j] = car.numV;
-      // console.log(indv);
       // indv.j+=(car.taille-1);
       // if((indv.j+1)>=widthInBlocks||grild[indv.i][indv.j+1]){
       //   return false;
@@ -608,7 +607,6 @@ function deplacementV(grild, car){
       //     grild[indv.i][indv.j-k+1]=grild[indv.i][indv.j-k];
       //     grild[indv.i][indv.j-k]=temp;
       //   }
-        
       // }
     }
   } else {
