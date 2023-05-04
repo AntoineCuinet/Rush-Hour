@@ -182,7 +182,7 @@ let arrowDown=false;
 let context = null;
 let win=false;
 let currentLevel = 0;
-let bufferVec = false;
+let bufferVec = null;
 
 // tableau contenant les différents levels contenant des instances de lv 
 let levels= Array(9);
@@ -502,7 +502,6 @@ function rechercheVehicule(grild, car){
   for(let i = 0; i<widthInBlocks; i++){ //tabeau commence par les colonnes donc i=colonne
     for(let j = 0; j<widthInBlocks; j++){
       if (grild[i][j]==car.numV) {
-        if (car.numV == 1) return{i, j};
         return {i,j};
       }
     };
@@ -674,6 +673,7 @@ function captureAppuiToucheClavier(event) {
         break;
   }
   deplacementV(grild, bufferVec);
+  console.log(grild, bufferVec);
 }
 
 // Fonction appelée lorsqu'une touche du clavier est relâchée
