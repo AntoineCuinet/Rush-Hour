@@ -172,15 +172,25 @@ var ctxHeight = 600;
 var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
 
+
 // Déclaration des variable
+let arrowLeft=false;
+let arrowRight=false;
+let arrowUp=false;
+let arrowDown=false;
+
 let context = null;
 let win=false;
-// let pos={i:0,j:0};
-let levels= Array(9); //tableau contenant des instances de lv 
+let currentLevel = 0;
+let bufferVec = false;
+
+// tableau contenant les différents levels contenant des instances de lv 
+let levels= Array(9);
 for(let i =0; i<levels.length; i++){
   levels[i]= {numLV :null, nbCoupMin:null, vTab:Array(), nbMouv:0, bestScore:null};
 };
 
+// tableau (matrice) grille de jeu
 let grild= Array(widthInBlocks);
 for(let i =0; i<widthInBlocks; i++){
   grild[i]=Array(widthInBlocks);
@@ -188,23 +198,23 @@ for(let i =0; i<widthInBlocks; i++){
     grild [i][j] = 0;
   };
 };
-function car(numV, orient, taille){
-  return {numV,orient, taille};
-} //pour orient 0 : horizontal et 1 : vertical
 
+// objet véhicule
+function car(numV, orient, taille){  //pour orient, 0: horizontal et 1: vertical
+  return {numV,orient, taille};
+} 
+
+// objet position
 function newPos(i, j){
   return {i, j};
 }
 
-let currentLevel = 0;
-let bufferVec = false;
 
 
 
 // Placement de la voiture rouge sur la grille (pour tout les niveaux)
 let c = car(1,0,2);
 placementV(grild, c, 0,2);
-
 
 //////////////////////////////////////////////////////////////////////
 ///////////////////////   lv1 placement initial   ////////////////////
@@ -268,7 +278,6 @@ function boucleDeJeu() {
 }
 
 
-
 // Fonction "update", met à jour le jeu 
 function update(d) {
 
@@ -280,29 +289,17 @@ function update(d) {
     context.clearRect(0, 0, context.width, context.height);
   }
 
-
   // gagne
   isWin(win);
-}
+} 
 
-// affiche un écran modal lors de la victoire
-function isWin(win){
-  const modalWin = document.querySelector(".modalWin");
-  if(win){
-    modalWin.style.display = "flex"; 
-  }
-}
-const buttonNext = document.getElementById('butonNextLevel');
-buttonNext.addEventListener("click", buttonNextActive);
-function buttonNextActive(){
-      win = false;
-      modalWin.style.display = "none";
-}  
+
+
+
 
 
 // Fonction réalisant le rendu de l'état du jeu
 function render() {
-
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 1  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
@@ -476,6 +473,15 @@ function render() {
 }
 
 
+
+
+
+
+
+
+
+
+
 //fonction qui place les voitures dans la grille à partir d'une case i et j, qui est la première case du véhicule, entrée en paramètres
 //elle verifie si i et j sont bien compris entre 0 et 5 et si on peut bien placer le vehicule a l'endroit souhaite 
 function placementV(grild,car,i,j){
@@ -567,6 +573,8 @@ function afficherCases(grild, c){
   }
 }
 
+
+
 //regarde si le déplacement est possible et déplacer la voiture
 //beaucoup de repetitions donc a essayer d'opti
 function deplacementV(grild, car){
@@ -633,10 +641,23 @@ function deplacementV(grild, car){
 }
 
 
-let arrowLeft=false;
-let arrowRight=false;
-let arrowUp=false;
-let arrowDown=false;
+
+// affiche un écran modal lors de la victoire
+function isWin(win){
+  const modalWin = document.querySelector(".modalWin");
+  if(win){
+    modalWin.style.display = "flex"; 
+  }
+}
+const buttonNext = document.getElementById('butonNextLevel');
+buttonNext.addEventListener("click", buttonNextActive);
+function buttonNextActive(){
+      win = false;
+      modalWin.style.display = "none";
+} 
+
+
+
 // Fonction appelée lorsqu'une touche du clavier est appuyée
 // Associée à l'événement "keyDown"
 function captureAppuiToucheClavier(event) {
@@ -689,9 +710,7 @@ function captureClicSouris(event) {
   //j: column && i: row
   let valeurCase=grild[pos.i][pos.j];
   if(valeurCase!=0){
-    //utiliser un while à la place du for
     //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
-    //peut être mettre ce que je viens de faire dans une fonction à part
     for(let i=0;i<levels[currentLevel].vTab.length;i++){
       if(levels[currentLevel].vTab[i].numV==valeurCase){
         bufferVec = levels[currentLevel].vTab[i];
