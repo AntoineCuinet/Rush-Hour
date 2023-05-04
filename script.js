@@ -504,6 +504,7 @@ function rechercheVehicule(grild, car){
   for(let i = 0; i<widthInBlocks; i++){ //tabeau commence par les colonnes donc i=colonne
     for(let j = 0; j<widthInBlocks; j++){
       if (grild[i][j]==car.numV) {
+        if(car.numV == 1) console.log(i,j);  //retourne bien les positions (0,2)
         return {i,j};
       }
     };
@@ -515,7 +516,7 @@ function rechercheVehicule(grild, car){
 function afficherCases(grild, c){
   let ind = newPos(0,0); 
   ind = rechercheVehicule(grild, c); /////// ind n'est pas bon (donne 1,2) alors que la fonction renvoie bien 0,1 --> incompréensible
-  // console.log(ind);
+  console.log(ind);    /////renvoie 5positions à la fois (je pense que 'est les bonnes, c'est la fonction déplacement qui ne dois pas marcher ou alors le buffer qui fait nimp)
   // affichage voiture principale (affichage spéciale car elle est rouge)
   if(c.orient==0 && c.taille==2 && c.numV == 1){
     //affichage première case
@@ -581,6 +582,7 @@ function afficherCases(grild, c){
 function deplacementV(grild, car){
   let indv = newPos(0,0);
   indv = rechercheVehicule(grild, car);
+  console.log(grild);                               /////////////rien ne se déplace
   let temp; // variable auxiliaire
   
   if (car.orient==0){
@@ -707,6 +709,7 @@ function captureClicSouris(event) {
     pos.i = Math.floor(event.offsetX/(blockSize)); 
     pos.j = Math.floor(event.offsetY/(blockSize));
   }
+  console.log(pos.i, pos.j);
   //j: column && i: row
   let valeurCase=grild[pos.i][pos.j];
   if(valeurCase!=0){
