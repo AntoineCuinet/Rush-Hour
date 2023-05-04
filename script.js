@@ -182,7 +182,6 @@ let arrowDown=false;
 let context = null;
 let win=false;
 let currentLevel = 0;
-let bufferVec = null;
 
 // tableau contenant les différents levels contenant des instances de lv 
 let levels= Array(9);
@@ -203,6 +202,9 @@ for(let i =0; i<widthInBlocks; i++){
 function car(numV, orient, taille){  //pour orient, 0: horizontal et 1: vertical
   return {numV,orient, taille};
 } 
+
+let bufferVec = car();
+
 
 // objet position
 function newPos(i, j){
@@ -577,7 +579,8 @@ function afficherCases(grild, c){
 //regarde si le déplacement est possible et déplacer la voiture
 //beaucoup de repetitions donc a essayer d'opti
 function deplacementV(grild, car){
-  let indv=rechercheVehicule(grild,car);
+  let indv = newPos(0,0);
+  indv = rechercheVehicule(grild, car);
   let temp; // variable auxiliaire
   
   if (car.orient==0){
@@ -673,7 +676,6 @@ function captureAppuiToucheClavier(event) {
         break;
   }
   deplacementV(grild, bufferVec);
-  console.log(grild, bufferVec);
 }
 
 // Fonction appelée lorsqu'une touche du clavier est relâchée
