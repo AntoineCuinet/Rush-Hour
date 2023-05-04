@@ -161,11 +161,11 @@ camion3H.src = "02 copie.png";
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Début du code du jeux à proprement parler ///
+/// Début du code du jeu à proprement parler ///
 
 let canvas = document.getElementById("cvs");
 
-// Dimentions du document et d'une case
+// Dimensions du document et d'une case
 var blockSize = 100;
 var ctxWidth = 600;
 var ctxHeight = 600;
@@ -173,7 +173,7 @@ var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
 
 
-// Déclaration des variable
+// Déclaration des variables
 let arrowLeft=false;
 let arrowRight=false;
 let arrowUp=false;
@@ -200,7 +200,7 @@ for(let i =0; i<widthInBlocks; i++){
 
 // objet véhicule
 function car(numV, orient, taille){  //pour orient, 0: horizontal et 1: vertical
-  return {numV,orient, taille};
+  return {numV,orient,taille};
 } 
 
 let bufferVec = car();
@@ -501,7 +501,7 @@ function placementV(grild,car,i,j){
 
 // Toujours la position de la première case du véhicule
 function rechercheVehicule(grild, car){
-  for(let i = 0; i<widthInBlocks; i++){ //tabeau commence par les colonnes donc i=colonne
+  for(let i = 0; i<widthInBlocks; i++){ //tableau commence par les colonnes donc i=colonne
     for(let j = 0; j<widthInBlocks; j++){
       if (grild[i][j]==car.numV) {
         if(car.numV == 1) console.log(i,j);  //retourne bien les positions (0,2)
