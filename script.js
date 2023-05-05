@@ -159,7 +159,6 @@ camion2H.src = "01 copie.png";
 const camion3H = new Image();
 camion3H.src = "02 copie.png";
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,7 +177,7 @@ var heightInBlocks = ctxHeight/blockSize;
 // Déclaration des variable
 let context = null;
 let win=false;
-let currentLevel = 0;
+let currentLevel = null;
 
 // tableau contenant les différents levels contenant des instances de lv 
 let levels= Array(9);
@@ -209,6 +208,16 @@ function newPos(i, j){
 }
 
 let posClic = newPos(0, 0);
+
+
+
+/// Note pour créer un lv:
+/// Déclarer une nouvelle voiture
+/// La placer dans la grille avec la fonction placementV
+/// Déclarer le level (levels[].numLV et levels[].vTab[])
+/// Dans le level en question:
+///   context.clearRect(0, 0, context.width, context.height);
+///   afficherCases(grild, c);
 
 
 
@@ -243,8 +252,32 @@ levels[0].vTab[3] = ch1;
 levels[0].vTab[4] = ch2;
 levels[0].vTab[5] = cv2;
 
+const caseLevel1 = document.querySelector(".lv1");
+caseLevel1.addEventListener("click", function(){
+  // son click
+  if(isPaused2){
+    audio2.play();
+  }
+  currentLevel = 0;
+});
 
+//////////////////////////////////////////////////////////////////////
+///////////////////////   lv2 placement initial   ////////////////////
+let c2 = car(1,0,2);
+placementV(grild, c, 0,2);
 
+levels[1].numLV = 2; 
+levels[1].vTab[0] = null;
+levels[1].vTab[1] = c2;
+
+const caseLevel2 = document.querySelector(".lv2");
+caseLevel2.addEventListener("click", function(){
+  // son click
+  if(isPaused2){
+    audio2.play();
+  }
+  currentLevel = 1;
+});
 
 
 
@@ -303,50 +336,32 @@ function render() {
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 1  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
-
-  const caseLevel1 = document.querySelector(".lv1");
-  caseLevel1.addEventListener("click", function(){
-    // son click
-    if(isPaused2){
-      audio2.play();
-    }
-    currentLevel = 0;
-  });
-  //affichage des véhicules
-  // effacement de l'écran
-  context.fillStyle = "red";
-  context.clearRect(0, 0, context.width, context.height);
-  // Voiture principale
-  afficherCases(grild, c);
-  // // voiture horizontale1
-  afficherCases(grild, cv1); 
-  // // voiture verticale1
-  afficherCases(grild, ch1);
-  // // camion horizontal
-  afficherCases(grild, ch2);
-  // // camion vertical
-  afficherCases(grild, cv2);
-
+  if(currentLevel==0){
+    //affichage des véhicules
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
+    // Voiture principale
+    afficherCases(grild, c);
+    // // voiture horizontale1
+    afficherCases(grild, cv1); 
+    // // voiture verticale1
+    afficherCases(grild, ch1);
+    // // camion horizontal
+    afficherCases(grild, ch2);
+    // // camion vertical
+    afficherCases(grild, cv2);
+  }
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 2  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  
-  const caseLevel2 = document.querySelector(".lv2");
-  caseLevel2.addEventListener("click", function(){
-    // son click
-    if(isPaused2){
-      audio2.play();
-    }
-    currentLevel = 1;
-  });
-  // // effacement de l'écran
-  // context.clearRect(0, 0, context.width, context.height);
-  // currentLevel = 1;
-  // // Voiture principale  
-  // afficherCases(grild, c);
-
+  if(currentLevel==1){
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
+    // Voiture principale  
+    afficherCases(grild, c2);
+  }
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 3  ///////////////////////////////////////
@@ -611,8 +626,6 @@ function deplacementV(grild, car,x , y){
         // console.log(grild);     
       }
     }
-      // grild[indv.i][indv.j] = 0;
-      // grild[indv.i + car.taille][indv.j] = car.numV;
   } else {
     //haut
     if(x==0 && y==-1){
