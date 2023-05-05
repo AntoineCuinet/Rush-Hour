@@ -9,8 +9,10 @@ const buttonAudio2 = document.getElementById('buttonAudio2');
 buttonAudio2.classList.toggle("active")
 let audio2 = new Audio();
 let audio3 = new Audio();
+let audio4 = new Audio();
 audio2.src = 'click.mp3';
-audio3.src = 'selection.wav'
+audio3.src = 'selection.wav';
+audio4.src = 'falseSon.mp3';
 let isPaused2 = true;
 // annimation son
 buttonAudio2.addEventListener("click", function() { 
@@ -116,12 +118,24 @@ ButtonLevels.addEventListener("click", function(){
   }
 });
 
+// bouton et affichage de la page modale lors de la victoire
+const buttonNext = document.getElementById('butonNextLevel');
+buttonNext.addEventListener("click", buttonNextActive);
+function buttonNextActive(){
+  if(isPaused2){
+    audio2.play();
+  }
+  win = false;
+  modalWin.style.display = "none";
+} 
+
+
 // pour l'affichage du score actuel
 const scoreDiv = document.getElementById("score");
 // pour l'affichage du best score
 const bestscore = document.getElementById("bestscore");
 // bestscore.textContent = levels[currentLevel].bestScore;  // a mettre dans la fonction pour avoir le best score
-
+const nbStars = document.getElementById("nbStars");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -179,7 +193,7 @@ let currentLevel = null;
 // tableau contenant les différents levels contenant des instances de lv 
 let levels= Array(9);
 for(let i =0; i<levels.length; i++){
-  levels[i]= {numLV :null, nbCoupMin:null, vTab:Array(), nbMouv:0, bestScore:null};
+  levels[i]= {numLV :null, nbCoupMin:null, vTab:Array(), nbMouv:0, bestScore:null, completed:false};
 };
 
 // tableau (matrice) grille de jeu
@@ -245,13 +259,19 @@ let c2;
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
-  // son click
+  if(levels[0].completed){
+    // son click
   if(isPaused2){
     audio2.play();
   }
   instanceLv2();
   currentLevel = 1;
   bestscore.textContent = levels[currentLevel].bestScore;
+  } else {
+    if(isPaused2){
+      audio4.play();
+    }
+  }
 });
 
 
@@ -354,7 +374,7 @@ caseLevel9.addEventListener("click", function(){
 
 
 
-function instanceLv1(){  // Se fait en 5 mouvements
+function instanceLv1(){
   //////////////////////////////////////////////////////////////////////
   ///////////////////////   lv1 placement initial   ////////////////////
   // Réinitalisation de la grille
@@ -381,6 +401,7 @@ function instanceLv1(){  // Se fait en 5 mouvements
 
   // level 1
   levels[0].numLV = 1;
+  levels[0].nbCoupMin = 5;
   levels[0].vTab[0] = null;
   levels[0].vTab[1] = c;
   levels[0].vTab[2] = cv1lv1;
@@ -900,15 +921,21 @@ function isWin(win){
     if(levels[currentLevel].bestScore==null || levels[currentLevel].bestScore>levels[currentLevel].nbMouv){
       levels[currentLevel].bestScore = levels[currentLevel].nbMouv;
     }
+    calculNbEtoile()
+    levels[currentLevel].completed = true;
   }
 }
-const buttonNext = document.getElementById('butonNextLevel');
-buttonNext.addEventListener("click", buttonNextActive);
-function buttonNextActive(){
-      win = false;
-      modalWin.style.display = "none";
-} 
 
+// fonction qui calcule et affiche de nombre d'étoiles à la fin d'une partie
+function calculNbEtoile(){
+  if(levels[currentLevel].nbCoupMin == levels[currentLevel].nbMouv){
+    nbStars.textContent = "3/3";
+  } else if((levels[currentLevel].nbCoupMin)*(3/2) > levels[currentLevel].nbMouv){
+    nbStars.textContent = "2/3";
+  } else {
+    nbStars.textContent = "1/3";
+  }
+}
 
 
 // Fonction appelée lorsqu'une touche du clavier est appuyée
