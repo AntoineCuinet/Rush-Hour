@@ -161,11 +161,11 @@ camion3H.src = "02 copie.png";
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Début du code du jeux à proprement parler ///
+/// Début du code du jeu à proprement parler ///
 
 let canvas = document.getElementById("cvs");
 
-// Dimentions du document et d'une case
+// Dimensions du document et d'une case
 var blockSize = 100;
 var ctxWidth = 600;
 var ctxHeight = 600;
@@ -195,7 +195,7 @@ for(let i =0; i<widthInBlocks; i++){
 
 // objet véhicule
 function car(numV, orient, taille){  //pour orient, 0: horizontal et 1: vertical
-  return {numV,orient, taille};
+  return {numV,orient,taille};
 } 
 
 let bufferCar = null; //retient le véhicule après le clic 
