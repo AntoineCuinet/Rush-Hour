@@ -1,19 +1,12 @@
 /* Jeu Rush-Hour, créer par Magnin Julie et Cuinet Antoine, page css */
 
 /* Création + délimitation du Canvas */
-*, ::before, ::after {
-    box-sizing: border-box;
-} 
 html {
     position: relative;
     z-index: 1;
     font-family: 'Noto_Serif', Helvetica, sans-serif;
     height: 100vh;
     width: 100vw;
-    /* display: flex;
-    justify-content: left;
-    align-items: center; */
-    /* background: url(pattern-5.PNG) rgb(151, 140, 111) center / cover repeat; */
     background: url(pattern-5.PNG) rgb(151, 140, 111);
 }
 body{ 
@@ -32,17 +25,16 @@ body{
     width: 600px;
     height: 600px;
     border: 6px solid  rgb(207, 205, 205);
-    border-radius: 12px;
-    
+    border-radius: 12px; 
 }
 
-/* mise en forme paragrphe */
+/* Mise en forme des paragrphes */
 p{
     font-size: 34px;
     font-weight: bold;
 }
 
-/* logo */
+/* Logo du jeu */
 .nav-icone{
     position: absolute;
     z-index: 1200;
@@ -70,7 +62,7 @@ p{
     line-height: 55px;
 }
 
-/* div score */
+/* Affichage du score */
 .score{
     width: 400px;
     height: 200px;
@@ -106,9 +98,7 @@ p{
     color: #2f2f2f;
 }
 
-
-
-/* div  des boutons */
+/* Affichage des boutons */
 .buttons{
     width: 400px;
     height: 400px;
@@ -120,7 +110,7 @@ p{
     background-color: transparent;
 }
 
-/* bouton parametre */
+/* Bouton parametre */
 .param{
     border: 4px black solid;
     width: 100px;
@@ -154,7 +144,7 @@ p{
     background-position: center;
 }
 
-/* fenetre modale pour parametre */
+/* Fenetre modale pour le bouton parametre */
 .modal{
     display: none;
     position: fixed;
@@ -184,7 +174,8 @@ p{
 .modalAudio{
     display: block;
 }
-/* bouton de la musique */
+
+/* Bouton de la musique */
 .divAudio{
     display: flex;
     height: 100px;
@@ -224,7 +215,7 @@ p{
     background: #444444a8;
 }
 
-/* bouton du son */
+/* Bouton du son */
 .divAudio2{
     display: flex;
     height: 100px;
@@ -258,14 +249,12 @@ p{
     background: rgb(214, 211, 211);
     border: 4px solid white;
 }
-
 #buttonAudio2.inactive{
     background: aliceblue;
     cursor: pointer;
     transition: 0.3s;
     border: 3px solid rgb(214, 211, 211);
 }
-
 #buttonAudio2.active #toggleAudio2{
     transform: translateX(38px);
     background: #444444a8;
@@ -275,7 +264,7 @@ p{
     background: #444;
 }
 
-/* bouton refresh */
+/* Affichage bouton refresh */
 .refresh{
     border: 4px black solid;
     width: 100px;
@@ -311,8 +300,7 @@ p{
     background-position: center;
 }
 
-
-/* bouton qui affiche les différents levels */
+/* Affichage du bouton qui affiche les différents levels */
 .levels{
     border: 4px black solid;
     width: 100px;
@@ -347,7 +335,8 @@ p{
     background-repeat: no-repeat;
     background-position: center; 
 }
-/* fenetre modale pour les levels */
+
+/* Fenetre modale pour les levels */
 .modal1{
     display: none;
     position: fixed;
@@ -375,7 +364,7 @@ p{
     text-align: center;
 }
 
-/* cases levels */
+/* Affichage des cases pour selectionner les levels */
 .wrapper{
     display: grid;
     grid-template-columns: auto auto auto;
@@ -412,7 +401,7 @@ p{
     font-size: 30px;
 }
 
-/* fenetre modal lors de la victoire */
+/* Fenetre modal pour la victoire */
 .modalWin{
     display: none;
     position: fixed;
@@ -473,8 +462,8 @@ p{
     bottom: 0;
 }
 
+/* Affichage du bouton d'accueil */
 .accueil{
-    /* display: none; */
     position: fixed;
     height: 100%;
     width: 100%;
@@ -513,6 +502,7 @@ p{
     transform-origin: center;
 }
 
+/* Affichage des instructions */
 .instruction{
     position: fixed;
     bottom: 0;

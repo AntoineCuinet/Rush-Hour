@@ -1,11 +1,11 @@
 <!-- Jeu Rush-Hour, créer par Magnin Julie et Cuinet Antoine, page HTML -->
-  
 
 <!DOCTYPE html>
 <html>
     <head>
         <!-- Lien vers la page css -->
         <link rel="stylesheet" type="text/css" href="style.css">
+        <!-- Logo du jeu -->
         <link rel="shortcut icon" type="image/png" href="/logo.png" />
         <!-- Balises meta -->
         <meta charset="utf-8">
@@ -16,20 +16,16 @@
     </head>
     <!-- Appel de la fonction "init()" lorsque la page à fini de charger -->
     <body onload="init()">
-
         <!-- Titre -->
         <a href="." class="nav-icone" aria-label="visit homepage" aria-current="page">
             Rush-Hour
         </a> 
-
-
-        <!-- accueil -->
+        <!-- Accueil -->
         <div class="accueil">
             <button class="buttonAccueil">Jouer</button>
         </div>
 
-        <!-- fenettres modales -->
-        <!-- pour les parametre -->
+        <!-- Fenettre modale pour les paramètres-->
         <div class="modal">
             <div class="titre"><p>Options</p></div>
             <div class="modalAudio">
@@ -47,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <!-- pour les levels -->
+        <!-- Fenettre modale pour les levels -->
         <div class="modal1">
             <div class="titre1">
                 <p>Select Level</p>
@@ -64,8 +60,7 @@
                 <button class="caseLevel lv9"><div>9</div></button>
             </div>
         </div>
-
-        <!-- affichage win -->
+        <!-- Fenettre modale pour l'affichage de la victoire -->
         <div class="modalWin">
             <div class="titreWin">
                 <p>Level completed !</p>
@@ -76,38 +71,34 @@
             </div>
         </div>
 
-        <!-- Score -->
+        <!-- Affichage du score -->
         <div class="score">
             <div class="moves"><p>Moves:</p></div>
             <div class="moveActuel" id="score"></div>
             <div class="bestScore"><p>Best score: </p><span id="bestscore"></span></div>
-
         </div>
 
-
-        <!-- Boutons -->
+        <!-- Affichage des différents boutons -->
         <div class="buttons">
-
             <button type="button" aria-label="toggle curtain navigation" class="param">
                 <span class="button-1"></span>
             </button>
-        
             <button type="button" aria-label="toggle curtain navigation" class="refresh">
                 <span class="button-1"></span>
             </button>
-
             <button type="button" aria-label="toggle curtain navigation" class="levels">
                 <span class="button-1"></span>
             </button>
         </div>
 
+        <!-- Affichage des consignes pour jouer -->
         <div class="instruction">
             <p>Séléctionnez un niveau, cliquez sur un véhicule, déplacez-le avec les flêches directionnelles</p>
         </div>
     
         <!-- Création du Canvas -->
         <canvas id="cvs" ></canvas>
-        <!-- Lien vers la page js -->
+        <!-- Lien vers la page java script -->
         <script src="script.js"></script>
     </body>
 </html>
