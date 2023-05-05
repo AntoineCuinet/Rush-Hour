@@ -209,45 +209,18 @@ let posClic = newPos(0, 0);
 
 
 /// Note pour créer un lv:
-/// Déclarer une nouvelle voiture
+/// Déclarer une nouvelle voiture en dehors de toute fonction
 /// La placer dans la grille avec la fonction placementV
 /// Déclarer le level (levels[].numLV et levels[].vTab[])
 /// Dans le level en question:
 ///   context.clearRect(0, 0, context.width, context.height);
 ///   afficherCases(grild, c);
 
-
-
-// Placement de la voiture rouge sur la grille (pour tout les niveaux)
-let c = car(1,0,2);
-placementV(grild, c, 0,2);
-
-//////////////////////////////////////////////////////////////////////
-///////////////////////   lv1 placement initial   ////////////////////
-// Placement d'une voiture verticale
-let cv1 = car(2,1,2);
-placementV(grild, cv1, 3,3);
-
-// Placement d'une voiture horizontale sur la grille
-let ch1 = car(3,0,2);
-placementV(grild, ch1, 4,1);
-
-// Placement d'un camion horizontal sur la grille
-let ch2 = car(4,1,3);
-placementV(grild, ch2, 5,3);
-
-// Placement d'un camion vertical sur la grille
-let cv2 = car(5,0,3);
-placementV(grild, cv2, 0, 0);
-
-// level 1
-levels[0].numLV = 1;
-levels[0].vTab[0] = null;
-levels[0].vTab[1] = c;
-levels[0].vTab[2] = cv1;
-levels[0].vTab[3] = ch1;
-levels[0].vTab[4] = ch2;
-levels[0].vTab[5] = cv2;
+let c;
+let cv1;
+let ch1;
+let ch2;
+let cv2;
 
 const caseLevel1 = document.querySelector(".lv1");
 caseLevel1.addEventListener("click", function(){
@@ -255,17 +228,12 @@ caseLevel1.addEventListener("click", function(){
   if(isPaused2){
     audio2.play();
   }
+  instanceLv1();
   currentLevel = 0;
 });
 
-//////////////////////////////////////////////////////////////////////
-///////////////////////   lv2 placement initial   ////////////////////
-let c2 = car(1,0,2);
-placementV(grild, c, 0,2);
 
-levels[1].numLV = 2; 
-levels[1].vTab[0] = null;
-levels[1].vTab[1] = c2;
+let c2;
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
@@ -273,8 +241,246 @@ caseLevel2.addEventListener("click", function(){
   if(isPaused2){
     audio2.play();
   }
+  instanceLv2();
   currentLevel = 1;
 });
+
+
+let c3;
+
+const caseLevel3 = document.querySelector(".lv3");
+caseLevel3.addEventListener("click", function(){
+  // son click
+  if(isPaused2){
+    audio2.play();
+  }
+  instanceLv3();
+  currentLevel = 2;
+});
+
+
+let c4;
+
+const caseLevel4 = document.querySelector(".lv4");
+caseLevel4.addEventListener("click", function(){
+  // son click
+  if(isPaused2){
+    audio2.play();
+  }
+  instanceLv4();
+  currentLevel = 3;
+});
+
+
+let c5;
+
+const caseLevel5 = document.querySelector(".lv5");
+caseLevel5.addEventListener("click", function(){
+  // son click
+  if(isPaused2){
+    audio2.play();
+  }
+  instanceLv5();
+  currentLevel = 4;
+});
+
+
+let c6;
+
+const caseLevel6 = document.querySelector(".lv6");
+caseLevel6.addEventListener("click", function(){
+  // son click
+  if(isPaused2){
+    audio2.play();
+  }
+  instanceLv6();
+  currentLevel = 5;
+});
+
+
+let c7;
+
+const caseLevel7 = document.querySelector(".lv7");
+caseLevel7.addEventListener("click", function(){
+  // son click
+  if(isPaused2){
+    audio2.play();
+  }
+  instanceLv7();
+  currentLevel = 6;
+});
+
+
+let c8;
+
+const caseLevel8 = document.querySelector(".lv8");
+caseLevel8.addEventListener("click", function(){
+  // son click
+  if(isPaused2){
+    audio2.play();
+  }
+  instanceLv8();
+  currentLevel = 7;
+});
+
+
+let c9;
+
+const caseLevel9 = document.querySelector(".lv9");
+caseLevel9.addEventListener("click", function(){
+  // son click
+  if(isPaused2){
+    audio2.play();
+  }
+  instanceLv9();
+  currentLevel = 8;
+});
+
+
+
+function instanceLv1(){
+  //////////////////////////////////////////////////////////////////////
+  ///////////////////////   lv1 placement initial   ////////////////////
+  // Réinitalisation de la grille
+  reinitialisationGrille(grild);
+  // Placement de la voiture rouge sur la grille
+  c = car(1,0,2);
+  placementV(grild, c, 0,2);
+  // Placement d'une voiture verticale
+  cv1 = car(2,1,2);
+  placementV(grild, cv1, 3,3);
+  // Placement d'une voiture horizontale sur la grille
+  ch1 = car(3,0,2);
+  placementV(grild, ch1, 4,1);
+  // Placement d'un camion horizontal sur la grille
+  ch2 = car(4,1,3);
+  placementV(grild, ch2, 5,3);
+  // Placement d'un camion vertical sur la grille
+  cv2 = car(5,0,3);
+  placementV(grild, cv2, 0, 0);
+
+  // level 1
+  levels[0].numLV = 1;
+  levels[0].vTab[0] = null;
+  levels[0].vTab[1] = c;
+  levels[0].vTab[2] = cv1;
+  levels[0].vTab[3] = ch1;
+  levels[0].vTab[4] = ch2;
+  levels[0].vTab[5] = cv2;
+}
+
+function instanceLv2(){
+  ////////////////////////////////////////////////////////////////////
+  /////////////////////   lv2 placement initial   ////////////////////
+  // Réinitalisation de la grille
+  reinitialisationGrille(grild);
+  // Placement de la voiture rouge sur la grille
+  c2 = car(1,0,2);
+  placementV(grild, c2, 0,2);
+
+  levels[1].numLV = 2; 
+  levels[1].vTab[0] = null;
+  levels[1].vTab[1] = c2;
+}
+
+function instanceLv3(){
+  ////////////////////////////////////////////////////////////////////
+  /////////////////////   lv3 placement initial   ////////////////////
+  // Réinitalisation de la grille
+  reinitialisationGrille(grild);
+  // Placement de la voiture rouge sur la grille
+  c3 = car(1,0,2);
+  placementV(grild, c3, 0,2);
+
+  levels[2].numLV = 3; 
+  levels[2].vTab[0] = null;
+  levels[2].vTab[1] = c3;
+}
+
+function instanceLv4(){
+  ////////////////////////////////////////////////////////////////////
+  /////////////////////   lv4 placement initial   ////////////////////
+  // Réinitalisation de la grille
+  reinitialisationGrille(grild);
+  // Placement de la voiture rouge sur la grille
+  c4 = car(1,0,2);
+  placementV(grild, c4, 0,2);
+
+  levels[3].numLV = 4; 
+  levels[3].vTab[0] = null;
+  levels[3].vTab[1] = c4;
+}
+
+function instanceLv5(){
+  ////////////////////////////////////////////////////////////////////
+  /////////////////////   lv5 placement initial   ////////////////////
+  // Réinitalisation de la grille
+  reinitialisationGrille(grild);
+  // Placement de la voiture rouge sur la grille
+  c5 = car(1,0,2);
+  placementV(grild, c5, 0,2);
+
+  levels[4].numLV = 5; 
+  levels[4].vTab[0] = null;
+  levels[4].vTab[1] = c5;
+}
+
+function instanceLv6(){
+  ////////////////////////////////////////////////////////////////////
+  /////////////////////   lv6 placement initial   ////////////////////
+  // Réinitalisation de la grille
+  reinitialisationGrille(grild);
+  // Placement de la voiture rouge sur la grille
+  c6 = car(1,0,2);
+  placementV(grild, c6, 0,2);
+
+  levels[5].numLV = 6; 
+  levels[5].vTab[0] = null;
+  levels[5].vTab[1] = c6;
+}
+
+function instanceLv7(){
+  ////////////////////////////////////////////////////////////////////
+  /////////////////////   lv7 placement initial   ////////////////////
+  // Réinitalisation de la grille
+  reinitialisationGrille(grild);
+  // Placement de la voiture rouge sur la grille
+  c7 = car(1,0,2);
+  placementV(grild, c7, 0,2);
+
+  levels[6].numLV = 7; 
+  levels[6].vTab[0] = null;
+  levels[6].vTab[1] = c7;
+}
+
+function instanceLv8(){
+  ////////////////////////////////////////////////////////////////////
+  /////////////////////   lv8 placement initial   ////////////////////
+  // Réinitalisation de la grille
+  reinitialisationGrille(grild);
+  // Placement de la voiture rouge sur la grille
+  c8 = car(1,0,2);
+  placementV(grild, c8, 0,2);
+
+  levels[7].numLV = 8; 
+  levels[7].vTab[0] = null;
+  levels[7].vTab[1] = c8;
+}
+
+function instanceLv9(){
+  ////////////////////////////////////////////////////////////////////
+  /////////////////////   lv9 placement initial   ////////////////////
+  // Réinitalisation de la grille
+  reinitialisationGrille(grild);
+  // Placement de la voiture rouge sur la grille
+  c9 = car(1,0,2);
+  placementV(grild, c9, 0,2);
+
+  levels[8].numLV = 9; 
+  levels[8].vTab[0] = null;
+  levels[8].vTab[1] = c9;
+}
+
 
 
 
@@ -315,6 +521,8 @@ function update(d) {
   const ButtonRefresh = document.querySelector(".refresh");
   ButtonRefresh.addEventListener("click", Refreshective);
   function Refreshective(){
+    // Réinitalisation de la grille
+    // reinitialisationGrille(grild);   //ne marche pas
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
   }
@@ -334,9 +542,9 @@ function render() {
   /////////////////////////////////  Level 1  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
   if(currentLevel==0){
-    //affichage des véhicules
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
+    // Affichage des véhicules
     // Voiture principale
     afficherCases(grild, c);
     // // voiture horizontale1
@@ -349,6 +557,7 @@ function render() {
     afficherCases(grild, cv2);
   }
 
+
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 2  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
@@ -360,136 +569,90 @@ function render() {
     afficherCases(grild, c2);
   }
 
+
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 3  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  if(currentLevel==2){
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
+    // Voiture principale  
+    afficherCases(grild, c3);
+  }
 
-  const caseLevel3 = document.querySelector(".lv3");
-  caseLevel3.addEventListener("click", function(){
-    // son click
-    if(isPaused2){
-      audio2.play();
-    }
-    currentLevel = 2;
-  });
-  // // effacement de l'écran
-  // context.clearRect(0, 0, context.width, context.height);
-  // // Voiture principale  
-  // afficherCases(grild, c);
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 4  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
- 
-  const caseLevel4 = document.querySelector(".lv4");
-  caseLevel4.addEventListener("click", function(){
-    // son click
-    if(isPaused2){
-      audio2.play();
-    }
-    currentLevel = 3;
-  });
-  // // effacement de l'écran
-  // context.clearRect(0, 0, context.width, context.height);
-  // // Voiture principale  
-  // afficherCases(grild, c);
-
+  if(currentLevel==3){
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
+    // Voiture principale  
+    afficherCases(grild, c4);
+  }
+  
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 5  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
- 
-  const caseLevel5 = document.querySelector(".lv5");
-  caseLevel5.addEventListener("click", function(){
-    // son click
-    if(isPaused2){
-      audio2.play();
-    }
-    currentLevel = 4;
-  });
-  // // effacement de l'écran
-  // context.clearRect(0, 0, context.width, context.height);
-  // currentLevel = 4;
-  // // Voiture principale  
-  // afficherCases(grild, c);
-
+  if(currentLevel==4){
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
+    // Voiture principale  
+    afficherCases(grild, c5);
+  }
+  
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 6  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
+  if(currentLevel==5){
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
+    // Voiture principale  
+    afficherCases(grild, c6);
+  }
  
-  const caseLevel6 = document.querySelector(".lv6");
-  caseLevel6.addEventListener("click", function(){
-    // son click
-    if(isPaused2){
-      audio2.play();
-    }
-    currentLevel = 5;
-  });
-  //  // effacement de l'écran
-  //  context.clearRect(0, 0, context.width, context.height);
-  //  // Voiture principale
-  //  afficherCases(grild, c);
-
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 7  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
   
-  const caseLevel7 = document.querySelector(".lv7");
-  caseLevel7.addEventListener("click", function(){
-    // son click
-    if(isPaused2){
-      audio2.play();
-    }
-    currentLevel = 6;
-  });
-  //  // effacement de l'écran
-  //  context.clearRect(0, 0, context.width, context.height);
-  //  // Voiture principale  
-  //  afficherCases(grild, c);
+  if(currentLevel==6){
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
+    // Voiture principale  
+    afficherCases(grild, c7);
+  }
 
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 8  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
- 
-  const caseLevel8 = document.querySelector(".lv8");
-  caseLevel8.addEventListener("click", function(){
-    // son click
-    if(isPaused2){
-      audio2.play();
-    }
-    currentLevel = 7;
-  });
-  //  // effacement de l'écran
-  //  context.clearRect(0, 0, context.width, context.height);
-  //  // Voiture principale  
-  //  afficherCases(grild, c);
-
+  if(currentLevel==7){
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
+    // Voiture principale  
+    afficherCases(grild, c8);
+  }
+  
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 9  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  const caseLevel9 = document.querySelector(".lv9");
-  caseLevel9.addEventListener("click", function(){
-    // son click
-    if(isPaused2){
-      audio2.play();
-    }
-    currentLevel = 8;
-  });
-  //  // effacement de l'écran
-  //  context.clearRect(0, 0, context.width, context.height);
-  //  // Voiture principale  
-  //  afficherCases(grild, c);
+  if(currentLevel==8){
+    // effacement de l'écran
+    context.clearRect(0, 0, context.width, context.height);
+    // Voiture principale  
+    afficherCases(grild, c9);
+  }
 }
 
 
@@ -525,6 +688,18 @@ function rechercheVehicule(grild, car){
     };
   };
 }
+
+
+// Fonction pour réinitialiser la grille de jeu lors d'un changement de niveau
+function reinitialisationGrille(grild){
+  for(let i =0; i<widthInBlocks; i++){
+    grild[i]=Array(widthInBlocks);
+    for(let j =0; j<widthInBlocks; j++){
+      grild [i][j] = 0;
+    };
+  };
+}
+
 
 
 // affiche les autre cases
