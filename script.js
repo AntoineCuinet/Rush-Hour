@@ -174,11 +174,6 @@ var heightInBlocks = ctxHeight/blockSize;
 
 
 // Déclaration des variable
-let arrowLeft=false;
-let arrowRight=false;
-let arrowUp=false;
-let arrowDown=false;
-
 let context = null;
 let win=false;
 let currentLevel = 0;
@@ -203,7 +198,7 @@ function car(numV, orient, taille){  //pour orient, 0: horizontal et 1: vertical
   return {numV,orient, taille};
 } 
 
-let bufferVec = car();
+let bufferCar = null; //retient le véhicule après le clic 
 
 
 // objet position
@@ -211,6 +206,7 @@ function newPos(i, j){
   return {i, j};
 }
 
+let posClic = newPos(0, 0);
 
 
 
@@ -238,11 +234,12 @@ placementV(grild, cv2, 0, 0);
 
 // level 1
 levels[0].numLV = 1;
-levels[0].vTab[0] = c;
-levels[0].vTab[1] = cv1;
-levels[0].vTab[2] = ch1;
-levels[0].vTab[3] = ch2;
-levels[0].vTab[4] = cv2;
+levels[0].vTab[0] = null;
+levels[0].vTab[1] = c;
+levels[0].vTab[2] = cv1;
+levels[0].vTab[3] = ch1;
+levels[0].vTab[4] = ch2;
+levels[0].vTab[5] = cv2;
 
 
 
@@ -258,7 +255,6 @@ function init() {
 
   // 2 écouteurs pour le clavier (appui/relâchement d'une touche)
   document.addEventListener("keydown", captureAppuiToucheClavier)
-  document.addEventListener("keyup", captureRelacheToucheClavier)
   // on associe au document un écouteur d'événements souris
   canvas.addEventListener("click", captureClicSouris)
   // --> ces événements vont appeler les fonctions captureXYZ définies après.
@@ -306,7 +302,6 @@ function render() {
   /////////////////////////////////  Level 1  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  currentLevel = 0;
   const caseLevel1 = document.querySelector(".lv1");
   caseLevel1.addEventListener("click", function(){
     // son click
@@ -316,7 +311,7 @@ function render() {
     // effacement de l'écran
     context.fillStyle = "red";
     context.clearRect(0, 0, context.width, context.height);
-
+    currentLevel = 0;
     //affichage des véhicules
     // Voiture principale
     afficherCases(grild, c);
@@ -335,7 +330,7 @@ function render() {
   /////////////////////////////////  Level 2  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  currentLevel = 1;
+  
   const caseLevel2 = document.querySelector(".lv2");
   caseLevel2.addEventListener("click", function(){
     // son click
@@ -353,7 +348,7 @@ function render() {
   /////////////////////////////////  Level 3  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  currentLevel = 2;
+
   const caseLevel3 = document.querySelector(".lv3");
   caseLevel3.addEventListener("click", function(){
     // son click
@@ -370,7 +365,7 @@ function render() {
   /////////////////////////////////  Level 4  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  currentLevel = 3;
+ 
   const caseLevel4 = document.querySelector(".lv4");
   caseLevel4.addEventListener("click", function(){
     // son click
@@ -388,7 +383,7 @@ function render() {
   /////////////////////////////////  Level 5  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  currentLevel = 4;
+ 
   const caseLevel5 = document.querySelector(".lv5");
   caseLevel5.addEventListener("click", function(){
     // son click
@@ -406,7 +401,7 @@ function render() {
   /////////////////////////////////  Level 6  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  currentLevel = 5;
+ 
   const caseLevel6 = document.querySelector(".lv6");
   caseLevel6.addEventListener("click", function(){
     // son click
@@ -424,7 +419,7 @@ function render() {
   /////////////////////////////////  Level 7  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  currentLevel = 6;
+  
   const caseLevel7 = document.querySelector(".lv7");
   caseLevel7.addEventListener("click", function(){
     // son click
@@ -442,7 +437,7 @@ function render() {
   /////////////////////////////////  Level 8  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  currentLevel = 7;
+ 
   const caseLevel8 = document.querySelector(".lv8");
   caseLevel8.addEventListener("click", function(){
     // son click
@@ -460,7 +455,6 @@ function render() {
   /////////////////////////////////  Level 9  ///////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////
 
-  currentLevel = 8;
   const caseLevel9 = document.querySelector(".lv9");
   caseLevel9.addEventListener("click", function(){
     // son click
@@ -501,10 +495,10 @@ function placementV(grild,car,i,j){
 
 // Toujours la position de la première case du véhicule
 function rechercheVehicule(grild, car){
-  for(let i = 0; i<widthInBlocks; i++){ //tabeau commence par les colonnes donc i=colonne
+  for(let i = 0; i<widthInBlocks; i++){ 
     for(let j = 0; j<widthInBlocks; j++){
       if (grild[i][j]==car.numV) {
-        if(car.numV == 1) console.log(i,j);  //retourne bien les positions (0,2)
+        // if(car.numV == 1) console.log(i,j);  //retourne bien les positions (0,2)
         return {i,j};
       }
     };
@@ -514,9 +508,7 @@ function rechercheVehicule(grild, car){
 
 // affiche les autre cases
 function afficherCases(grild, c){
-  let ind = newPos(0,0); 
-  ind = rechercheVehicule(grild, c); /////// ind n'est pas bon (donne 1,2) alors que la fonction renvoie bien 0,1 --> incompréensible
-  console.log(ind);    /////renvoie 5positions à la fois (je pense que 'est les bonnes, c'est la fonction déplacement qui ne dois pas marcher ou alors le buffer qui fait nimp)
+  ind = rechercheVehicule(grild, c); /////// ind n'est pas bon (donne 1,2) alors que la fonction renvoie bien 0,1 --> incompréensible    /////renvoie 5positions à la fois (je pense que 'est les bonnes, c'est la fonction déplacement qui ne dois pas marcher ou alors le buffer qui fait nimp)
   // affichage voiture principale (affichage spéciale car elle est rouge)
   if(c.orient==0 && c.taille==2 && c.numV == 1){
     //affichage première case
@@ -579,64 +571,54 @@ function afficherCases(grild, c){
 
 //regarde si le déplacement est possible et déplacer la voiture
 //beaucoup de repetitions donc a essayer d'opti
-function deplacementV(grild, car){
-  let indv = newPos(0,0);
+function deplacementV(grild, car,x , y){
   indv = rechercheVehicule(grild, car);
-  console.log(grild);                               /////////////rien ne se déplace
   let temp; // variable auxiliaire
   
   if (car.orient==0){
-    if(arrowLeft){
+    if(x==-1 && y==0){
       //déplacement impossible vers la gauche impossible
-      if((indv.j-1)<0||grild[indv.i][indv.j-1]!=0){
-        return false
-      } else {
-        //echanger la place de la voiture
-        for(let k=0;k<car.taille;k++){
-          temp=grild[indv.i][indv.j+k-1];
-          grild[indv.i][indv.j+k-1]=grild[indv.i][indv.j+k];
-          grild[indv.i][indv.j+k]=temp;
-        }
-      }
-    } 
-    if (arrowRight){
-      grild[indv.i][indv.j] = 0;
-      grild[indv.i + car.taille][indv.j] = car.numV;
-      // indv.j+=(car.taille-1);
-      // if((indv.j+1)>=widthInBlocks||grild[indv.i][indv.j+1]){
-      //   return false;
-      // } else {
-      //   for(let k=0;k<car.taille;k++){
-      //     temp=grild[indv.i][indv.j-k+1];
-      //     grild[indv.i][indv.j-k+1]=grild[indv.i][indv.j-k];
-      //     grild[indv.i][indv.j-k]=temp;
-      //   }
-      // }
-    }
-  } else {
-    if(arrowUp){
-      //déplacement vers le haut impossible
       if((indv.i-1)<0||grild[indv.i-1][indv.j]!=0){
-        return false
-      } else {
-        //échanger la place de la voiture
-        for(let k=0;k<car.taille;k++){
-          temp=grild[indv.i+k-1][indv.j];
-          grild[indv.i+k-1][indv.j]=grild[indv.i+k][indv.j];
-          grild[indv.i+k][indv.j]=temp;
-        }
-      }
-    } 
-    if(arrowDown){
-      indv.i+=(car.taille-1);
-      if((indv.i+1)>=heightInBlocks||grild[indv.i+1][indv.j]!=0){
         return false;
       } else {
-        for(let k=0;k<car.taille;k++){
-          temp=grild[indv.i-k+1][indv.j];
-          grild[indv.i-k+1][indv.j]=grild[indv.i-k][indv.j];
-          grild[indv.i-k][indv.j]=temp;
-        }
+        //echanger la place de la voiture
+        temp=grild[indv.i-1][indv.j];
+        grild[indv.i-1][indv.j]=grild[indv.i+(car.taille-1)][indv.j];
+        grild[indv.i+(car.taille-1)][indv.j]=temp;
+      }
+    } 
+    if (x==1 && y==0){
+      if((indv.i+car.taille)>=widthInBlocks||grild[indv.i+car.taille][indv.j]!=0){
+        return false;
+      } else {
+        //echanger la place de la voiture
+        temp=grild[indv.i][indv.j];
+        grild[indv.i][indv.j]=grild[indv.i+car.taille][indv.j];
+        grild[indv.i+car.taille][indv.j]=grild[indv.i][indv.j];
+        console.log(grild);     
+      }
+    }
+      // grild[indv.i][indv.j] = 0;
+      // grild[indv.i + car.taille][indv.j] = car.numV;
+  } else {
+    if(x==0 && y==-1){
+      //déplacement vers le haut impossible
+      if((indv.j-1)<0||grild[indv.i][indv.j-1]!=0){
+        return false;
+      } else {
+        //échanger la place de la voiture
+        temp=grild[indv.i][indv.j+(car.taille-1)];
+        grild[indv.i][indv.j+(car.taille-1)]=grild[indv.i][indv.j-1];
+        grild[indv.i][indv.j-1]=temp;
+      }
+    } 
+    if(x==0 && y==1){
+      if((indv.j+car.taille)>=heightInBlocks||grild[indv.i][indv.j+car.taille]!=0){
+        return false;
+      } else {
+        temp=grild[indv.i][indv.j];
+        grild[indv.i][indv.j]=grild[indv.i][indv.j+car.taille];
+        grild[indv.i][indv.j+car.taille]=temp;
       }
     }
   }
@@ -665,59 +647,41 @@ function buttonNextActive(){
 function captureAppuiToucheClavier(event) {
   switch(event.code){
     case "ArrowRight":
-        arrowRight=true;
+      deplacementV(grild, bufferCar, 1, 0);
         break;
     case "ArrowLeft":
-        arrowLeft=true;
+      deplacementV(grild, bufferCar, -1, 0);
           break;
     case "ArrowUp":
-        arrowUp=true;
+      deplacementV(grild, bufferCar, 0, -1);
         break;
     case "ArrowDown":
-        arrowDown=true;
+      deplacementV(grild, bufferCar, 0, 1);
         break;
   }
-  deplacementV(grild, bufferVec);
 }
 
-// Fonction appelée lorsqu'une touche du clavier est relâchée
-// Associée à l'événement "keyUp"
-//à chaque relachement de la flèche nbMouv s'agrémente de 1 
-function captureRelacheToucheClavier(event) {
-  switch(event.code){
-    case "ArrowRight":
-        arrowRight=false;
-        break;
-    case "ArrowLeft":
-        arrowLeft=false;
-        break;
-    case "ArrowUp":
-        arrowUp=false;
-        break;
-    case "ArrowDown":
-        arrowDown=false;
-        break;
-  }
-}
+
 
 //Fonction appelée lorsque la sourie est appuyée
 // Associée à l'événement "click"
 function captureClicSouris(event) {
   // calcul des coordonnées de la souris dans le canvas + conversion des clic en entier i: ligne et j: colonne
-  let pos = newPos(0, 0);
   if (event.target.id == "cvs") {
-    pos.i = Math.floor(event.offsetX/(blockSize)); 
-    pos.j = Math.floor(event.offsetY/(blockSize));
+    posClic.i = Math.floor(event.offsetX/(blockSize)); 
+    posClic.j = Math.floor(event.offsetY/(blockSize));
   }
-  console.log(pos.i, pos.j);
-  //j: column && i: row
-  let valeurCase=grild[pos.i][pos.j];
+  selectVehicule();
+}
+
+function selectVehicule(){
+  let valeurCase=grild[posClic.i][posClic.j];
   if(valeurCase!=0){
     //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
-    for(let i=0;i<levels[currentLevel].vTab.length;i++){
-      if(levels[currentLevel].vTab[i].numV==valeurCase){
-        bufferVec = levels[currentLevel].vTab[i];
-      }
-    }
+        bufferCar = levels[currentLevel].vTab[valeurCase];
   }
+  console.log(valeurCase);
+  console.log(currentLevel);
+  console.log(levels[currentLevel].vTab);
+  console.log(bufferCar);
 }
