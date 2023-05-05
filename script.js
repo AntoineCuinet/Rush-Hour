@@ -923,6 +923,37 @@ function isWin(win){
     }
     calculNbEtoile()
     levels[currentLevel].completed = true;
+
+    // affichage cadenas
+    switch(currentLevel){
+      case 0:
+        caseLevel2.classList.toggle("active");
+      break;
+      case 1:
+        caseLevel3.classList.toggle("active");
+      break;
+      case 2:
+        caseLevel4.classList.toggle("active");
+      break;
+      case 3:
+        caseLevel5.classList.toggle("active");
+      break;
+      case 4:
+        caseLevel6.classList.toggle("active");
+      break;
+      case 5:
+        caseLevel7.classList.toggle("active");
+      break;
+      case 6:
+        caseLevel8.classList.toggle("active");
+      break;
+      case 7:
+        caseLevel9.classList.toggle("active");
+      break;
+      case 8:
+        caseLevel9.classList.toggle("active");  // jeu fini
+      break;
+    }
   }
 }
 

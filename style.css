@@ -373,6 +373,10 @@ p{
 }
 .caseLevel{
     background-color: rgba(255, 255, 255, 0.8);
+    background-image: url('cadenas.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 65px;
     border: 1px solid rgba(0, 0, 0, 0.8);
     width: 90px;
     height: 90px;
@@ -393,12 +397,27 @@ p{
     transform: scale(1.1);
     transform-origin: center;
     background-repeat: fill;
-    background-size: 90px;
+    background-size: 65px;
     background-repeat: no-repeat;
     background-position: center;
+    background-image: url('cadenas.png');
  }
 .caseLevel div{
     font-size: 30px;
+}
+/* Affichage de la première case */
+.lv1{
+    background-image: none;
+}
+.lv1:hover{
+    background-image: none;
+}
+/* Affichage sans cadenas pour les autres cases */
+.lv2.active{
+    background-image: none;
+}
+.lv2:hover.active{
+    background-image: none;
 }
 
 /* Fenetre modal pour la victoire */
