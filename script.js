@@ -121,6 +121,11 @@ ButtonLevels.addEventListener("click", function(){
   }
 });
 
+//affichage du score actuel
+const scoreDiv = document.getElementById("score");
+let nombreMouv;
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -308,22 +313,22 @@ function render() {
     if(isPaused2){
       audio2.play();
     }
-    // effacement de l'écran
-    context.fillStyle = "red";
-    context.clearRect(0, 0, context.width, context.height);
     currentLevel = 0;
-    //affichage des véhicules
-    // Voiture principale
-    afficherCases(grild, c);
-    // // voiture horizontale1
-    afficherCases(grild, cv1); 
-    // // voiture verticale1
-    afficherCases(grild, ch1);
-    // // camion horizontal
-    afficherCases(grild, ch2);
-    // // camion vertical
-    afficherCases(grild, cv2);
   });
+  //affichage des véhicules
+  // effacement de l'écran
+  context.fillStyle = "red";
+  context.clearRect(0, 0, context.width, context.height);
+  // Voiture principale
+  afficherCases(grild, c);
+  // // voiture horizontale1
+  afficherCases(grild, cv1); 
+  // // voiture verticale1
+  afficherCases(grild, ch1);
+  // // camion horizontal
+  afficherCases(grild, ch2);
+  // // camion vertical
+  afficherCases(grild, cv2);
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -337,12 +342,13 @@ function render() {
     if(isPaused2){
       audio2.play();
     }
-    // effacement de l'écran
-    context.clearRect(0, 0, context.width, context.height);
     currentLevel = 1;
-    // Voiture principale  
-    afficherCases(grild, c);
   });
+  // // effacement de l'écran
+  // context.clearRect(0, 0, context.width, context.height);
+  // currentLevel = 1;
+  // // Voiture principale  
+  // afficherCases(grild, c);
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -356,12 +362,12 @@ function render() {
     if(isPaused2){
       audio2.play();
     }
-    // effacement de l'écran
-    context.clearRect(0, 0, context.width, context.height);
     currentLevel = 2;
-    // Voiture principale  
-    afficherCases(grild, c);
   });
+  // // effacement de l'écran
+  // context.clearRect(0, 0, context.width, context.height);
+  // // Voiture principale  
+  // afficherCases(grild, c);
 
   ///////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////  Level 4  ///////////////////////////////////////
@@ -374,12 +380,12 @@ function render() {
     if(isPaused2){
       audio2.play();
     }
-    // effacement de l'écran
-    context.clearRect(0, 0, context.width, context.height);
     currentLevel = 3;
-    // Voiture principale  
-    afficherCases(grild, c);
   });
+  // // effacement de l'écran
+  // context.clearRect(0, 0, context.width, context.height);
+  // // Voiture principale  
+  // afficherCases(grild, c);
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -393,12 +399,13 @@ function render() {
     if(isPaused2){
       audio2.play();
     }
-    // effacement de l'écran
-    context.clearRect(0, 0, context.width, context.height);
     currentLevel = 4;
-    // Voiture principale  
-    afficherCases(grild, c);
   });
+  // // effacement de l'écran
+  // context.clearRect(0, 0, context.width, context.height);
+  // currentLevel = 4;
+  // // Voiture principale  
+  // afficherCases(grild, c);
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -412,12 +419,12 @@ function render() {
     if(isPaused2){
       audio2.play();
     }
-    // effacement de l'écran
-    context.clearRect(0, 0, context.width, context.height);
     currentLevel = 5;
-    // Voiture principale
-    afficherCases(grild, c);
   });
+  //  // effacement de l'écran
+  //  context.clearRect(0, 0, context.width, context.height);
+  //  // Voiture principale
+  //  afficherCases(grild, c);
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -431,12 +438,12 @@ function render() {
     if(isPaused2){
       audio2.play();
     }
-    // effacement de l'écran
-    context.clearRect(0, 0, context.width, context.height);
     currentLevel = 6;
-    // Voiture principale  
-    afficherCases(grild, c);
   });
+  //  // effacement de l'écran
+  //  context.clearRect(0, 0, context.width, context.height);
+  //  // Voiture principale  
+  //  afficherCases(grild, c);
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -450,12 +457,12 @@ function render() {
     if(isPaused2){
       audio2.play();
     }
-    // effacement de l'écran
-    context.clearRect(0, 0, context.width, context.height);
     currentLevel = 7;
-    // Voiture principale  
-    afficherCases(grild, c);
   });
+  //  // effacement de l'écran
+  //  context.clearRect(0, 0, context.width, context.height);
+  //  // Voiture principale  
+  //  afficherCases(grild, c);
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -468,12 +475,12 @@ function render() {
     if(isPaused2){
       audio2.play();
     }
-    // effacement de l'écran
-    context.clearRect(0, 0, context.width, context.height);
     currentLevel = 8;
-    // Voiture principale  
-    afficherCases(grild, c);
   });
+  //  // effacement de l'écran
+  //  context.clearRect(0, 0, context.width, context.height);
+  //  // Voiture principale  
+  //  afficherCases(grild, c);
 }
 
 
@@ -639,6 +646,9 @@ function deplacementV(grild, car,x , y){
 
 // affiche un écran modal lors de la victoire
 function isWin(win){
+  // if(levels[currentLevel].vTab[1] == ){
+  //   win = true;
+  // }
   const modalWin = document.querySelector(".modalWin");
   if(win){
     modalWin.style.display = "flex"; 
@@ -689,6 +699,8 @@ function selectVehicule(){
   let valeurCase=grild[posClic.i][posClic.j];
   if(valeurCase!=0){
     //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
-        bufferCar = levels[currentLevel].vTab[valeurCase];
+    bufferCar = levels[currentLevel].vTab[valeurCase];
+    levels[currentLevel].nbMouv +=1;
+    scoreDiv.textContent = levels[currentLevel].nbMouv;
   }
 }
