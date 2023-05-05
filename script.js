@@ -544,9 +544,44 @@ function update(d) {
   ButtonRefresh.addEventListener("click", Refreshective);
   function Refreshective(){
     // Réinitalisation de la grille
-    // reinitialisationGrille(grild);   //ne marche pas
-    // effacement de l'écran
-    context.clearRect(0, 0, context.width, context.height);
+    switch(currentLevel){
+      case 0:
+        instanceLv1();
+        levels[currentLevel].nbMouv =0;
+      break;
+      case 1:
+        instanceLv2();
+        levels[currentLevel].nbMouv =0;
+      break;
+      case 2:
+        instanceLv3();
+        levels[currentLevel].nbMouv =0;
+      break;
+      case 3:
+        instanceLv4();
+        levels[currentLevel].nbMouv =0;
+      break;
+      case 4:
+        instanceLv5();
+        levels[currentLevel].nbMouv =0;
+      break;
+      case 5:
+        instanceLv6();
+        levels[currentLevel].nbMouv =0;
+      break;
+      case 6:
+        instanceLv7();
+        levels[currentLevel].nbMouv =0;
+      break;
+      case 7:
+        instanceLv8();
+        levels[currentLevel].nbMouv =0;
+      break;
+      case 8:
+        instanceLv9();
+        levels[currentLevel].nbMouv =0;
+      break;
+    }
   }
 
   // gagne
