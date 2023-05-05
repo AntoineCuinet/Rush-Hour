@@ -251,6 +251,7 @@ caseLevel1.addEventListener("click", function(){
   }
   instanceLv1();
   currentLevel = 0;
+  levels[currentLevel].nbMouv =0;
   bestscore.textContent = levels[currentLevel].bestScore;
 });
 
@@ -259,14 +260,15 @@ let c2;
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
-  if(levels[0].completed){
+  if(levels[0].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
-  if(isPaused2){
-    audio2.play();
-  }
-  instanceLv2();
-  currentLevel = 1;
-  bestscore.textContent = levels[currentLevel].bestScore;
+    if(isPaused2){
+      audio2.play();
+    }
+    instanceLv2();
+    currentLevel = 1;
+    levels[currentLevel].nbMouv =0;
+    bestscore.textContent = levels[currentLevel].bestScore;
   } else {
     if(isPaused2){
       audio4.play();
@@ -279,13 +281,20 @@ let c3;
 
 const caseLevel3 = document.querySelector(".lv3");
 caseLevel3.addEventListener("click", function(){
-  // son click
-  if(isPaused2){
-    audio2.play();
+  if(levels[1].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
+    instanceLv3();
+    currentLevel = 2;
+    levels[currentLevel].nbMouv =0;
+    bestscore.textContent = levels[currentLevel].bestScore;
+  } else {
+    if(isPaused2){
+      audio4.play();
+    }
   }
-  instanceLv3();
-  currentLevel = 2;
-  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -293,13 +302,20 @@ let c4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
-  // son click
-  if(isPaused2){
-    audio2.play();
+  if(levels[2].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
+    instanceLv4();
+    currentLevel = 3;
+    levels[currentLevel].nbMouv =0;
+    bestscore.textContent = levels[currentLevel].bestScore;
+  } else {
+    if(isPaused2){
+      audio4.play();
+    }
   }
-  instanceLv4();
-  currentLevel = 3;
-  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -307,13 +323,20 @@ let c5;
 
 const caseLevel5 = document.querySelector(".lv5");
 caseLevel5.addEventListener("click", function(){
-  // son click
-  if(isPaused2){
-    audio2.play();
+  if(levels[3].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
+    instanceLv5();
+    currentLevel = 4;
+    levels[currentLevel].nbMouv =0;
+    bestscore.textContent = levels[currentLevel].bestScore;
+  } else {
+    if(isPaused2){
+      audio4.play();
+    }
   }
-  instanceLv5();
-  currentLevel = 4;
-  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -321,13 +344,20 @@ let c6;
 
 const caseLevel6 = document.querySelector(".lv6");
 caseLevel6.addEventListener("click", function(){
-  // son click
-  if(isPaused2){
-    audio2.play();
+  if(levels[4].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
+    instanceLv6();
+    currentLevel = 5;
+    levels[currentLevel].nbMouv =0;
+    bestscore.textContent = levels[currentLevel].bestScore;
+  } else {
+    if(isPaused2){
+      audio4.play();
+    }
   }
-  instanceLv6();
-  currentLevel = 5;
-  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -335,13 +365,20 @@ let c7;
 
 const caseLevel7 = document.querySelector(".lv7");
 caseLevel7.addEventListener("click", function(){
-  // son click
-  if(isPaused2){
-    audio2.play();
+  if(levels[5].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
+    instanceLv7();
+    currentLevel = 6;
+    levels[currentLevel].nbMouv =0;
+    bestscore.textContent = levels[currentLevel].bestScore;
+  } else {
+    if(isPaused2){
+      audio4.play();
+    }
   }
-  instanceLv7();
-  currentLevel = 6;
-  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -349,13 +386,20 @@ let c8;
 
 const caseLevel8 = document.querySelector(".lv8");
 caseLevel8.addEventListener("click", function(){
-  // son click
-  if(isPaused2){
-    audio2.play();
+  if(levels[6].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
+    instanceLv8();
+    currentLevel = 7;
+    levels[currentLevel].nbMouv =0;
+    bestscore.textContent = levels[currentLevel].bestScore;
+  } else {
+    if(isPaused2){
+      audio4.play();
+    }
   }
-  instanceLv8();
-  currentLevel = 7;
-  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -363,13 +407,20 @@ let c9;
 
 const caseLevel9 = document.querySelector(".lv9");
 caseLevel9.addEventListener("click", function(){
-  // son click
-  if(isPaused2){
-    audio2.play();
+  if(levels[7].completed){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
+    // son click
+    if(isPaused2){
+      audio2.play();
+    }
+    instanceLv9();
+    currentLevel = 8;
+    levels[currentLevel].nbMouv =0;
+    bestscore.textContent = levels[currentLevel].bestScore;
+  } else {
+    if(isPaused2){
+      audio4.play();
+    }
   }
-  instanceLv9();
-  currentLevel = 8;
-  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -908,6 +959,7 @@ function deplacementV(grild, car,x , y){
 
 // affiche un écran modal lors de la victoire
 function isWin(win){
+  // il faudra peut etre faire une seconde fonction qui appelle celle-ci lorsque win=true
   // if(levels[currentLevel].vTab[1] == ){
   //   win = true;
   // }
@@ -916,6 +968,7 @@ function isWin(win){
   // Affichage de la fenettre modale de la victoire
   const modalWin = document.querySelector(".modalWin");
   if(win){
+    // affiche la fenetre modale
     modalWin.style.display = "flex"; 
     // permet l'affichage du meilleur score
     if(levels[currentLevel].bestScore==null || levels[currentLevel].bestScore>levels[currentLevel].nbMouv){
@@ -951,7 +1004,7 @@ function isWin(win){
         caseLevel9.classList.toggle("active");
       break;
       case 8:
-        caseLevel9.classList.toggle("active");  // jeu fini
+        caseLevel9.classList.toggle("active");  // jeu fini lorsque lv9 fini
       break;
     }
   }
