@@ -339,6 +339,7 @@ function render() {
     }
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
+    currentLevel = 1;
     // Voiture principale  
     afficherCases(grild, c);
   });
@@ -357,6 +358,7 @@ function render() {
     }
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
+    currentLevel = 2;
     // Voiture principale  
     afficherCases(grild, c);
   });
@@ -374,6 +376,7 @@ function render() {
     }
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
+    currentLevel = 3;
     // Voiture principale  
     afficherCases(grild, c);
   });
@@ -392,6 +395,7 @@ function render() {
     }
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
+    currentLevel = 4;
     // Voiture principale  
     afficherCases(grild, c);
   });
@@ -410,6 +414,7 @@ function render() {
     }
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
+    currentLevel = 5;
     // Voiture principale
     afficherCases(grild, c);
   });
@@ -428,6 +433,7 @@ function render() {
     }
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
+    currentLevel = 6;
     // Voiture principale  
     afficherCases(grild, c);
   });
@@ -446,6 +452,7 @@ function render() {
     }
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
+    currentLevel = 7;
     // Voiture principale  
     afficherCases(grild, c);
   });
@@ -463,13 +470,11 @@ function render() {
     }
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
+    currentLevel = 8;
     // Voiture principale  
     afficherCases(grild, c);
   });
 }
-
-
-
 
 
 
@@ -499,7 +504,7 @@ function rechercheVehicule(grild, car){
     for(let j = 0; j<widthInBlocks; j++){
       if (grild[i][j]==car.numV) {
         // if(car.numV == 1) console.log(i,j);  //retourne bien les positions (0,2)
-        return {i,j};
+        return newPos(i,j);
       }
     };
   };
@@ -508,7 +513,9 @@ function rechercheVehicule(grild, car){
 
 // affiche les autre cases
 function afficherCases(grild, c){
-  ind = rechercheVehicule(grild, c); /////// ind n'est pas bon (donne 1,2) alors que la fonction renvoie bien 0,1 --> incompréensible    /////renvoie 5positions à la fois (je pense que 'est les bonnes, c'est la fonction déplacement qui ne dois pas marcher ou alors le buffer qui fait nimp)
+  ind = rechercheVehicule(grild, c);
+  // console.log(ind);
+
   // affichage voiture principale (affichage spéciale car elle est rouge)
   if(c.orient==0 && c.taille==2 && c.numV == 1){
     //affichage première case
@@ -576,6 +583,7 @@ function deplacementV(grild, car,x , y){
   let temp; // variable auxiliaire
   
   if (car.orient==0){
+    //gauche
     if(x==-1 && y==0){
       //déplacement impossible vers la gauche impossible
       if((indv.i-1)<0||grild[indv.i-1][indv.j]!=0){
@@ -587,6 +595,7 @@ function deplacementV(grild, car,x , y){
         grild[indv.i+(car.taille-1)][indv.j]=temp;
       }
     } 
+    //droite
     if (x==1 && y==0){
       if((indv.i+car.taille)>=widthInBlocks||grild[indv.i+car.taille][indv.j]!=0){
         return false;
@@ -594,13 +603,14 @@ function deplacementV(grild, car,x , y){
         //echanger la place de la voiture
         temp=grild[indv.i][indv.j];
         grild[indv.i][indv.j]=grild[indv.i+car.taille][indv.j];
-        grild[indv.i+car.taille][indv.j]=grild[indv.i][indv.j];
-        console.log(grild);     
+        grild[indv.i+car.taille][indv.j]=temp;
+        // console.log(grild);     
       }
     }
       // grild[indv.i][indv.j] = 0;
       // grild[indv.i + car.taille][indv.j] = car.numV;
   } else {
+    //haut
     if(x==0 && y==-1){
       //déplacement vers le haut impossible
       if((indv.j-1)<0||grild[indv.i][indv.j-1]!=0){
@@ -612,6 +622,7 @@ function deplacementV(grild, car,x , y){
         grild[indv.i][indv.j-1]=temp;
       }
     } 
+    //bas
     if(x==0 && y==1){
       if((indv.j+car.taille)>=heightInBlocks||grild[indv.i][indv.j+car.taille]!=0){
         return false;
@@ -680,8 +691,4 @@ function selectVehicule(){
     //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
         bufferCar = levels[currentLevel].vTab[valeurCase];
   }
-  console.log(valeurCase);
-  console.log(currentLevel);
-  console.log(levels[currentLevel].vTab);
-  console.log(bufferCar);
 }
