@@ -252,6 +252,7 @@ caseLevel1.addEventListener("click", function(){
   instanceLv1();
   currentLevel = 0;
   levels[currentLevel].nbMouv =0;
+  scoreDiv.textContent = levels[currentLevel].nbMouv;
   bestscore.textContent = levels[currentLevel].bestScore;
 });
 
@@ -268,6 +269,7 @@ caseLevel2.addEventListener("click", function(){
     instanceLv2();
     currentLevel = 1;
     levels[currentLevel].nbMouv =0;
+    scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
     if(isPaused2){
@@ -289,6 +291,7 @@ caseLevel3.addEventListener("click", function(){
     instanceLv3();
     currentLevel = 2;
     levels[currentLevel].nbMouv =0;
+    scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
     if(isPaused2){
@@ -310,6 +313,7 @@ caseLevel4.addEventListener("click", function(){
     instanceLv4();
     currentLevel = 3;
     levels[currentLevel].nbMouv =0;
+    scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
     if(isPaused2){
@@ -331,6 +335,7 @@ caseLevel5.addEventListener("click", function(){
     instanceLv5();
     currentLevel = 4;
     levels[currentLevel].nbMouv =0;
+    scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
     if(isPaused2){
@@ -352,6 +357,7 @@ caseLevel6.addEventListener("click", function(){
     instanceLv6();
     currentLevel = 5;
     levels[currentLevel].nbMouv =0;
+    scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
     if(isPaused2){
@@ -373,6 +379,7 @@ caseLevel7.addEventListener("click", function(){
     instanceLv7();
     currentLevel = 6;
     levels[currentLevel].nbMouv =0;
+    scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
     if(isPaused2){
@@ -394,6 +401,7 @@ caseLevel8.addEventListener("click", function(){
     instanceLv8();
     currentLevel = 7;
     levels[currentLevel].nbMouv =0;
+    scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
     if(isPaused2){
@@ -415,6 +423,7 @@ caseLevel9.addEventListener("click", function(){
     instanceLv9();
     currentLevel = 8;
     levels[currentLevel].nbMouv =0;
+    scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
     if(isPaused2){
@@ -620,38 +629,47 @@ function update(d) {
       case 0:
         instanceLv1();
         levels[currentLevel].nbMouv =0;
+        scoreDiv.textContent = levels[currentLevel].nbMouv;
       break;
       case 1:
         instanceLv2();
         levels[currentLevel].nbMouv =0;
+        scoreDiv.textContent = levels[currentLevel].nbMouv;
       break;
       case 2:
         instanceLv3();
         levels[currentLevel].nbMouv =0;
+        scoreDiv.textContent = levels[currentLevel].nbMouv;
       break;
       case 3:
         instanceLv4();
         levels[currentLevel].nbMouv =0;
+        scoreDiv.textContent = levels[currentLevel].nbMouv;
       break;
       case 4:
         instanceLv5();
         levels[currentLevel].nbMouv =0;
+        scoreDiv.textContent = levels[currentLevel].nbMouv;
       break;
       case 5:
         instanceLv6();
         levels[currentLevel].nbMouv =0;
+        scoreDiv.textContent = levels[currentLevel].nbMouv;
       break;
       case 6:
         instanceLv7();
         levels[currentLevel].nbMouv =0;
+        scoreDiv.textContent = levels[currentLevel].nbMouv;
       break;
       case 7:
         instanceLv8();
         levels[currentLevel].nbMouv =0;
+        scoreDiv.textContent = levels[currentLevel].nbMouv;
       break;
       case 8:
         instanceLv9();
         levels[currentLevel].nbMouv =0;
+        scoreDiv.textContent = levels[currentLevel].nbMouv;
       break;
     }
   }
