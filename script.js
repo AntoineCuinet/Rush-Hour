@@ -212,15 +212,22 @@ let posClic = newPos(0, 0);
 /// Déclarer une nouvelle voiture en dehors de toute fonction
 /// La placer dans la grille avec la fonction placementV
 /// Déclarer le level (levels[].numLV et levels[].vTab[])
+
 /// Dans le level en question:
-///   context.clearRect(0, 0, context.width, context.height);
 ///   afficherCases(grild, c);
 
+/// pour le nom des vehicules:
+/// c + numLv pour la voiture principale
+/// cv + num voiture + numLv pour les voitures verticales
+/// ch + num voiture + numLv pour les voitures horizontales
+
 let c;
-let cv1;
-let ch1;
-let ch2;
-let cv2;
+let cv1lv1;
+let cv2lv1;
+let cv3lv1;
+let ch1lv1;
+let ch2lv1;
+let ch3lv1;
 
 const caseLevel1 = document.querySelector(".lv1");
 caseLevel1.addEventListener("click", function(){
@@ -338,7 +345,7 @@ caseLevel9.addEventListener("click", function(){
 
 
 
-function instanceLv1(){
+function instanceLv1(){  // Se fait en 5 mouvements
   //////////////////////////////////////////////////////////////////////
   ///////////////////////   lv1 placement initial   ////////////////////
   // Réinitalisation de la grille
@@ -347,26 +354,32 @@ function instanceLv1(){
   c = car(1,0,2);
   placementV(grild, c, 0,2);
   // Placement d'une voiture verticale
-  cv1 = car(2,1,2);
-  placementV(grild, cv1, 3,3);
+  cv1lv1 = car(2,1,2);
+  placementV(grild, cv1lv1, 4,1);
   // Placement d'une voiture horizontale sur la grille
-  ch1 = car(3,0,2);
-  placementV(grild, ch1, 4,1);
-  // Placement d'un camion horizontal sur la grille
-  ch2 = car(4,1,3);
-  placementV(grild, ch2, 5,3);
+  ch1lv1 = car(3,0,2);
+  placementV(grild, ch1lv1, 4,0);
   // Placement d'un camion vertical sur la grille
-  cv2 = car(5,0,3);
-  placementV(grild, cv2, 0, 0);
+  ch2lv1 = car(4,1,3);
+  placementV(grild, ch2lv1, 3,2);
+  // Placement d'un camion horizontal sur la grille
+  cv2lv1 = car(5,0,3);
+  placementV(grild, cv2lv1, 0, 0);
+  cv3lv1 = car(6,1,2);
+  placementV(grild, cv3lv1, 5,1);
+  ch3lv1 = car(7,0,2);
+  placementV(grild, ch3lv1, 3,5);
 
   // level 1
   levels[0].numLV = 1;
   levels[0].vTab[0] = null;
   levels[0].vTab[1] = c;
-  levels[0].vTab[2] = cv1;
-  levels[0].vTab[3] = ch1;
-  levels[0].vTab[4] = ch2;
-  levels[0].vTab[5] = cv2;
+  levels[0].vTab[2] = cv1lv1;
+  levels[0].vTab[3] = ch1lv1;
+  levels[0].vTab[4] = ch2lv1;
+  levels[0].vTab[5] = cv2lv1;
+  levels[0].vTab[6] = cv3lv1;
+  levels[0].vTab[7] = ch3lv1;
 }
 
 function instanceLv2(){
@@ -548,13 +561,15 @@ function render() {
     // Voiture principale
     afficherCases(grild, c);
     // // voiture horizontale1
-    afficherCases(grild, cv1); 
+    afficherCases(grild, cv1lv1); 
     // // voiture verticale1
-    afficherCases(grild, ch1);
+    afficherCases(grild, ch1lv1);
     // // camion horizontal
-    afficherCases(grild, ch2);
+    afficherCases(grild, ch2lv1);
     // // camion vertical
-    afficherCases(grild, cv2);
+    afficherCases(grild, cv2lv1);
+    afficherCases(grild, cv3lv1);
+    afficherCases(grild, ch3lv1);
   }
 
 
