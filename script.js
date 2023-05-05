@@ -8,8 +8,10 @@
 // Bouton pour activer le son
 const buttonAudio2 = document.getElementById('buttonAudio2');
 buttonAudio2.classList.toggle("active")
-let audio2=new Audio();
-audio2.src= 'click.mp3';
+let audio2 = new Audio();
+let audio3 = new Audio();
+audio2.src = 'click.mp3';
+audio3.src = 'selection.wav'
 let isPaused2 = true;
 // annimation son
 buttonAudio2.addEventListener("click", function() { 
@@ -23,9 +25,6 @@ buttonAudio2.addEventListener('click', function(){
     audio2.play();
   }
   isPaused2 = !isPaused2;
-  // audio1.addEventListener('playing', function(){
-  //   console.log('click');
-  // });
 })
 
 // son du bouton rush-hour
@@ -99,9 +98,6 @@ buttonAudio.addEventListener('click', function(){
 });
   }
   isPaused = !isPaused;
-  // audio1.addEventListener('playing', function(){
-  //   console.log('click');
-  // });
 })
 function doLoop(){
   audio1.currentTime = 0;  
@@ -121,10 +117,11 @@ ButtonLevels.addEventListener("click", function(){
   }
 });
 
-//affichage du score actuel
+// pour l'affichage du score actuel
 const scoreDiv = document.getElementById("score");
-let nombreMouv;
-
+// pour l'affichage du best score
+const bestscore = document.getElementById("bestscore");
+// bestscore.textContent = levels[currentLevel].bestScore;  // a mettre dans la fonction pour avoir le best score
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -702,5 +699,8 @@ function selectVehicule(){
     bufferCar = levels[currentLevel].vTab[valeurCase];
     levels[currentLevel].nbMouv +=1;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
+    if(isPaused2){
+      audio3.play();
+    }
   }
 }
