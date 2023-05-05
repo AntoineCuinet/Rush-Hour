@@ -10,9 +10,11 @@ buttonAudio2.classList.toggle("active")
 let audio2 = new Audio();
 let audio3 = new Audio();
 let audio4 = new Audio();
+let audio5 = new Audio();
 audio2.src = 'click.mp3';
 audio3.src = 'selection.wav';
 audio4.src = 'falseSon.mp3';
+audio5.src = 'deplacementSon.wav';
 let isPaused2 = true;
 // annimation son
 buttonAudio2.addEventListener("click", function() { 
@@ -933,6 +935,9 @@ function deplacementV(grild, car,x , y){
         temp=grild[indv.i-1][indv.j];
         grild[indv.i-1][indv.j]=grild[indv.i+(car.taille-1)][indv.j];
         grild[indv.i+(car.taille-1)][indv.j]=temp;
+        if(isPaused2){
+          audio5.play();
+        }
       }
     } 
     //droite
@@ -944,7 +949,9 @@ function deplacementV(grild, car,x , y){
         temp=grild[indv.i][indv.j];
         grild[indv.i][indv.j]=grild[indv.i+car.taille][indv.j];
         grild[indv.i+car.taille][indv.j]=temp;
-        // console.log(grild);     
+        if(isPaused2){
+          audio5.play();
+        }
       }
     }
   } else {
@@ -958,6 +965,9 @@ function deplacementV(grild, car,x , y){
         temp=grild[indv.i][indv.j+(car.taille-1)];
         grild[indv.i][indv.j+(car.taille-1)]=grild[indv.i][indv.j-1];
         grild[indv.i][indv.j-1]=temp;
+        if(isPaused2){
+          audio5.play();
+        }
       }
     } 
     //bas
@@ -968,6 +978,9 @@ function deplacementV(grild, car,x , y){
         temp=grild[indv.i][indv.j];
         grild[indv.i][indv.j]=grild[indv.i][indv.j+car.taille];
         grild[indv.i][indv.j+car.taille]=temp;
+        if(isPaused2){
+          audio5.play();
+        }
       }
     }
   }
