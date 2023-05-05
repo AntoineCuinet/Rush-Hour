@@ -237,6 +237,7 @@ caseLevel1.addEventListener("click", function(){
   }
   instanceLv1();
   currentLevel = 0;
+  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -250,6 +251,7 @@ caseLevel2.addEventListener("click", function(){
   }
   instanceLv2();
   currentLevel = 1;
+  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -263,6 +265,7 @@ caseLevel3.addEventListener("click", function(){
   }
   instanceLv3();
   currentLevel = 2;
+  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -276,6 +279,7 @@ caseLevel4.addEventListener("click", function(){
   }
   instanceLv4();
   currentLevel = 3;
+  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -289,6 +293,7 @@ caseLevel5.addEventListener("click", function(){
   }
   instanceLv5();
   currentLevel = 4;
+  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -302,6 +307,7 @@ caseLevel6.addEventListener("click", function(){
   }
   instanceLv6();
   currentLevel = 5;
+  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -315,6 +321,7 @@ caseLevel7.addEventListener("click", function(){
   }
   instanceLv7();
   currentLevel = 6;
+  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -328,6 +335,7 @@ caseLevel8.addEventListener("click", function(){
   }
   instanceLv8();
   currentLevel = 7;
+  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -341,6 +349,7 @@ caseLevel9.addEventListener("click", function(){
   }
   instanceLv9();
   currentLevel = 8;
+  bestscore.textContent = levels[currentLevel].bestScore;
 });
 
 
@@ -846,9 +855,16 @@ function isWin(win){
   // if(levels[currentLevel].vTab[1] == ){
   //   win = true;
   // }
+
+  
+  // Affichage de la fenettre modale de la victoire
   const modalWin = document.querySelector(".modalWin");
   if(win){
     modalWin.style.display = "flex"; 
+    // permet l'affichage du meilleur score
+    if(levels[currentLevel].bestScore==null || levels[currentLevel].bestScore>levels[currentLevel].nbMouv){
+      levels[currentLevel].bestScore = levels[currentLevel].nbMouv;
+    }
   }
 }
 const buttonNext = document.getElementById('butonNextLevel');
