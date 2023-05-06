@@ -269,7 +269,7 @@ let ch3lv2;
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
-  if(levels[0].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[0].completed==false){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -288,10 +288,15 @@ caseLevel2.addEventListener("click", function(){
 
 
 let c3;
+let cv1lv3;
+let cv2lv3;
+let cv3lv3;
+let ch1lv3;
+let ch2lv3;
 
 const caseLevel3 = document.querySelector(".lv3");
 caseLevel3.addEventListener("click", function(){
-  if(levels[1].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[1].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -518,10 +523,26 @@ function instanceLv3(){
   // Placement de la voiture rouge sur la grille
   c3 = car(1,0,2);
   placementV(grild, c3, 0,2);
+  cv1lv3 = car(2,1,2);
+  placementV(grild,cv1lv3,1,0);
+  cv2lv3 = car(3,1,3);
+  placementV(grild, cv2lv3,4,1);
+  cv3lv3 = car(4,1,2);
+  placementV(grild, cv3lv3,3,4);
+  ch1lv3 = car(5,0,3);
+  placementV(grild,ch1lv3,2,0);
+  ch2lv3 = car(6,0,2);
+  placementV(grild,ch2lv3,4,4);
 
   levels[2].numLV = 3; 
+  levels[2].nbCoupMin = 5;
   levels[2].vTab[0] = null;
   levels[2].vTab[1] = c3;
+  levels[2].vTab[2] = cv1lv3;
+  levels[2].vTab[3] = cv2lv3;
+  levels[2].vTab[4] = cv3lv3;
+  levels[2].vTab[5] = ch1lv3;
+  levels[2].vTab[6] = ch2lv3;
 }
 
 function instanceLv4(){
@@ -762,6 +783,15 @@ function render() {
     context.clearRect(0, 0, context.width, context.height);
     // Voiture principale  
     afficherCases(grild, c3);
+    //voiture verticale
+    afficherCases(grild,cv1lv3);
+    afficherCases(grild,cv3lv3);
+    //voiture horizontale
+    afficherCases(grild,ch2lv3)
+    //camion vertical
+    afficherCases(grild,cv2lv3);
+    //camion horizontal
+    afficherCases(grild,ch1lv3)
   }
 
 
