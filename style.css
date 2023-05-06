@@ -416,6 +416,29 @@ p{
 .lv2.active{
     background-image: none;
 }
+.lv3.active{
+    background-image: none;
+}
+.lv4.active{
+    background-image: none;
+}
+.lv5.active{
+    background-image: none;
+}
+.lv6.active{
+    background-image: none;
+}
+.lv7.active{
+    background-image: none;
+}
+.lv8.active{
+    background-image: none;
+}
+.lv9.active{
+    background-image: none;
+}
+
+
 
 /* Fenetre modal pour la victoire */
 .modalWin{
