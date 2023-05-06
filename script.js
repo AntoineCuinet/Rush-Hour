@@ -1253,6 +1253,7 @@ function isWin(){
         caseLevel9.classList.toggle("active");  // jeu fini lorsque lv9 fini
       break;
     }
+    bestscore.textContent = levels[currentLevel].bestScore;
     calculNbEtoile();
   }
   if(grild[5][2] == 1 && winAux[currentLevel] == false){ 
