@@ -326,6 +326,13 @@ caseLevel3.addEventListener("click", function(){
 
 
 let c4;
+let cv1lv4;
+let cv2lv4;
+let cv3lv4;
+let cv4lv4;
+let cv5lv4;
+let ch1lv4;
+let ch2lv4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
@@ -349,6 +356,13 @@ caseLevel4.addEventListener("click", function(){
 
 
 let c5;
+let cv1lv5;
+let cv2lv5;
+let cv3lv5;
+let cv4lv5;
+let ch1lv5;
+let ch2lv5;
+let ch3lv5;
 
 const caseLevel5 = document.querySelector(".lv5");
 caseLevel5.addEventListener("click", function(){
@@ -372,6 +386,14 @@ caseLevel5.addEventListener("click", function(){
 
 
 let c6;
+let cv1lv6;
+let cv2lv6;
+let cv3lv6;
+let cv4lv6;
+let cv5lv6;
+let ch1lv6;
+let ch2lv6;
+let ch3lv6;
 
 const caseLevel6 = document.querySelector(".lv6");
 caseLevel6.addEventListener("click", function(){
@@ -395,6 +417,17 @@ caseLevel6.addEventListener("click", function(){
 
 
 let c7;
+let cv1lv7;
+let cv2lv7;
+let cv3lv7;
+let cv4lv7;
+let cv5lv7;
+let cv6lv7;
+let cv7lv7;
+let ch1lv7;
+let ch2lv7;
+let ch3lv7;
+let ch4lv7;
 
 const caseLevel7 = document.querySelector(".lv7");
 caseLevel7.addEventListener("click", function(){
@@ -418,6 +451,15 @@ caseLevel7.addEventListener("click", function(){
 
 
 let c8;
+let cv1lv8;
+let cv2lv8;
+let cv3lv8;
+let cv4lv8;
+let cv5lv8;
+let cv6lv8;
+let ch1lv8;
+let ch2lv8;
+let ch3lv8;
 
 const caseLevel8 = document.querySelector(".lv8");
 caseLevel8.addEventListener("click", function(){
@@ -441,6 +483,16 @@ caseLevel8.addEventListener("click", function(){
 
 
 let c9;
+let cv1lv9;
+let cv2lv9;
+let cv3lv9;
+let cv4lv9;
+let cv5lv9;
+let cv6lv9;
+let ch1lv9;
+let ch2lv9;
+let ch3lv9;
+let ch4lv9;
 
 const caseLevel9 = document.querySelector(".lv9");
 caseLevel9.addEventListener("click", function(){
