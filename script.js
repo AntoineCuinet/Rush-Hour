@@ -275,7 +275,7 @@ let ch3lv2;
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
-  if(levels[0].completed==false){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[0].completed){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -306,7 +306,7 @@ let ch4lv3;
 
 const caseLevel3 = document.querySelector(".lv3");
 caseLevel3.addEventListener("click", function(){
-  if(levels[1].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[1].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -336,7 +336,7 @@ let ch2lv4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
-  if(levels[2].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[2].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -366,7 +366,7 @@ let ch3lv5;
 
 const caseLevel5 = document.querySelector(".lv5");
 caseLevel5.addEventListener("click", function(){
-  if(levels[3].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[3].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -397,7 +397,7 @@ let ch3lv6;
 
 const caseLevel6 = document.querySelector(".lv6");
 caseLevel6.addEventListener("click", function(){
-  if(levels[4].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[4].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -431,7 +431,7 @@ let ch4lv7;
 
 const caseLevel7 = document.querySelector(".lv7");
 caseLevel7.addEventListener("click", function(){
-  if(levels[5].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[5].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -463,7 +463,7 @@ let ch3lv8;
 
 const caseLevel8 = document.querySelector(".lv8");
 caseLevel8.addEventListener("click", function(){
-  if(levels[6].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[6].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -496,7 +496,7 @@ let ch4lv9;
 
 const caseLevel9 = document.querySelector(".lv9");
 caseLevel9.addEventListener("click", function(){
-  if(levels[7].completed==false){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[7].completed){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
