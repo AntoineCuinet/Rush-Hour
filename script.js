@@ -291,8 +291,11 @@ let c3;
 let cv1lv3;
 let cv2lv3;
 let cv3lv3;
+let cv4lv3
 let ch1lv3;
 let ch2lv3;
+let ch3lv3;
+let ch4lv3;
 
 const caseLevel3 = document.querySelector(".lv3");
 caseLevel3.addEventListener("click", function(){
@@ -526,13 +529,20 @@ function instanceLv3(){
   cv1lv3 = car(2,1,2);
   placementV(grild,cv1lv3,1,0);
   cv2lv3 = car(3,1,3);
-  placementV(grild, cv2lv3,4,1);
+  placementV(grild, cv2lv3,5,0);
   cv3lv3 = car(4,1,2);
-  placementV(grild, cv3lv3,3,4);
-  ch1lv3 = car(5,0,3);
+  placementV(grild, cv3lv3,3,2);
+  cv4lv3 = car(5,1,2);
+  placementV(grild, cv4lv3,4,4);
+  ch1lv3 = car(6,0,3);
   placementV(grild,ch1lv3,2,0);
-  ch2lv3 = car(6,0,2);
-  placementV(grild,ch2lv3,4,4);
+  ch2lv3 = car(7,0,2);
+  placementV(grild,ch2lv3,3,1);
+  ch3lv3 = car(8,0,2);
+  placementV(grild, ch3lv3,4,3);
+  ch4lv3 = car(9,0,3);
+  placementV(grild, ch4lv3,1,4);
+
 
   levels[2].numLV = 3; 
   levels[2].nbCoupMin = 5;
@@ -541,8 +551,11 @@ function instanceLv3(){
   levels[2].vTab[2] = cv1lv3;
   levels[2].vTab[3] = cv2lv3;
   levels[2].vTab[4] = cv3lv3;
-  levels[2].vTab[5] = ch1lv3;
-  levels[2].vTab[6] = ch2lv3;
+  levels[2].vTab[5] = cv4lv3;
+  levels[2].vTab[6] = ch1lv3;
+  levels[2].vTab[7] = ch2lv3;
+  levels[2].vTab[8] = ch3lv3;
+  levels[2].vTab[9] = ch4lv3;
 }
 
 function instanceLv4(){
@@ -786,12 +799,15 @@ function render() {
     //voiture verticale
     afficherCases(grild,cv1lv3);
     afficherCases(grild,cv3lv3);
+    afficherCases(grild,cv4lv3);
     //voiture horizontale
-    afficherCases(grild,ch2lv3)
+    afficherCases(grild,ch2lv3);
+    afficherCases(grild,ch3lv3);
     //camion vertical
     afficherCases(grild,cv2lv3);
     //camion horizontal
-    afficherCases(grild,ch1lv3)
+    afficherCases(grild,ch1lv3);
+    afficherCases(grild,ch4lv3);
   }
 
 
@@ -804,6 +820,10 @@ function render() {
     context.clearRect(0, 0, context.width, context.height);
     // Voiture principale  
     afficherCases(grild, c4);
+    //voiture verticale
+    //voiture horizontale
+    //camion vertical 
+    //camion horizontal
   }
   
 
@@ -816,6 +836,10 @@ function render() {
     context.clearRect(0, 0, context.width, context.height);
     // Voiture principale  
     afficherCases(grild, c5);
+    //voiture verticale
+    //voiture horizontale
+    //camion vertical 
+    //camion horizontal
   }
   
 
@@ -828,6 +852,10 @@ function render() {
     context.clearRect(0, 0, context.width, context.height);
     // Voiture principale  
     afficherCases(grild, c6);
+    //voiture verticale
+    //voiture horizontale
+    //camion vertical 
+    //camion horizontal
   }
  
 
@@ -841,6 +869,10 @@ function render() {
     context.clearRect(0, 0, context.width, context.height);
     // Voiture principale  
     afficherCases(grild, c7);
+    //voiture verticale
+    //voiture horizontale
+    //camion vertical 
+    //camion horizontal
   }
 
 
@@ -853,6 +885,10 @@ function render() {
     context.clearRect(0, 0, context.width, context.height);
     // Voiture principale  
     afficherCases(grild, c8);
+    //voiture verticale
+    //voiture horizontale
+    //camion vertical 
+    //camion horizontal
   }
   
 
@@ -865,6 +901,10 @@ function render() {
     context.clearRect(0, 0, context.width, context.height);
     // Voiture principale  
     afficherCases(grild, c9);
+    //voiture verticale
+    //voiture horizontale
+    //camion vertical 
+    //camion horizontal
   }
 }
 
