@@ -500,6 +500,7 @@ function instanceLv2(){
   placementV(grild, ch3lv2,4,3);
 
   levels[1].numLV = 2; 
+  levels[1].nbCoupMin=4;
   levels[1].vTab[0] = null;
   levels[1].vTab[1] = c2;
   levels[1].vTab[2] = cv1lv2;
@@ -1071,7 +1072,7 @@ function isWin(win){
 
 // fonction qui calcule et affiche de nombre d'étoiles à la fin d'une partie
 function calculNbEtoile(){
-  if(levels[currentLevel].nbCoupMin == levels[currentLevel].nbMouv){
+  if(levels[currentLevel].nbCoupMin >= levels[currentLevel].nbMouv){
     nbStars.textContent = "3/3";
   } else if((levels[currentLevel].nbCoupMin)*(3/2) > levels[currentLevel].nbMouv){
     nbStars.textContent = "2/3";
