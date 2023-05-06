@@ -187,7 +187,7 @@ var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
 
 
-// Déclaration des variable
+// Déclaration des variables
 let context = null;
 let win=false;
 let currentLevel = null;
@@ -927,7 +927,6 @@ function deplacementV(grild, car,x , y){
   if (car.orient==0){
     //gauche
     if(x==-1 && y==0){
-      //déplacement impossible vers la gauche impossible
       if((indv.i-1)<0||grild[indv.i-1][indv.j]!=0){
         return false;
       } else {
@@ -957,7 +956,6 @@ function deplacementV(grild, car,x , y){
   } else {
     //haut
     if(x==0 && y==-1){
-      //déplacement vers le haut impossible
       if((indv.j-1)<0||grild[indv.i][indv.j-1]!=0){
         return false;
       } else {
@@ -990,13 +988,12 @@ function deplacementV(grild, car,x , y){
 
 // affiche un écran modal lors de la victoire
 function isWin(win){
-  // il faudra peut etre faire une seconde fonction qui appelle celle-ci lorsque win=true
-  // if(levels[currentLevel].vTab[1] == ){
-  //   win = true;
-  // }
+  if(grild[5][2] == 1 ){ //je crois que c'est ça puisque les i et j sont inversés dans la grille mais jsp j'ai l'impression d'écrire n'importe quoi
+    win = true;
+  }
 
   
-  // Affichage de la fenettre modale de la victoire
+  // Affichage de la fenetre modale de la victoire
   const modalWin = document.querySelector(".modalWin");
   if(win){
     // affiche la fenetre modale
@@ -1074,7 +1071,7 @@ function captureAppuiToucheClavier(event) {
 
 
 
-//Fonction appelée lorsque la sourie est appuyée
+//Fonction appelée lorsque la souris est appuyée
 // Associée à l'événement "click"
 function captureClicSouris(event) {
   // calcul des coordonnées de la souris dans le canvas + conversion des clic en entier i: ligne et j: colonne
