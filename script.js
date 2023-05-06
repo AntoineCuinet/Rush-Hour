@@ -275,7 +275,7 @@ let ch3lv2;
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
-  if(levels[0].completed){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[0].completed==false){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -306,7 +306,7 @@ let ch4lv3;
 
 const caseLevel3 = document.querySelector(".lv3");
 caseLevel3.addEventListener("click", function(){
-  if(levels[1].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[1].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -336,7 +336,7 @@ let ch2lv4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
-  if(levels[2].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[2].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -366,7 +366,7 @@ let ch3lv5;
 
 const caseLevel5 = document.querySelector(".lv5");
 caseLevel5.addEventListener("click", function(){
-  if(levels[3].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[3].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -397,7 +397,7 @@ let ch3lv6;
 
 const caseLevel6 = document.querySelector(".lv6");
 caseLevel6.addEventListener("click", function(){
-  if(levels[4].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[4].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -431,7 +431,7 @@ let ch4lv7;
 
 const caseLevel7 = document.querySelector(".lv7");
 caseLevel7.addEventListener("click", function(){
-  if(levels[5].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[5].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -463,7 +463,7 @@ let ch3lv8;
 
 const caseLevel8 = document.querySelector(".lv8");
 caseLevel8.addEventListener("click", function(){
-  if(levels[6].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[6].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -496,7 +496,7 @@ let ch4lv9;
 
 const caseLevel9 = document.querySelector(".lv9");
 caseLevel9.addEventListener("click", function(){
-  if(levels[7].completed){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[7].completed==false){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -631,10 +631,33 @@ function instanceLv4(){
   // Placement de la voiture rouge sur la grille
   c4 = car(1,0,2);
   placementV(grild, c4, 0,2);
+  cv1lv4 = car(2,1,2);
+  placementV(grild,cv1lv4,1,0);
+  cv2lv4 = car(3,1,3);
+  placementV(grild,cv2lv4,5,0);
+  cv3lv4 = car(4,1,2);
+  placementV(grild,cv3lv4,0,4);
+  cv4lv4 = car(5,1,2);
+  placementV(grild,cv4lv4,2,4);
+  cv5lv4 = car(6,1,3);
+  placementV(grild,cv5lv4,3,3);
+  ch1lv4 = car(7,0,2);
+  placementV(grild,ch1lv4,3,0);
+  ch2lv4 = car(8,0,2);
+  placementV(grild,ch2lv4,4,5);
 
   levels[3].numLV = 4; 
+  levels[3].nbCoupMin = 6;
   levels[3].vTab[0] = null;
   levels[3].vTab[1] = c4;
+  levels[3].vTab[1] = cv1lv4;
+  levels[3].vTab[1] = cv2lv4;
+  levels[3].vTab[1] = cv3lv4;
+  levels[3].vTab[1] = cv4lv4;
+  levels[3].vTab[1] = cv5lv4;
+  levels[3].vTab[1] = ch1lv4;
+  levels[3].vTab[1] = ch2lv4;
+
 }
 
 function instanceLv5(){
@@ -885,9 +908,16 @@ function render() {
     // Voiture principale  
     afficherCases(grild, c4);
     //voiture verticale
+    afficherCases(grild,cv1lv4);
+    afficherCases(grild,cv3lv4);
+    afficherCases(grild,cv4lv4);
     //voiture horizontale
+    afficherCases(grild,ch1lv4);
+    afficherCases(grild,ch2lv4);
     //camion vertical 
-    //camion horizontal
+    afficherCases(grild,cv2lv4);
+    afficherCases(grild,cv5lv4);
+
   }
   
 
