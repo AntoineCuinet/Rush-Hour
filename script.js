@@ -275,7 +275,7 @@ let ch3lv2;
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
-  if(levels[0].completed){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[0].completed==false){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -306,7 +306,7 @@ let ch4lv3;
 
 const caseLevel3 = document.querySelector(".lv3");
 caseLevel3.addEventListener("click", function(){
-  if(levels[1].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[1].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -336,7 +336,7 @@ let ch2lv4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
-  if(levels[2].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[2].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -366,7 +366,7 @@ let ch3lv5;
 
 const caseLevel5 = document.querySelector(".lv5");
 caseLevel5.addEventListener("click", function(){
-  if(levels[3].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[3].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -397,7 +397,7 @@ let ch3lv6;
 
 const caseLevel6 = document.querySelector(".lv6");
 caseLevel6.addEventListener("click", function(){
-  if(levels[4].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[4].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -431,7 +431,7 @@ let ch4lv7;
 
 const caseLevel7 = document.querySelector(".lv7");
 caseLevel7.addEventListener("click", function(){
-  if(levels[5].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[5].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -463,7 +463,7 @@ let ch3lv8;
 
 const caseLevel8 = document.querySelector(".lv8");
 caseLevel8.addEventListener("click", function(){
-  if(levels[6].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[6].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -496,7 +496,7 @@ let ch4lv9;
 
 const caseLevel9 = document.querySelector(".lv9");
 caseLevel9.addEventListener("click", function(){
-  if(levels[7].completed){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[7].completed==false){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -704,10 +704,36 @@ function instanceLv6(){
   // Placement de la voiture rouge sur la grille
   c6 = car(1,0,2);
   placementV(grild, c6, 0,2);
+  cv1lv6 = car(2,1,2);
+  placementV(grild,cv1lv6,2,0);
+  cv2lv6 = car(3,1,2);
+  placementV(grild,cv2lv6,2,2);
+  cv3lv6 = car(4,1,3);
+  placementV(grild,cv3lv6,3,1);
+  cv4lv6 = car(5,1,3);
+  placementV(grild,cv4lv6,5,1);
+  cv5lv6 = car(6,1,2);
+  placementV(grild,cv5lv6,0,4);
+  ch1lv6 = car(7,0,2);
+  placementV(grild,ch1lv6,4,0);
+  ch2lv6 = car(8,0,2);
+  placementV(grild,ch2lv6,2,4);
+  ch3lv6 = car(9,0,3);
+  placementV(grild,ch3lv6,3,5);
+  
 
   levels[5].numLV = 6; 
+  levels[5].nbCoupMin = 12;
   levels[5].vTab[0] = null;
   levels[5].vTab[1] = c6;
+  levels[5].vTab[2] = cv1lv6;
+  levels[5].vTab[3] = cv2lv6;
+  levels[5].vTab[4] = cv3lv6;
+  levels[5].vTab[5] = cv4lv6;
+  levels[5].vTab[6] = cv5lv6;
+  levels[5].vTab[7] = ch1lv6;
+  levels[5].vTab[8] = ch2lv6;
+  levels[5].vTab[9] = ch3lv6;
 }
 
 function instanceLv7(){
@@ -718,10 +744,45 @@ function instanceLv7(){
   // Placement de la voiture rouge sur la grille
   c7 = car(1,0,2);
   placementV(grild, c7, 0,2);
+  cv1lv7 = car(2,1,2);
+  placementV(grild, cv1lv7,1,0);
+  cv2lv7 = car(3,1,2);
+  placementV(grild, cv2lv7,5,1);
+  cv3lv7 = car(4,1,3);
+  placementV(grild, cv3lv7,4,2);
+  cv4lv7 = car(5,1,2);
+  placementV(grild, cv4lv7,1,3);
+  cv5lv7 = car(6,1,2);
+  placementV(grild, cv5lv7,2,3);
+  cv6lv7 = car(7,1,3);
+  placementV(grild, cv6lv7,3,3);
+  cv7lv7 = car(8,1,2);
+  placementV(grild, cv7lv7,5,3);
+  ch1lv7 = car(9,0,2);
+  placementV(grild, ch1lv7,2,0);
+  ch2lv7 = car(10,0,2);
+  placementV(grild, ch2lv7,4,0);
+  ch3lv7 = car(11,0,2);
+  placementV(grild, ch3lv7,3,1);
+  ch4lv7 = car(12,0,2);
+  placementV(grild, ch4lv7,4,5);
+
 
   levels[6].numLV = 7; 
+  levels[6].nbCoupMin = 10;
   levels[6].vTab[0] = null;
   levels[6].vTab[1] = c7;
+  levels[6].vtab[2] = cv1lv7;
+  levels[6].vtab[3] = cv2lv7;
+  levels[6].vtab[4] = cv3lv7;
+  levels[6].vtab[5] = cv4lv7;
+  levels[6].vtab[6] = cv5lv7;
+  levels[6].vtab[7] = cv6lv7;
+  levels[6].vtab[8] = cv7lv7;
+  levels[6].vtab[9] = ch1lv7;
+  levels[6].vtab[10] = ch2lv7;
+  levels[6].vtab[11] = ch3lv7;
+  levels[6].vtab[12] = ch4lv7;
 }
 
 function instanceLv8(){
@@ -731,11 +792,40 @@ function instanceLv8(){
   reinitialisationGrille(grild);
   // Placement de la voiture rouge sur la grille
   c8 = car(1,0,2);
-  placementV(grild, c8, 0,2);
+  placementV(grild,c8, 0,2);
+  cv1lv8 = car(2,1,2);
+  placementV(grild,cv1lv8,2,0);
+  cv2lv8 = car(3,1,3);
+  placementV(grild,cv2lv8,3,1);
+  cv3lv8 = car(4,1,2);
+  placementV(grild,cv3lv8,4,1);
+  cv4lv8 = car(5,1,2);
+  placementV(grild,cv4lv8,5,1);
+  cv5lv8 = car(6,1,2);
+  placementV(grild,cv5lv8,4,3);
+  cv6lv8 = car(7,1,2);
+  placementV(grild,cv6lv8,0,4);
+  ch1lv8 = car(8,0,3);
+  placementV(grild,ch1lv8,3,0);
+  ch2lv8 = car(9,0,3);
+  placementV(grild,ch2lv8,0,3);
+  ch3lv8 = car(10,0,2);
+  placementV(grild, ch3lv8,3,5);
+  
 
   levels[7].numLV = 8; 
+  levels[7].nbCoupMin = 16;
   levels[7].vTab[0] = null;
   levels[7].vTab[1] = c8;
+  levels[7].vTab[2] = cv1lv8;
+  levels[7].vTab[3] = cv2lv8;
+  levels[7].vTab[4] = cv3lv8;
+  levels[7].vTab[5] = cv4lv8;
+  levels[7].vTab[6] = cv5lv8;
+  levels[7].vTab[7] = cv6lv8;
+  levels[7].vTab[8] = ch1lv8;
+  levels[7].vTab[9] = ch2lv8;
+  levels[7].vTab[10] = ch3lv8;
 }
 
 function instanceLv9(){
@@ -748,6 +838,7 @@ function instanceLv9(){
   placementV(grild, c9, 0,2);
 
   levels[8].numLV = 9; 
+  levels[8].nbCoupMin = 21;
   levels[8].vTab[0] = null;
   levels[8].vTab[1] = c9;
 }
@@ -976,9 +1067,17 @@ function render() {
     // Voiture principale  
     afficherCases(grild, c6);
     //voiture verticale
+    afficherCases(grild,cv1lv6);
+    afficherCases(grild,cv2lv6);
+    afficherCases(grild,cv5lv6);
     //voiture horizontale
+    afficherCases(grild,ch1lv6);
+    afficherCases(grild,ch2lv6);
     //camion vertical 
+    afficherCases(grild,cv3lv6);
+    afficherCases(grild,cv4lv6);
     //camion horizontal
+    afficherCases(grild,ch3lv6);
   }
  
 
@@ -993,9 +1092,19 @@ function render() {
     // Voiture principale  
     afficherCases(grild, c7);
     //voiture verticale
+    afficherCases(grild,cv1lv7);
+    afficherCases(grild,cv2lv7);
+    afficherCases(grild,cv4lv7);
+    afficherCases(grild,cv5lv7);
+    afficherCases(grild,cv7lv7);
     //voiture horizontale
+    afficherCases(grild,ch1lv7);
+    afficherCases(grild,ch2lv7);
+    afficherCases(grild,ch3lv7);
+    afficherCases(grild,ch4lv7);
     //camion vertical 
-    //camion horizontal
+    afficherCases(grild,cv3lv7);
+    afficherCases(grild,cv6lv7);
   }
 
 
@@ -1009,9 +1118,18 @@ function render() {
     // Voiture principale  
     afficherCases(grild, c8);
     //voiture verticale
+    afficherCases(grild,cv1lv8);
+    afficherCases(grild,cv3lv8);
+    afficherCases(grild,cv4lv8);
+    afficherCases(grild,cv5lv8);
+    afficherCases(grild,cv6lv8);
     //voiture horizontale
+    afficherCases(grild,ch3lv8);
     //camion vertical 
+    afficherCases(grild,cv2lv8);
     //camion horizontal
+    afficherCases(grild,ch1lv8);
+    afficherCases(grild,ch2lv8);
   }
   
 
