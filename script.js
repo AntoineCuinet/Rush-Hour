@@ -668,10 +668,32 @@ function instanceLv5(){
   // Placement de la voiture rouge sur la grille
   c5 = car(1,0,2);
   placementV(grild, c5, 0,2);
+  cv1lv5 = car(2,1,3);
+  placementV(grild,cv1lv5,5,0);
+  cv2lv5 = car(3,1,2);
+  placementV(grild,cv2lv5,0,4);
+  cv3lv5 = car(4,1,2);
+  placementV(grild,cv3lv5,2,3);
+  cv4lv5 = car(5,1,3);
+  placementV(grild,cv4lv5,3,3);
+  ch1lv5 = car(6,0,2);
+  placementV(grild,ch1lv5,2,0);
+  ch2lv5 = car(7,0,2);
+  placementV(grild,ch2lv5,4,3);
+  ch3lv5 = car(8,0,2);
+  placementV(grild,ch3lv5,4,5);
 
   levels[4].numLV = 5; 
+  levels[4].nbCoupMin = 9;
   levels[4].vTab[0] = null;
   levels[4].vTab[1] = c5;
+  levels[4].vTab[2] = cv1lv5;
+  levels[4].vTab[3] = cv2lv5;
+  levels[4].vTab[4] = cv3lv5;
+  levels[4].vTab[5] = cv4lv5;
+  levels[4].vTab[6] = ch1lv5;
+  levels[4].vTab[7] = ch2lv5;
+  levels[4].vTab[8] = ch3lv5;
 }
 
 function instanceLv6(){
@@ -931,9 +953,16 @@ function render() {
     // Voiture principale  
     afficherCases(grild, c5);
     //voiture verticale
+    afficherCases(grild,cv2lv5);
+    afficherCases(grild,cv3lv5);
     //voiture horizontale
+    afficherCases(grild,ch1lv5);
+    afficherCases(grild,ch2lv5);
+    afficherCases(grild,ch3lv5);
     //camion vertical 
-    //camion horizontal
+    afficherCases(grild,cv1lv5);
+    afficherCases(grild,cv4lv5);
+  
   }
   
 
