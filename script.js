@@ -259,7 +259,13 @@ caseLevel1.addEventListener("click", function(){
 });
 
 
-let c2;
+let c2; //voiture principale du niveau 2 
+let cv1lv2;
+let cv2lv2;
+let ch1lv2;
+let ch2lv2;
+let ch3lv2;
+
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
@@ -482,10 +488,25 @@ function instanceLv2(){
   // Placement de la voiture rouge sur la grille
   c2 = car(1,0,2);
   placementV(grild, c2, 0,2);
+  cv1lv2 = car(2,1,2);
+  placementV(grild,cv1lv2,5,1);
+  cv2lv2 = car(3,1,3);
+  placementV(grild,cv2lv2,2,2);
+  ch1lv2 = car(4,0,2);
+  placementV(grild,ch1lv2,0,0);
+  ch2lv2 = car(5,0,3);
+  placementV(grild, ch2lv2,3,0);
+  ch3lv2 = car(6,0,2);
+  placementV(grild, ch3lv2,4,3);
 
   levels[1].numLV = 2; 
   levels[1].vTab[0] = null;
   levels[1].vTab[1] = c2;
+  levels[1].vTab[2] = cv1lv2;
+  levels[1].vTab[3] = cv2lv2;
+  levels[1].vTab[4] = ch1lv2;
+  levels[1].vTab[5] = ch2lv2;
+  levels[1].vTab[6] = ch3lv2;
 }
 
 function instanceLv3(){
@@ -718,6 +739,16 @@ function render() {
     context.clearRect(0, 0, context.width, context.height);
     // Voiture principale  
     afficherCases(grild, c2);
+    //voiture verticale
+    afficherCases(grild,cv1lv2);
+    //voiture horizontale
+    afficherCases(grild,ch1lv2);
+    afficherCases(grild,ch3lv2);
+    //camion vertical
+    afficherCases(grild,cv2lv2);
+    //camion horizontal
+    afficherCases(grild, ch2lv2);
+    
   }
 
 
