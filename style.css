@@ -416,9 +416,6 @@ p{
 .lv2.active{
     background-image: none;
 }
-.lv2:hover.active{
-    background-image: none;
-}
 
 /* Fenetre modal pour la victoire */
 .modalWin{
