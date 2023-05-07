@@ -97,6 +97,14 @@ p{
     margin: 0;
     color: #2f2f2f;
 }
+.starsLevel1{
+    position: absolute;
+    margin-left: 5px;
+    bottom: 3px;
+}
+.starsLevel1 > p{
+    color: #2f2f2f;
+}
 
 /* Affichage des boutons */
 .buttons{

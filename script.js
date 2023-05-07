@@ -134,7 +134,38 @@ function buttonNextActive(){
   if(isPaused2){
     audio2.play();
   }
-  console.log(win);
+  // affichage cadenas
+  switch(currentLevel){
+    case 0:
+      caseLevel2.classList.toggle("active");
+    break;
+    case 1:
+      caseLevel3.classList.toggle("active");
+    break;
+    case 2:
+      caseLevel4.classList.toggle("active");
+    break;
+    case 3:
+      caseLevel5.classList.toggle("active");
+    break;
+    case 4:
+      caseLevel6.classList.toggle("active");
+    break;
+    case 5:
+      caseLevel7.classList.toggle("active");
+    break;
+    case 6:
+      caseLevel8.classList.toggle("active");
+    break;
+    case 7:
+      caseLevel9.classList.toggle("active");
+    break;
+    case 8:
+      caseLevel9.classList.toggle("active");  // jeu fini lorsque lv9 fini
+    break;
+  }
+  if (level.style.display == "flex") level.style.display = "none";
+    else level.style.display = "flex"; 
 } 
 
 
@@ -1339,38 +1370,7 @@ function isWin(){
     if(levels[currentLevel].bestScore==null || levels[currentLevel].bestScore>levels[currentLevel].nbMouv){
       levels[currentLevel].bestScore = levels[currentLevel].nbMouv;
     }
-    levels[currentLevel].completed = true;
-
-    // affichage cadenas
-    switch(currentLevel){
-      case 0:
-        caseLevel2.classList.toggle("active");
-      break;
-      case 1:
-        caseLevel3.classList.toggle("active");
-      break;
-      case 2:
-        caseLevel4.classList.toggle("active");
-      break;
-      case 3:
-        caseLevel5.classList.toggle("active");
-      break;
-      case 4:
-        caseLevel6.classList.toggle("active");
-      break;
-      case 5:
-        caseLevel7.classList.toggle("active");
-      break;
-      case 6:
-        caseLevel8.classList.toggle("active");
-      break;
-      case 7:
-        caseLevel9.classList.toggle("active");
-      break;
-      case 8:
-        caseLevel9.classList.toggle("active");  // jeu fini lorsque lv9 fini
-      break;
-    }
+    levels[currentLevel].completed = true; 
     bestscore.textContent = levels[currentLevel].bestScore;
     calculNbEtoile();
   }
