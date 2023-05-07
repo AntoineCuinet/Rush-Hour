@@ -175,6 +175,7 @@ const scoreDiv = document.getElementById("score");
 const bestscore = document.getElementById("bestscore");
 // bestscore.textContent = levels[currentLevel].bestScore;  // a mettre dans la fonction pour avoir le best score
 const nbStars = document.getElementById("nbStars");
+const nbStars1 = document.getElementById("nbStars1");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -231,7 +232,7 @@ let currentLevel = null;
 // tableau contenant les différents levels contenant des instances de lv 
 let levels= Array(9);
 for(let i =0; i<levels.length; i++){
-  levels[i]= {numLV :null, nbCoupMin:null, vTab:Array(), nbMouv:0, bestScore:null, completed:false};
+  levels[i]= {numLV :null, nbCoupMin:null, vTab:Array(), nbMouv:0, bestScore:null, stars:null, completed:false};
 };
 
 // tableau (matrice) grille de jeu
@@ -291,6 +292,7 @@ caseLevel1.addEventListener("click", function(){
   currentLevel = 0; 
   winAux[currentLevel] = false;
   levels[currentLevel].nbMouv =0;
+  nbStars1.textContent = levels[currentLevel].stars;
   scoreDiv.textContent = levels[currentLevel].nbMouv;
   bestscore.textContent = levels[currentLevel].bestScore;
 });
@@ -315,6 +317,7 @@ caseLevel2.addEventListener("click", function(){
     currentLevel = 1;
     winAux[currentLevel] = false;
     levels[currentLevel].nbMouv =0;
+    nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -346,6 +349,7 @@ caseLevel3.addEventListener("click", function(){
     currentLevel = 2;
     winAux[currentLevel] = false;
     levels[currentLevel].nbMouv =0;
+    nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -376,6 +380,7 @@ caseLevel4.addEventListener("click", function(){
     currentLevel = 3;
     winAux[currentLevel] = false;
     levels[currentLevel].nbMouv =0;
+    nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -406,6 +411,7 @@ caseLevel5.addEventListener("click", function(){
     currentLevel = 4;
     winAux[currentLevel] = false;
     levels[currentLevel].nbMouv =0;
+    nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -437,6 +443,7 @@ caseLevel6.addEventListener("click", function(){
     currentLevel = 5;
     winAux[currentLevel] = false;
     levels[currentLevel].nbMouv =0;
+    nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -471,6 +478,7 @@ caseLevel7.addEventListener("click", function(){
     currentLevel = 6;
     winAux[currentLevel] = false;
     levels[currentLevel].nbMouv =0;
+    nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -503,6 +511,7 @@ caseLevel8.addEventListener("click", function(){
     currentLevel = 7;
     winAux[currentLevel] = false;
     levels[currentLevel].nbMouv =0;
+    nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -536,6 +545,7 @@ caseLevel9.addEventListener("click", function(){
     currentLevel = 8;
     winAux[currentLevel] = false;
     levels[currentLevel].nbMouv =0;
+    nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -1384,10 +1394,16 @@ function isWin(){
 function calculNbEtoile(){
   if(levels[currentLevel].nbCoupMin >= levels[currentLevel].nbMouv){
     nbStars.textContent = "3/3";
+    levels[currentLevel].stars = 3;
+    nbStars1.textContent = levels[currentLevel].stars;
   } else if((levels[currentLevel].nbCoupMin)*(3/2) > levels[currentLevel].nbMouv){
     nbStars.textContent = "2/3";
+    levels[currentLevel].stars = 2;
+    nbStars1.textContent = levels[currentLevel].stars;
   } else {
     nbStars.textContent = "1/3";
+    levels[currentLevel].stars = 1;
+    nbStars1.textContent = levels[currentLevel].stars; 
   }
 }
 
