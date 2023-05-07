@@ -275,7 +275,7 @@ let ch3lv2;
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
-  if(levels[0].completed){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[0].completed==false){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -306,7 +306,7 @@ let ch4lv3;
 
 const caseLevel3 = document.querySelector(".lv3");
 caseLevel3.addEventListener("click", function(){
-  if(levels[1].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[1].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -336,7 +336,7 @@ let ch2lv4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
-  if(levels[2].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[2].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -366,7 +366,7 @@ let ch3lv5;
 
 const caseLevel5 = document.querySelector(".lv5");
 caseLevel5.addEventListener("click", function(){
-  if(levels[3].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[3].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -397,7 +397,7 @@ let ch3lv6;
 
 const caseLevel6 = document.querySelector(".lv6");
 caseLevel6.addEventListener("click", function(){
-  if(levels[4].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[4].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -431,7 +431,7 @@ let ch4lv7;
 
 const caseLevel7 = document.querySelector(".lv7");
 caseLevel7.addEventListener("click", function(){
-  if(levels[5].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[5].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -463,7 +463,7 @@ let ch3lv8;
 
 const caseLevel8 = document.querySelector(".lv8");
 caseLevel8.addEventListener("click", function(){
-  if(levels[6].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[6].completed==false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -496,7 +496,7 @@ let ch4lv9;
 
 const caseLevel9 = document.querySelector(".lv9");
 caseLevel9.addEventListener("click", function(){
-  if(levels[7].completed){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[7].completed==false){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -836,11 +836,41 @@ function instanceLv9(){
   // Placement de la voiture rouge sur la grille
   c9 = car(1,0,2);
   placementV(grild, c9, 0,2);
+  cv1lv9 = car(2,1,2);
+  placementV(grild,cv1lv9,0,0);
+  cv2lv9 = car(3,1,3);
+  placementV(grild,cv2lv9,5,0);
+  cv3lv9 = car(4,1,3);
+  placementV(grild,cv3lv9,2,1);
+  cv4lv9 = car(5,1,2);
+  placementV(grild,cv4lv9,3,1);
+  cv5lv9 = car(6,1,2);
+  placementV(grild,cv5lv9,3,3);
+  cv6lv9 = car(7,1,2);
+  placementV(grild,cv6lv9,4,4);
+  ch1lv9 = car(8,0,3);
+  placementV(grild,ch1lv9,1,0);
+  ch2lv9 = car(9,0,2);
+  placementV(grild,ch2lv9,4,3);
+  ch3lv9 = car(10,0,2);
+  placementV(grild,ch3lv9,1,4);
+  ch4lv9 = car(11,0,3);
+  placementV(grild,ch4lv9,1,5);
 
   levels[8].numLV = 9; 
   levels[8].nbCoupMin = 21;
   levels[8].vTab[0] = null;
   levels[8].vTab[1] = c9;
+  levels[8].vTab[2] = cv1lv9;
+  levels[8].vTab[3] = cv2lv9;
+  levels[8].vTab[4] = cv3lv9;
+  levels[8].vTab[5] = cv4lv9;
+  levels[8].vTab[6] = cv5lv9;
+  levels[8].vTab[7] = cv6lv9;
+  levels[8].vTab[8] = ch1lv9;
+  levels[8].vTab[9] = ch2lv9;
+  levels[8].vTab[10] = ch3lv9;
+  levels[8].vTab[11] = ch4lv9;
 }
 
 
@@ -1143,9 +1173,19 @@ function render() {
     // Voiture principale  
     afficherCases(grild, c9);
     //voiture verticale
+    afficherCases(grild,cv1lv9);
+    afficherCases(grild,cv4lv9);
+    afficherCases(grild,cv5lv9);
+    afficherCases(grild,cv6lv9);
     //voiture horizontale
+    afficherCases(grild,ch3lv9);
+    afficherCases(grild,ch2lv9);
     //camion vertical 
+    afficherCases(grild,cv2lv9);
+    afficherCases(grild,cv3lv9);
     //camion horizontal
+    afficherCases(grild,ch1lv9);
+    afficherCases(grild,ch4lv9);
   }
 }
 
