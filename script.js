@@ -11,10 +11,12 @@ let audio2 = new Audio();
 let audio3 = new Audio();
 let audio4 = new Audio();
 let audio5 = new Audio();
+let audio6 = new Audio();
 audio2.src = 'click.mp3';
 audio3.src = 'selection.wav';
 audio4.src = 'falseSon.mp3';
 audio5.src = 'deplacementSon.wav';
+audio6.src = 'son6.wav';
 let isPaused2 = true;
 // annimation son
 buttonAudio2.addEventListener("click", function() { 
@@ -123,6 +125,9 @@ ButtonLevels.addEventListener("click", function(){
 
 let win=false;
 let winAux = Array(9);
+
+let auxMusic = Array(9);
+
 // bouton et affichage de la page modale lors de la victoire
 const modalWin = document.querySelector(".modalWin");
 const buttonNext = document.getElementById('butonNextLevel');
@@ -291,6 +296,7 @@ caseLevel1.addEventListener("click", function(){
   instanceLv1();
   currentLevel = 0; 
   winAux[currentLevel] = false;
+  auxMusic[currentLevel] = true;
   levels[currentLevel].nbMouv =0;
   nbStars1.textContent = levels[currentLevel].stars;
   scoreDiv.textContent = levels[currentLevel].nbMouv;
@@ -316,6 +322,7 @@ caseLevel2.addEventListener("click", function(){
     instanceLv2();
     currentLevel = 1;
     winAux[currentLevel] = false;
+    auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
     nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
@@ -348,6 +355,7 @@ caseLevel3.addEventListener("click", function(){
     instanceLv3();
     currentLevel = 2;
     winAux[currentLevel] = false;
+    auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
     nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
@@ -371,7 +379,7 @@ let ch2lv4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
-  if(levels[2].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[2].completed == false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -379,6 +387,7 @@ caseLevel4.addEventListener("click", function(){
     instanceLv4();
     currentLevel = 3;
     winAux[currentLevel] = false;
+    auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
     nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
@@ -410,6 +419,7 @@ caseLevel5.addEventListener("click", function(){
     instanceLv5();
     currentLevel = 4;
     winAux[currentLevel] = false;
+    auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
     nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
@@ -442,6 +452,7 @@ caseLevel6.addEventListener("click", function(){
     instanceLv6();
     currentLevel = 5;
     winAux[currentLevel] = false;
+    auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
     nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
@@ -477,6 +488,7 @@ caseLevel7.addEventListener("click", function(){
     instanceLv7();
     currentLevel = 6;
     winAux[currentLevel] = false;
+    auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
     nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
@@ -510,6 +522,7 @@ caseLevel8.addEventListener("click", function(){
     instanceLv8();
     currentLevel = 7;
     winAux[currentLevel] = false;
+    auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
     nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
@@ -544,6 +557,7 @@ caseLevel9.addEventListener("click", function(){
     instanceLv9();
     currentLevel = 8;
     winAux[currentLevel] = false;
+    auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
     nbStars1.textContent = levels[currentLevel].stars;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
@@ -1425,8 +1439,11 @@ function isWin(){
     calculNbEtoile();
   }
   if(grild[5][2] == 1 && winAux[currentLevel] == false){ 
-  console.log(win);
     win = true;
+    if(isPaused2 && auxMusic[currentLevel]){ 
+      audio6.play();
+      auxMusic[currentLevel] = false;
+    }
   }
 }
 
