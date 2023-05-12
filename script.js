@@ -142,31 +142,31 @@ function buttonNextActive(){
   // affichage cadenas
   switch(currentLevel){
     case 0:
-      caseLevel2.classList.toggle("active");
+      caseLevel2.classList.add("active");
     break;
     case 1:
-      caseLevel3.classList.toggle("active");
+      caseLevel3.classList.add("active");
     break;
     case 2:
-      caseLevel4.classList.toggle("active");
+      caseLevel4.classList.add("active");
     break;
     case 3:
-      caseLevel5.classList.toggle("active");
+      caseLevel5.classList.add("active");
     break;
     case 4:
-      caseLevel6.classList.toggle("active");
+      caseLevel6.classList.add("active");
     break;
     case 5:
-      caseLevel7.classList.toggle("active");
+      caseLevel7.classList.add("active");
     break;
     case 6:
-      caseLevel8.classList.toggle("active");
+      caseLevel8.classList.add("active");
     break;
     case 7:
-      caseLevel9.classList.toggle("active");
+      caseLevel9.classList.add("active");
     break;
     case 8:
-      caseLevel9.classList.toggle("active");  // jeu fini lorsque lv9 fini
+      caseLevel9.classList.add("active");  // jeu fini lorsque lv9 fini
     break;
   }
   if (level.style.display == "flex") level.style.display = "none";
@@ -215,6 +215,8 @@ const camion2H = new Image();
 camion2H.src = "01 copie.png";
 const camion3H = new Image();
 camion3H.src = "02 copie.png";
+
+let sprite = {sprite1Etoile: new Image().src = ""};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
