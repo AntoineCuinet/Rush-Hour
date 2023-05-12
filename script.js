@@ -701,17 +701,19 @@ function instanceLv4(){
   ch2lv4 = car(8,0,2);
   placementV(grild,ch2lv4,4,5);
 
+
   levels[3].numLV = 4; 
   levels[3].nbCoupMin = 6;
   levels[3].vTab[0] = null;
   levels[3].vTab[1] = c4;
-  levels[3].vTab[1] = cv1lv4;
-  levels[3].vTab[1] = cv2lv4;
-  levels[3].vTab[1] = cv3lv4;
-  levels[3].vTab[1] = cv4lv4;
-  levels[3].vTab[1] = cv5lv4;
-  levels[3].vTab[1] = ch1lv4;
-  levels[3].vTab[1] = ch2lv4;
+  levels[3].vTab[2] = cv1lv4;
+  levels[3].vTab[3] = cv2lv4;
+  levels[3].vTab[4] = cv3lv4;
+  levels[3].vTab[5] = cv4lv4;
+  levels[3].vTab[6] = cv5lv4;
+  levels[3].vTab[7] = ch1lv4;
+  levels[3].vTab[8] = ch2lv4;
+  
 
 }
 
