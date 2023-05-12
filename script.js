@@ -182,6 +182,23 @@ const bestscore = document.getElementById("bestscore");
 const nbStars = document.getElementById("nbStars");
 const nbStars1 = document.getElementById("nbStars1");
 
+// fonction qui affiche les étoiles
+function afficherEtoiles(currentLevel){
+  switch(levels[currentLevel].stars){
+    case 1:
+      nbStars1.src = "sprite1Etoile.png";
+    break;
+    case 2:
+      nbStars1.src = "sprite2Etoile.png";
+    break;
+    case 3:
+      nbStars1.src = "sprite3Etoile.png";
+    break;
+    default:
+      nbStars1.src = "";
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////   Déclaration des sprites   //////////////////////////////////////
@@ -216,7 +233,7 @@ camion2H.src = "01 copie.png";
 const camion3H = new Image();
 camion3H.src = "02 copie.png";
 
-let sprite = {sprite1Etoile: new Image().src = ""};
+// let sprite = {sprite1Etoile: new Image().src = ""};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -300,7 +317,7 @@ caseLevel1.addEventListener("click", function(){
   winAux[currentLevel] = false;
   auxMusic[currentLevel] = true;
   levels[currentLevel].nbMouv =0;
-  nbStars1.textContent = levels[currentLevel].stars;
+  afficherEtoiles(currentLevel);
   scoreDiv.textContent = levels[currentLevel].nbMouv;
   bestscore.textContent = levels[currentLevel].bestScore;
 });
@@ -326,7 +343,7 @@ caseLevel2.addEventListener("click", function(){
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -359,7 +376,7 @@ caseLevel3.addEventListener("click", function(){
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -381,7 +398,7 @@ let ch2lv4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
-  if(levels[2].completed == false){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[2].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
     // son click
     if(isPaused2){
       audio2.play();
@@ -391,7 +408,7 @@ caseLevel4.addEventListener("click", function(){
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -423,7 +440,7 @@ caseLevel5.addEventListener("click", function(){
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -456,7 +473,7 @@ caseLevel6.addEventListener("click", function(){
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -492,7 +509,7 @@ caseLevel7.addEventListener("click", function(){
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -526,7 +543,7 @@ caseLevel8.addEventListener("click", function(){
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -561,7 +578,7 @@ caseLevel9.addEventListener("click", function(){
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
     scoreDiv.textContent = levels[currentLevel].nbMouv;
     bestscore.textContent = levels[currentLevel].bestScore;
   } else {
@@ -1441,6 +1458,7 @@ function isWin(){
     levels[currentLevel].completed = true; 
     bestscore.textContent = levels[currentLevel].bestScore;
     calculNbEtoile();
+    afficherEtoiles(currentLevel);
   }
   if(grild[5][2] == 1 && winAux[currentLevel] == false){ 
     win = true;
