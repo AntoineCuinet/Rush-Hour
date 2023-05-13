@@ -178,24 +178,24 @@ function buttonNextActive(){
 const scoreDiv = document.getElementById("score");
 // pour l'affichage du best score
 const bestscore = document.getElementById("bestscore");
-// bestscore.textContent = levels[currentLevel].bestScore;  // a mettre dans la fonction pour avoir le best score
-const nbStars = document.getElementById("nbStars");
-const nbStars1 = document.getElementById("nbStars1");
+const nbStars1 = document.getElementsByClassName("nbStars1");
 
 // fonction qui affiche les étoiles
 function afficherEtoiles(currentLevel){
-  switch(levels[currentLevel].stars){
-    case 1:
-      nbStars1.src = "sprite1Etoile.png";
-    break;
-    case 2:
-      nbStars1.src = "sprite2Etoile.png";
-    break;
-    case 3:
-      nbStars1.src = "sprite3Etoile.png";
-    break;
-    default:
-      nbStars1.src = "";
+  for(let i = 0; i < nbStars1.length; i++){
+    switch(levels[currentLevel].stars){
+      case 1:
+        nbStars1[i].src = "sprite1Etoile.png";
+      break;
+      case 2:
+        nbStars1[i].src = "sprite2Etoile.png";
+      break;
+      case 3:
+        nbStars1[i].src = "sprite3Etoile.png";
+      break;
+      default:
+        nbStars1[i].src = "";
+    }
   }
 }
 
@@ -282,6 +282,9 @@ function newPos(i, j){
 }
 
 let posClic = newPos(0, 0);
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -587,6 +590,9 @@ caseLevel9.addEventListener("click", function(){
     }
   }
 });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// instance des levels
 
 
 function instanceLv1(){
@@ -949,7 +955,7 @@ function instanceLv9(){
   levels[8].vTab[11] = ch4lv9;
 }
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
@@ -987,65 +993,51 @@ function update(d) {
 
   // refresh
   const ButtonRefresh = document.querySelector(".refresh");
-  ButtonRefresh.addEventListener("click", Refreshective);
-  function Refreshective(){
+  ButtonRefresh.addEventListener("click", Refreshactive);
+  function Refreshactive(){
     // Réinitalisation de la grille
     switch(currentLevel){
       case 0:
         instanceLv1();
-        levels[currentLevel].nbMouv =0;
-        scoreDiv.textContent = levels[currentLevel].nbMouv;
+        remiseAZero();
       break;
       case 1:
         instanceLv2();
-        levels[currentLevel].nbMouv =0;
-        scoreDiv.textContent = levels[currentLevel].nbMouv;
+        remiseAZero();
       break;
       case 2:
         instanceLv3();
-        levels[currentLevel].nbMouv =0;
-        scoreDiv.textContent = levels[currentLevel].nbMouv;
+        remiseAZero();
       break;
       case 3:
         instanceLv4();
-        levels[currentLevel].nbMouv =0;
-        scoreDiv.textContent = levels[currentLevel].nbMouv;
+        remiseAZero();
       break;
       case 4:
         instanceLv5();
-        levels[currentLevel].nbMouv =0;
-        scoreDiv.textContent = levels[currentLevel].nbMouv;
+        remiseAZero();
       break;
       case 5:
         instanceLv6();
-        levels[currentLevel].nbMouv =0;
-        scoreDiv.textContent = levels[currentLevel].nbMouv;
+        remiseAZero();
       break;
       case 6:
         instanceLv7();
-        levels[currentLevel].nbMouv =0;
-        scoreDiv.textContent = levels[currentLevel].nbMouv;
+        remiseAZero();
       break;
       case 7:
         instanceLv8();
-        levels[currentLevel].nbMouv =0;
-        scoreDiv.textContent = levels[currentLevel].nbMouv;
+        remiseAZero();
       break;
       case 8:
         instanceLv9();
-        levels[currentLevel].nbMouv =0;
-        scoreDiv.textContent = levels[currentLevel].nbMouv;
+        remiseAZero();
       break;
     }
   }
   // gagne
   isWin();
 } 
-
-
-
-
-
 
 // Fonction réalisant le rendu de l'état du jeu
 function render() {
@@ -1265,12 +1257,13 @@ function render() {
   }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
+// remet a zero
+function remiseAZero(){
+  levels[currentLevel].nbMouv =0;
+  scoreDiv.textContent = levels[currentLevel].nbMouv;
+}
 
 //fonction qui place les voitures dans la grille à partir d'une case i et j, qui est la première case du véhicule, entrée en paramètres
 //elle verifie si i et j sont bien compris entre 0 et 5 et si on peut bien placer le vehicule a l'endroit souhaite 
@@ -1299,7 +1292,6 @@ function rechercheVehicule(grild, car){
   };
 }
 
-
 // Fonction pour réinitialiser la grille de jeu lors d'un changement de niveau
 function reinitialisationGrille(grild){
   for(let i =0; i<widthInBlocks; i++){
@@ -1312,10 +1304,9 @@ function reinitialisationGrille(grild){
 
 
 
-// affiche les autre cases
+// affiche les autre cases (la fonction ne peu pas vraiment être plus petite car un affiche des sprite différents)
 function afficherCases(grild, c){
   ind = rechercheVehicule(grild, c);
-  // console.log(ind);
 
   // affichage voiture principale (affichage spéciale car elle est rouge)
   if(c.orient==0 && c.taille==2 && c.numV == 1){
@@ -1374,8 +1365,6 @@ function afficherCases(grild, c){
     }
   }
 }
-
-
 
 //regarde si le déplacement est possible et déplacer la voiture
 //beaucoup de repetitions donc a essayer d'opti
@@ -1443,8 +1432,6 @@ function deplacementV(grild, car,x , y){
   }
 }
 
-
-
 // affiche un écran modal lors de la victoire
 function isWin(){
   // Affichage de la fenetre modale de la victoire
@@ -1469,23 +1456,19 @@ function isWin(){
   }
 }
 
-// fonction qui calcule et affiche de nombre d'étoiles à la fin d'une partie
+// Fonction qui calcule et affiche de nombre d'étoiles à la fin d'une partie
 function calculNbEtoile(){
   if(levels[currentLevel].nbCoupMin >= levels[currentLevel].nbMouv){
-    nbStars.textContent = "3/3";
     levels[currentLevel].stars = 3;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
   } else if((levels[currentLevel].nbCoupMin)*(3/2) > levels[currentLevel].nbMouv){
-    nbStars.textContent = "2/3";
     levels[currentLevel].stars = 2;
-    nbStars1.textContent = levels[currentLevel].stars;
+    afficherEtoiles(currentLevel);
   } else {
-    nbStars.textContent = "1/3";
     levels[currentLevel].stars = 1;
-    nbStars1.textContent = levels[currentLevel].stars; 
+    afficherEtoiles(currentLevel);
   }
 }
-
 
 // Fonction appelée lorsqu'une touche du clavier est appuyée
 // Associée à l'événement "keyDown"
@@ -1506,9 +1489,7 @@ function captureAppuiToucheClavier(event) {
   }
 }
 
-
-
-//Fonction appelée lorsque la souris est appuyée
+// Fonction appelée lorsque la souris est appuyée
 // Associée à l'événement "click"
 function captureClicSouris(event) {
   // calcul des coordonnées de la souris dans le canvas + conversion des clic en entier i: ligne et j: colonne
@@ -1519,6 +1500,7 @@ function captureClicSouris(event) {
   selectVehicule();
 }
 
+// 
 function selectVehicule(){
   let valeurCase=grild[posClic.i][posClic.j];
   if(valeurCase!=0){
