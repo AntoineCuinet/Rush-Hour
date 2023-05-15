@@ -302,6 +302,7 @@ let posClic = newPos(0, 0);
 /// cv + num voiture + numLv pour les voitures verticales
 /// ch + num voiture + numLv pour les voitures horizontales
 
+//déclaration des variables du level 1
 let c;
 let cv1lv1;
 let cv2lv1;
@@ -326,8 +327,8 @@ caseLevel1.addEventListener("click", function(){
   bestscore.textContent = levels[currentLevel].bestScore;
 });
 
-
-let c2; //voiture principale du niveau 2 
+//déclaration des variables du level 2
+let c2;  
 let cv1lv2;
 let cv2lv2;
 let ch1lv2;
@@ -357,7 +358,7 @@ caseLevel2.addEventListener("click", function(){
   }
 });
 
-
+//déclaration des variables du level 3
 let c3;
 let cv1lv3;
 let cv2lv3;
@@ -390,7 +391,7 @@ caseLevel3.addEventListener("click", function(){
   }
 });
 
-
+//déclaration des variables du level 4
 let c4;
 let cv1lv4;
 let cv2lv4;
@@ -422,7 +423,7 @@ caseLevel4.addEventListener("click", function(){
   }
 });
 
-
+//déclaration des variables du level 5
 let c5;
 let cv1lv5;
 let cv2lv5;
@@ -454,7 +455,7 @@ caseLevel5.addEventListener("click", function(){
   }
 });
 
-
+//déclaration des variables du level 6
 let c6;
 let cv1lv6;
 let cv2lv6;
@@ -487,7 +488,7 @@ caseLevel6.addEventListener("click", function(){
   }
 });
 
-
+//déclaration des variables du level 7
 let c7;
 let cv1lv7;
 let cv2lv7;
@@ -523,7 +524,7 @@ caseLevel7.addEventListener("click", function(){
   }
 });
 
-
+//déclaration des variables du level 8
 let c8;
 let cv1lv8;
 let cv2lv8;
@@ -557,7 +558,7 @@ caseLevel8.addEventListener("click", function(){
   }
 });
 
-
+//déclaration des variables du level 9
 let c9;
 let cv1lv9;
 let cv2lv9;
