@@ -1,4 +1,4 @@
-// Jeu Rush-Hour, créer par Magnin Julie et Cuinet Antoine, page js
+// Jeu Rush-Hour, créé par Magnin Julie et Cuinet Antoine, page js
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,7 +180,7 @@ const scoreDiv = document.getElementById("score");
 const bestscore = document.getElementById("bestscore");
 const nbStars1 = document.getElementsByClassName("nbStars1");
 
-// fonction qui affiche les étoiles
+//fonction qui affiche les étoiles lorsqu'un level est terminé
 function afficherEtoiles(currentLevel){
   for(let i = 0; i < nbStars1.length; i++){
     switch(levels[currentLevel].stars){
@@ -203,7 +203,7 @@ function afficherEtoiles(currentLevel){
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////   Déclaration des sprites   //////////////////////////////////////
 
-//voiture rouge
+//voiture rouge : voiture principale
 const redCarImage1 = new Image();
 redCarImage1.src = "Car2Part1D.png";
 const redCarImage2 = new Image();
@@ -273,7 +273,8 @@ function car(numV, orient, taille){  //pour orient, 0: horizontal et 1: vertical
   return {numV,orient,taille};
 } 
 
-let bufferCar = null; //retient le véhicule après le clic 
+//variable retenant le véhicule sélectionné à partir du clic 
+let bufferCar = null; 
 
 
 // objet position
@@ -1259,16 +1260,15 @@ function render() {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// remet a zero
+//fonction de remise à zéro 
 function remiseAZero(){
   levels[currentLevel].nbMouv =0;
   scoreDiv.textContent = levels[currentLevel].nbMouv;
 }
 
-//fonction qui place les voitures dans la grille à partir d'une case i et j, qui est la première case du véhicule, entrée en paramètres
-//elle verifie si i et j sont bien compris entre 0 et 5 et si on peut bien placer le vehicule a l'endroit souhaite 
+//fonction qui place un véhicule dans la grille à partir d'une case définie par i et j, correspondant à la première case du véhicule. 
 function placementV(grild,car,i,j){
-  //i et j sont correct
+  //verification de i et de j 
   if((i>=0 && i<=5)&&(j>=0 && j<=5)){
     for(let k=0;k<car.taille;k++){
       if(car.orient==0){
@@ -1280,7 +1280,7 @@ function placementV(grild,car,i,j){
   }
 }
 
-// Toujours la position de la première case du véhicule
+//fonction qui retourne la position i et j de la première case d'un véhicule 
 function rechercheVehicule(grild, car){
   for(let i = 0; i<widthInBlocks; i++){ 
     for(let j = 0; j<widthInBlocks; j++){
@@ -1292,7 +1292,7 @@ function rechercheVehicule(grild, car){
   };
 }
 
-// Fonction pour réinitialiser la grille de jeu lors d'un changement de niveau
+//fonction qui réinitialise la grille de jeu lors d'un changement de niveau
 function reinitialisationGrille(grild){
   for(let i =0; i<widthInBlocks; i++){
     grild[i]=Array(widthInBlocks);
@@ -1304,7 +1304,7 @@ function reinitialisationGrille(grild){
 
 
 
-// affiche les autre cases (la fonction ne peu pas vraiment être plus petite car un affiche des sprite différents)
+//fonction d'affichage des véhicules : utilisation de sprites
 function afficherCases(grild, c){
   ind = rechercheVehicule(grild, c);
 
@@ -1366,14 +1366,14 @@ function afficherCases(grild, c){
   }
 }
 
-//regarde si le déplacement est possible et déplacer la voiture
-//beaucoup de repetitions donc a essayer d'opti
+//fonction de déplacement d'une voiture dans la grille à partir de vecteur directionnel (x,y)(défini en fonction de l'appui des flèches du clavier)
+//la fonction regarde si le déplacement est possible et dans ce cas, elle déplace le véhicule dans la grille
 function deplacementV(grild, car,x , y){
   indv = rechercheVehicule(grild, car);
   let temp; // variable auxiliaire
   
   if (car.orient==0){
-    //gauche
+    //fleche gauche
     if(x==-1 && y==0){
       if((indv.i-1)<0||grild[indv.i-1][indv.j]!=0){
         return false;
@@ -1387,7 +1387,7 @@ function deplacementV(grild, car,x , y){
         }
       }
     } 
-    //droite
+    //fleche droite
     if (x==1 && y==0){
       if((indv.i+car.taille)>=widthInBlocks||grild[indv.i+car.taille][indv.j]!=0){
         return false;
@@ -1402,7 +1402,7 @@ function deplacementV(grild, car,x , y){
       }
     }
   } else {
-    //haut
+    //fleche haut
     if(x==0 && y==-1){
       if((indv.j-1)<0||grild[indv.i][indv.j-1]!=0){
         return false;
@@ -1416,7 +1416,7 @@ function deplacementV(grild, car,x , y){
         }
       }
     } 
-    //bas
+    //fleche bas
     if(x==0 && y==1){
       if((indv.j+car.taille)>=heightInBlocks||grild[indv.i][indv.j+car.taille]!=0){
         return false;
@@ -1456,7 +1456,7 @@ function isWin(){
   }
 }
 
-// Fonction qui calcule et affiche de nombre d'étoiles à la fin d'une partie
+//fonction qui calcule et affiche le nombre d'étoiles à la fin d'une partie
 function calculNbEtoile(){
   if(levels[currentLevel].nbCoupMin >= levels[currentLevel].nbMouv){
     levels[currentLevel].stars = 3;
@@ -1500,7 +1500,7 @@ function captureClicSouris(event) {
   selectVehicule();
 }
 
-// 
+//focntion qui sélectionne le véhicule lorsqu'on clique dessus
 function selectVehicule(){
   let valeurCase=grild[posClic.i][posClic.j];
   if(valeurCase!=0){
