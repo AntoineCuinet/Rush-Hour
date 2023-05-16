@@ -103,14 +103,6 @@ ButtonParam.addEventListener("click", function(){
   }
 });
 
-// Bonton refresh
-const refresh = document.querySelector(".refresh");
-refresh.addEventListener("click", function(){
-  if(isPaused2){
-    audio2.play();
-  }
-});
-
 // Bouton d'affichage des levels
 const ButtonLevels = document.querySelector(".levels");
 const level = document.querySelector(".modal1");
@@ -996,44 +988,49 @@ function update(d) {
   const ButtonRefresh = document.querySelector(".refresh");
   ButtonRefresh.addEventListener("click", Refreshactive);
   function Refreshactive(){
-    // Réinitialisation de la grille
-    switch(currentLevel){
-      case 0:
-        instanceLv1();
-        remiseAZero();
-      break;
-      case 1:
-        instanceLv2();
-        remiseAZero();
-      break;
-      case 2:
-        instanceLv3();
-        remiseAZero();
-      break;
-      case 3:
-        instanceLv4();
-        remiseAZero();
-      break;
-      case 4:
-        instanceLv5();
-        remiseAZero();
-      break;
-      case 5:
-        instanceLv6();
-        remiseAZero();
-      break;
-      case 6:
-        instanceLv7();
-        remiseAZero();
-      break;
-      case 7:
-        instanceLv8();
-        remiseAZero();
-      break;
-      case 8:
-        instanceLv9();
-        remiseAZero();
-      break;
+    if(isPaused2){
+      audio2.play();
+    }
+    if(!win){ // permet de ne pas pouvoir rafrechir le jeu lorsqu'on à gagner et ainsi gagner 3étoiles avec un best score à 0
+      // Réinitialisation de la grille
+      switch(currentLevel){
+        case 0:
+          instanceLv1();
+          remiseAZero();
+        break;
+        case 1:
+          instanceLv2();
+          remiseAZero();
+        break;
+        case 2:
+          instanceLv3();
+          remiseAZero();
+        break;
+        case 3:
+          instanceLv4();
+          remiseAZero();
+        break;
+        case 4:
+          instanceLv5();
+          remiseAZero();
+        break;
+        case 5:
+          instanceLv6();
+          remiseAZero();
+        break;
+        case 6:
+          instanceLv7();
+          remiseAZero();
+        break;
+        case 7:
+          instanceLv8();
+          remiseAZero();
+        break;
+        case 8:
+          instanceLv9();
+          remiseAZero();
+        break;
+      }
     }
   }
   // fonction qui vérifie si le joueur à gagner à chaque passage dans la boucle 
@@ -1495,19 +1492,21 @@ function afficherEtoiles(currentLevel){
 // Fonction appelée lorsqu'une touche du clavier est appuyée
 //    associée à l'événement "keyDown"
 function captureAppuiToucheClavier(event) {
-  switch(event.code){
-    case "ArrowRight":
-      deplacementV(grild, bufferCar, 1, 0);
-        break;
-    case "ArrowLeft":
-      deplacementV(grild, bufferCar, -1, 0);
+  if(!win){ // empeche le déplacement des véhicules lorsque le niveau est gagné
+    switch(event.code){
+      case "ArrowRight":
+        deplacementV(grild, bufferCar, 1, 0);
           break;
-    case "ArrowUp":
-      deplacementV(grild, bufferCar, 0, -1);
-        break;
-    case "ArrowDown":
-      deplacementV(grild, bufferCar, 0, 1);
-        break;
+      case "ArrowLeft":
+        deplacementV(grild, bufferCar, -1, 0);
+            break;
+      case "ArrowUp":
+        deplacementV(grild, bufferCar, 0, -1);
+          break;
+      case "ArrowDown":
+        deplacementV(grild, bufferCar, 0, 1);
+          break;
+    }
   }
 }
 
@@ -1528,12 +1527,14 @@ function selectVehicule(){
   let valeurCase=grild[posClic.i][posClic.j];
   if(valeurCase!=0){
     // On regarde dans le tableau vehicule par level la voiture associée à la valeur 
-    //    de la case et on retourne la voiture
-    bufferCar = levels[currentLevel].vTab[valeurCase];
-    levels[currentLevel].nbMouv +=1;
-    scoreDiv.textContent = levels[currentLevel].nbMouv;
-    if(isPaused2){
-      audio3.play();
+    //    de la case et on retourne la voitur
+    if(levels[currentLevel].vTab[valeurCase] != bufferCar){ // permet de ne pas incrémenter le score lorsqu'on re-clic sur la même voiture
+      bufferCar = levels[currentLevel].vTab[valeurCase];
+      levels[currentLevel].nbMouv +=1;
+      scoreDiv.textContent = levels[currentLevel].nbMouv;
+      if(isPaused2){
+        audio3.play();
+      }
     }
   }
 }
