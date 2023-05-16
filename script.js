@@ -273,7 +273,7 @@ function car(numV, orient, taille){  //pour orient, 0: horizontal et 1: vertical
   return {numV,orient,taille};
 } 
 
-//variable retenant le véhicule sélectionné à partir du clic 
+//variable retenant le véhicule sélectionné après le clic 
 let bufferCar = null; 
 
 
@@ -286,21 +286,6 @@ let posClic = newPos(0, 0);
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-/// Note pour créer un lv:
-/// Déclarer une nouvelle voiture en dehors de toute fonction
-/// La placer dans la grille avec la fonction placementV
-/// Déclarer le level (levels[].numLV et levels[].vTab[])
-
-/// Dans le level en question:
-///   afficherCases(grild, c);
-
-/// pour le nom des vehicules:
-/// c + numLv pour la voiture principale
-/// cv + num voiture + numLv pour les voitures verticales
-/// ch + num voiture + numLv pour les voitures horizontales
 
 //déclaration des variables du level 1
 let c;
@@ -338,7 +323,7 @@ let ch3lv2;
 
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
-  if(levels[0].completed){  // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[0].completed){  
     // son click
     if(isPaused2){
       audio2.play();
@@ -371,7 +356,7 @@ let ch4lv3;
 
 const caseLevel3 = document.querySelector(".lv3");
 caseLevel3.addEventListener("click", function(){
-  if(levels[1].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[1].completed){   
     // son click
     if(isPaused2){
       audio2.play();
@@ -403,7 +388,7 @@ let ch2lv4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
-  if(levels[2].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[2].completed){   
     // son click
     if(isPaused2){
       audio2.play();
@@ -435,7 +420,7 @@ let ch3lv5;
 
 const caseLevel5 = document.querySelector(".lv5");
 caseLevel5.addEventListener("click", function(){
-  if(levels[3].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[3].completed){   
     // son click
     if(isPaused2){
       audio2.play();
@@ -468,7 +453,7 @@ let ch3lv6;
 
 const caseLevel6 = document.querySelector(".lv6");
 caseLevel6.addEventListener("click", function(){
-  if(levels[4].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[4].completed){   
     // son click
     if(isPaused2){
       audio2.play();
@@ -504,7 +489,7 @@ let ch4lv7;
 
 const caseLevel7 = document.querySelector(".lv7");
 caseLevel7.addEventListener("click", function(){
-  if(levels[5].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[5].completed){   
     // son click
     if(isPaused2){
       audio2.play();
@@ -538,7 +523,7 @@ let ch3lv8;
 
 const caseLevel8 = document.querySelector(".lv8");
 caseLevel8.addEventListener("click", function(){
-  if(levels[6].completed){   // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[6].completed){   
     // son click
     if(isPaused2){
       audio2.play();
@@ -573,7 +558,7 @@ let ch4lv9;
 
 const caseLevel9 = document.querySelector(".lv9");
 caseLevel9.addEventListener("click", function(){
-  if(levels[7].completed){ // == false  /// rajoute ca dans le if pour voir et créer le niveau
+  if(levels[7].completed){ 
     // son click
     if(isPaused2){
       audio2.play();
@@ -605,16 +590,13 @@ function instanceLv1(){
   // Placement de la voiture rouge sur la grille
   c = car(1,0,2);
   placementV(grild, c, 0,2);
-  // Placement d'une voiture verticale
+  // Placement des autres véhicules 
   cv1lv1 = car(2,1,2);
   placementV(grild, cv1lv1, 4,1);
-  // Placement d'une voiture horizontale sur la grille
   ch1lv1 = car(3,0,2);
   placementV(grild, ch1lv1, 4,0);
-  // Placement d'un camion vertical sur la grille
   ch2lv1 = car(4,1,3);
   placementV(grild, ch2lv1, 3,2);
-  // Placement d'un camion horizontal sur la grille
   cv2lv1 = car(5,0,3);
   placementV(grild, cv2lv1, 0, 0);
   cv3lv1 = car(6,1,2);
@@ -622,7 +604,7 @@ function instanceLv1(){
   ch3lv1 = car(7,0,2);
   placementV(grild, ch3lv1, 3,5);
 
-  // level 1
+  // initialisation du tableau de véhicules du level 1
   levels[0].numLV = 1;
   levels[0].nbCoupMin = 5;
   levels[0].vTab[0] = null;
@@ -643,6 +625,7 @@ function instanceLv2(){
   // Placement de la voiture rouge sur la grille
   c2 = car(1,0,2);
   placementV(grild, c2, 0,2);
+  // Placement des autres véhicules 
   cv1lv2 = car(2,1,2);
   placementV(grild,cv1lv2,5,1);
   cv2lv2 = car(3,1,3);
@@ -654,6 +637,7 @@ function instanceLv2(){
   ch3lv2 = car(6,0,2);
   placementV(grild, ch3lv2,4,3);
 
+  // initialisation du tableau de véhicules du level 2
   levels[1].numLV = 2; 
   levels[1].nbCoupMin=4;
   levels[1].vTab[0] = null;
@@ -673,6 +657,7 @@ function instanceLv3(){
   // Placement de la voiture rouge sur la grille
   c3 = car(1,0,2);
   placementV(grild, c3, 0,2);
+  // Placement des autres véhicules 
   cv1lv3 = car(2,1,2);
   placementV(grild,cv1lv3,1,0);
   cv2lv3 = car(3,1,3);
@@ -690,7 +675,7 @@ function instanceLv3(){
   ch4lv3 = car(9,0,3);
   placementV(grild, ch4lv3,1,4);
 
-
+  // initialisation du tableau de véhicules du level 3
   levels[2].numLV = 3; 
   levels[2].nbCoupMin = 5;
   levels[2].vTab[0] = null;
@@ -713,6 +698,7 @@ function instanceLv4(){
   // Placement de la voiture rouge sur la grille
   c4 = car(1,0,2);
   placementV(grild, c4, 0,2);
+  // Placement des autres véhicules 
   cv1lv4 = car(2,1,2);
   placementV(grild,cv1lv4,1,0);
   cv2lv4 = car(3,1,3);
@@ -728,7 +714,7 @@ function instanceLv4(){
   ch2lv4 = car(8,0,2);
   placementV(grild,ch2lv4,4,5);
 
-
+  // initialisation du tableau de véhicules du level 4
   levels[3].numLV = 4; 
   levels[3].nbCoupMin = 6;
   levels[3].vTab[0] = null;
@@ -752,6 +738,7 @@ function instanceLv5(){
   // Placement de la voiture rouge sur la grille
   c5 = car(1,0,2);
   placementV(grild, c5, 0,2);
+  // Placement des autres véhicules 
   cv1lv5 = car(2,1,3);
   placementV(grild,cv1lv5,5,0);
   cv2lv5 = car(3,1,2);
@@ -767,6 +754,7 @@ function instanceLv5(){
   ch3lv5 = car(8,0,2);
   placementV(grild,ch3lv5,4,5);
 
+  // initialisation du tableau de véhicules du level 5
   levels[4].numLV = 5; 
   levels[4].nbCoupMin = 9;
   levels[4].vTab[0] = null;
@@ -788,6 +776,7 @@ function instanceLv6(){
   // Placement de la voiture rouge sur la grille
   c6 = car(1,0,2);
   placementV(grild, c6, 0,2);
+  // Placement des autres véhicules 
   cv1lv6 = car(2,1,2);
   placementV(grild,cv1lv6,2,0);
   cv2lv6 = car(3,1,2);
@@ -805,7 +794,7 @@ function instanceLv6(){
   ch3lv6 = car(9,0,3);
   placementV(grild,ch3lv6,3,5);
   
-
+  // initialisation du tableau de véhicules du level 6
   levels[5].numLV = 6; 
   levels[5].nbCoupMin = 12;
   levels[5].vTab[0] = null;
@@ -828,6 +817,7 @@ function instanceLv7(){
   // Placement de la voiture rouge sur la grille
   c7 = car(1,0,2);
   placementV(grild,c7, 0,2);
+  // Placement des autres véhicules 
   cv1lv7 = car(2,1,2);
   placementV(grild,cv1lv7,1,0);
   cv2lv7 = car(3,1,2);
@@ -851,7 +841,7 @@ function instanceLv7(){
   ch4lv7 = car(12,0,2);
   placementV(grild,ch4lv7,4,5);
 
-
+  // initialisation du tableau de véhicules du level 7
   levels[6].numLV = 7; 
   levels[6].nbCoupMin = 10;
   levels[6].vTab[0] = null;
@@ -877,6 +867,7 @@ function instanceLv8(){
   // Placement de la voiture rouge sur la grille
   c8 = car(1,0,2);
   placementV(grild,c8, 0,2);
+  // Placement des autres véhicules 
   cv1lv8 = car(2,1,2);
   placementV(grild,cv1lv8,2,0);
   cv2lv8 = car(3,1,3);
@@ -896,7 +887,7 @@ function instanceLv8(){
   ch3lv8 = car(10,0,2);
   placementV(grild, ch3lv8,3,5);
   
-
+  // initialisation du tableau de véhicules du level 8
   levels[7].numLV = 8; 
   levels[7].nbCoupMin = 16;
   levels[7].vTab[0] = null;
@@ -920,6 +911,7 @@ function instanceLv9(){
   // Placement de la voiture rouge sur la grille
   c9 = car(1,0,2);
   placementV(grild, c9, 0,2);
+  // Placement des autres véhicules 
   cv1lv9 = car(2,1,2);
   placementV(grild,cv1lv9,0,0);
   cv2lv9 = car(3,1,3);
@@ -941,6 +933,7 @@ function instanceLv9(){
   ch4lv9 = car(11,0,3);
   placementV(grild,ch4lv9,1,5);
 
+  // initialisation du tableau de véhicules du level 9
   levels[8].numLV = 9; 
   levels[8].nbCoupMin = 21;
   levels[8].vTab[0] = null;
@@ -997,7 +990,7 @@ function update(d) {
   const ButtonRefresh = document.querySelector(".refresh");
   ButtonRefresh.addEventListener("click", Refreshactive);
   function Refreshactive(){
-    // Réinitalisation de la grille
+    // Réinitialisation de la grille
     switch(currentLevel){
       case 0:
         instanceLv1();
@@ -1037,7 +1030,7 @@ function update(d) {
       break;
     }
   }
-  // gagne
+  // fonction qui vérifie si le joueur à gagner à chaque passage dans la boucle 
   isWin();
 } 
 
@@ -1286,7 +1279,6 @@ function rechercheVehicule(grild, car){
   for(let i = 0; i<widthInBlocks; i++){ 
     for(let j = 0; j<widthInBlocks; j++){
       if (grild[i][j]==car.numV) {
-        // if(car.numV == 1) console.log(i,j);  //retourne bien les positions (0,2)
         return newPos(i,j);
       }
     };
@@ -1371,7 +1363,7 @@ function afficherCases(grild, c){
 //la fonction regarde si le déplacement est possible et dans ce cas, elle déplace le véhicule dans la grille
 function deplacementV(grild, car,x , y){
   indv = rechercheVehicule(grild, car);
-  let temp; // variable auxiliaire
+  let temp; 
   
   if (car.orient==0){
     //fleche gauche
@@ -1379,7 +1371,6 @@ function deplacementV(grild, car,x , y){
       if((indv.i-1)<0||grild[indv.i-1][indv.j]!=0){
         return false;
       } else {
-        //echanger la place de la voiture
         temp=grild[indv.i-1][indv.j];
         grild[indv.i-1][indv.j]=grild[indv.i+(car.taille-1)][indv.j];
         grild[indv.i+(car.taille-1)][indv.j]=temp;
@@ -1393,7 +1384,6 @@ function deplacementV(grild, car,x , y){
       if((indv.i+car.taille)>=widthInBlocks||grild[indv.i+car.taille][indv.j]!=0){
         return false;
       } else {
-        //echanger la place de la voiture
         temp=grild[indv.i][indv.j];
         grild[indv.i][indv.j]=grild[indv.i+car.taille][indv.j];
         grild[indv.i+car.taille][indv.j]=temp;
@@ -1408,7 +1398,6 @@ function deplacementV(grild, car,x , y){
       if((indv.j-1)<0||grild[indv.i][indv.j-1]!=0){
         return false;
       } else {
-        //échanger la place de la voiture
         temp=grild[indv.i][indv.j+(car.taille-1)];
         grild[indv.i][indv.j+(car.taille-1)]=grild[indv.i][indv.j-1];
         grild[indv.i][indv.j-1]=temp;
@@ -1433,6 +1422,9 @@ function deplacementV(grild, car,x , y){
   }
 }
 
+
+//fonction qui détermine quand le joueur à gagner
+//le joueur gagne lorsque la voiture est sur la case devant la sortie  
 // affiche un écran modal lors de la victoire
 function isWin(){
   // Affichage de la fenetre modale de la victoire
@@ -1501,11 +1493,11 @@ function captureClicSouris(event) {
   selectVehicule();
 }
 
-//focntion qui sélectionne le véhicule lorsqu'on clique dessus
+//fonction qui sélectionne le véhicule lorsqu'on clique dessus
 function selectVehicule(){
   let valeurCase=grild[posClic.i][posClic.j];
   if(valeurCase!=0){
-    //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case est on retourne la voiture
+    //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case et on retourne la voiture
     bufferCar = levels[currentLevel].vTab[valeurCase];
     levels[currentLevel].nbMouv +=1;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
