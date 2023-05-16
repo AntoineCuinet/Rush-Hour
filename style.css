@@ -63,6 +63,13 @@ p{
 }
 
 /* Affichage du score */
+.levelCourrant{
+    font-size: 20px;
+    margin-top: 3px;
+    margin-left: 3px;
+    font-weight: bolder;
+    color: #2f2f2f;
+}
 .score{
     width: 400px;
     height: 200px;

@@ -78,16 +78,15 @@ function doLoop(){
 // Bouton d'accueil (bouton "jouer")
 const ButtonAccueil = document.querySelector(".buttonAccueil");
 const accueuil = document.querySelector(".accueil");
-ButtonAccueil.addEventListener("click", function(){
-  if(isPaused2){
-    audio2.play();
-  }
-});
 // Affiche le jeu lorsque le bouton est cliqué
 ButtonAccueil.addEventListener("click", acceuilActive);
 function acceuilActive(){
-    if (accueuil.style.display == "none") accueuil.style.display = "flex";
-    else accueuil.style.display = "none";
+  if(isPaused2){
+    audio2.play();
+  }
+  start();
+  if (accueuil.style.display == "none") accueuil.style.display = "flex";
+  else accueuil.style.display = "none";
 }  
 
 // Bouton des parametres de musiques
@@ -117,14 +116,12 @@ const ButtonLevels = document.querySelector(".levels");
 const level = document.querySelector(".modal1");
 ButtonLevels.addEventListener("click", levelsActive);
 function levelsActive(){
-    if (level.style.display == "flex") level.style.display = "none";
-    else level.style.display = "flex";
-}  
-ButtonLevels.addEventListener("click", function(){
   if(isPaused2){
     audio2.play();
   }
-});
+  if (level.style.display == "flex") level.style.display = "none";
+  else level.style.display = "flex";
+}  
 
 // bouton et affichage de la page modale lors de la victoire
 const modalWin = document.querySelector(".modalWin");
@@ -219,6 +216,8 @@ const scoreDiv = document.getElementById("score");
 const bestscore = document.getElementById("bestscore");
 // pour l'affichage du nombre d'étoiles
 const nbStars1 = document.getElementsByClassName("nbStars1");
+// pour l'affichage du level courrant
+const levelCourrant = document.getElementById("levelCourrant");
 
 
 // Dimensions du document et d'une case
@@ -282,20 +281,22 @@ let ch2lv1;
 let ch3lv1;
 
 const caseLevel1 = document.querySelector(".lv1");
-caseLevel1.addEventListener("click", function(){
+caseLevel1.addEventListener("click", start());
+function start(){
   // son click
-  if(isPaused2){
+  if(isPaused2){ 
     audio2.play();
   }
   instanceLv1();
   currentLevel = 0; 
+  levelCourrant.textContent = currentLevel+1;
   winAux[currentLevel] = false;
   auxMusic[currentLevel] = true;
   levels[currentLevel].nbMouv =0;
   afficherEtoiles(currentLevel);
   scoreDiv.textContent = levels[currentLevel].nbMouv;
   bestscore.textContent = levels[currentLevel].bestScore;
-});
+}
 
 //déclaration des variables du level 2
 let c2;  
@@ -309,12 +310,14 @@ let ch3lv2;
 const caseLevel2 = document.querySelector(".lv2");
 caseLevel2.addEventListener("click", function(){
   if(levels[0].completed){  
+    levelsActive();
     // son click
     if(isPaused2){
       audio2.play();
     }
     instanceLv2();
     currentLevel = 1;
+    levelCourrant.textContent = currentLevel+1;
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
@@ -341,13 +344,15 @@ let ch4lv3;
 
 const caseLevel3 = document.querySelector(".lv3");
 caseLevel3.addEventListener("click", function(){
-  if(levels[1].completed){   
+  if(levels[1].completed){  
+    levelsActive(); 
     // son click
     if(isPaused2){
       audio2.play();
     }
     instanceLv3();
     currentLevel = 2;
+    levelCourrant.textContent = currentLevel+1;
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
@@ -373,13 +378,15 @@ let ch2lv4;
 
 const caseLevel4 = document.querySelector(".lv4");
 caseLevel4.addEventListener("click", function(){
-  if(levels[2].completed){   
+  if(levels[2].completed){  
+    levelsActive(); 
     // son click
     if(isPaused2){
       audio2.play();
     }
     instanceLv4();
     currentLevel = 3;
+    levelCourrant.textContent = currentLevel+1;
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
@@ -406,12 +413,14 @@ let ch3lv5;
 const caseLevel5 = document.querySelector(".lv5");
 caseLevel5.addEventListener("click", function(){
   if(levels[3].completed){   
+    levelsActive();
     // son click
     if(isPaused2){
       audio2.play();
     }
     instanceLv5();
     currentLevel = 4;
+    levelCourrant.textContent = currentLevel+1;
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
@@ -438,13 +447,15 @@ let ch3lv6;
 
 const caseLevel6 = document.querySelector(".lv6");
 caseLevel6.addEventListener("click", function(){
-  if(levels[4].completed){   
+  if(levels[4].completed){  
+    levelsActive(); 
     // son click
     if(isPaused2){
       audio2.play();
     }
     instanceLv6();
     currentLevel = 5;
+    levelCourrant.textContent = currentLevel+1;
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
@@ -474,13 +485,15 @@ let ch4lv7;
 
 const caseLevel7 = document.querySelector(".lv7");
 caseLevel7.addEventListener("click", function(){
-  if(levels[5].completed){   
+  if(levels[5].completed){  
+    levelsActive(); 
     // son click
     if(isPaused2){
       audio2.play();
     }
     instanceLv7();
     currentLevel = 6;
+    levelCourrant.textContent = currentLevel+1;
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
@@ -508,13 +521,15 @@ let ch3lv8;
 
 const caseLevel8 = document.querySelector(".lv8");
 caseLevel8.addEventListener("click", function(){
-  if(levels[6].completed){   
+  if(levels[6].completed){ 
+    levelsActive();  
     // son click
     if(isPaused2){
       audio2.play();
     }
     instanceLv8();
     currentLevel = 7;
+    levelCourrant.textContent = currentLevel+1;
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
@@ -544,12 +559,14 @@ let ch4lv9;
 const caseLevel9 = document.querySelector(".lv9");
 caseLevel9.addEventListener("click", function(){
   if(levels[7].completed){ 
+    levelsActive();
     // son click
     if(isPaused2){
       audio2.play();
     }
     instanceLv9();
     currentLevel = 8;
+    levelCourrant.textContent = currentLevel+1;
     winAux[currentLevel] = false;
     auxMusic[currentLevel] = true;
     levels[currentLevel].nbMouv =0;
