@@ -281,8 +281,9 @@ let ch2lv1;
 let ch3lv1;
 
 const caseLevel1 = document.querySelector(".lv1");
-caseLevel1.addEventListener("click", start());
+caseLevel1.addEventListener("click", start);
 function start(){
+  levelsActive();
   // son click
   if(isPaused2){ 
     audio2.play();
