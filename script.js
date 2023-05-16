@@ -1,28 +1,40 @@
 // Jeu Rush-Hour, créé par Magnin Julie et Cuinet Antoine, page js
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////   Front   ////////////////////////////////////////////////
 
-// Bouton pour activer le son
-const buttonAudio2 = document.getElementById('buttonAudio2');
-buttonAudio2.classList.toggle("active")
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////   Récupérations des clics pour affichage des fenêtres modales   ////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Déclarations des audios
+let isPaused = true;
+let isPaused2 = true;
+let loopTime = 94800; // temps de la musique afin de la faire tourner en boucle
+let intervalId = null;
+let auxMusic = Array(9); // son lorsqu'une partie est gagnée
+let audio1 = new Audio();
 let audio2 = new Audio();
 let audio3 = new Audio();
 let audio4 = new Audio();
 let audio5 = new Audio();
 let audio6 = new Audio();
+audio1.src = 'musique.mp3';
 audio2.src = 'click.mp3';
 audio3.src = 'selection.wav';
 audio4.src = 'falseSon.mp3';
 audio5.src = 'deplacementSon.wav';
 audio6.src = 'son6.wav';
-let isPaused2 = true;
-// annimation son
+
+
+// Bouton pour activer et désactiver le son
+const buttonAudio2 = document.getElementById('buttonAudio2');
+buttonAudio2.classList.toggle("active")
 buttonAudio2.addEventListener("click", function() { 
   buttonAudio2.classList.toggle("inactive");
 });
-
 buttonAudio2.addEventListener('click', function(){
   if(isPaused2){
     audio2.pause();
@@ -32,56 +44,11 @@ buttonAudio2.addEventListener('click', function(){
   isPaused2 = !isPaused2;
 })
 
-// son du bouton rush-hour
-const refresh = document.querySelector(".refresh");
-refresh.addEventListener("click", function(){
-  if(isPaused2){
-    audio2.play();
-  }
-});
-
-// Bouton accueil
-const ButtonAccueil = document.querySelector(".buttonAccueil");
-const accueuil = document.querySelector(".accueil");
-// son du bouton d'acceil
-ButtonAccueil.addEventListener("click", function(){
-  if(isPaused2){
-    audio2.play();
-  }
-});
-ButtonAccueil.addEventListener("click", acceuilActive);
-function acceuilActive(){
-    if (accueuil.style.display == "none") accueuil.style.display = "flex";
-    else accueuil.style.display = "none";
-}  
-
-// Bouton parametre de musique
-const ButtonParam = document.querySelector(".param");
-const modal = document.querySelector(".modal");
-ButtonParam.addEventListener("click", paramActive);
-function paramActive(){
-    if (modal.style.display == "flex") modal.style.display = "none";
-    else modal.style.display = "flex";
-}  
-// son du bouton 
-ButtonParam.addEventListener("click", function(){
-  if(isPaused2){
-    audio2.play();
-  }
-});
-
-// Bouton pour activer la musique
+// Bouton pour activer et désactiver la musique
 const buttonAudio = document.getElementById('buttonAudio');
-let audio1 = new Audio();
-audio1.src = 'musique.mp3';
-let isPaused = true;
-let loopTime = 94800;
-let intervalId = null;
-// annimation musique
 buttonAudio.addEventListener("click", function() { 
   buttonAudio.classList.toggle("active");
 });
-
 buttonAudio.addEventListener('click', function(){
   if(isPaused){
     intervalId = setInterval(doLoop, loopTime);
@@ -107,7 +74,45 @@ buttonAudio.addEventListener('click', function(){
 function doLoop(){
   audio1.currentTime = 0;  
 }
-// Bouton affichage levels
+
+// Bouton d'accueil (bouton "jouer")
+const ButtonAccueil = document.querySelector(".buttonAccueil");
+const accueuil = document.querySelector(".accueil");
+ButtonAccueil.addEventListener("click", function(){
+  if(isPaused2){
+    audio2.play();
+  }
+});
+// Affiche le jeu lorsque le bouton est cliqué
+ButtonAccueil.addEventListener("click", acceuilActive);
+function acceuilActive(){
+    if (accueuil.style.display == "none") accueuil.style.display = "flex";
+    else accueuil.style.display = "none";
+}  
+
+// Bouton des parametres de musiques
+const ButtonParam = document.querySelector(".param");
+const modal = document.querySelector(".modal");
+ButtonParam.addEventListener("click", paramActive);
+function paramActive(){
+    if (modal.style.display == "flex") modal.style.display = "none";
+    else modal.style.display = "flex";
+}  
+ButtonParam.addEventListener("click", function(){
+  if(isPaused2){
+    audio2.play();
+  }
+});
+
+// Bonton refresh
+const refresh = document.querySelector(".refresh");
+refresh.addEventListener("click", function(){
+  if(isPaused2){
+    audio2.play();
+  }
+});
+
+// Bouton d'affichage des levels
 const ButtonLevels = document.querySelector(".levels");
 const level = document.querySelector(".modal1");
 ButtonLevels.addEventListener("click", levelsActive);
@@ -115,18 +120,11 @@ function levelsActive(){
     if (level.style.display == "flex") level.style.display = "none";
     else level.style.display = "flex";
 }  
-// son du bouton 
 ButtonLevels.addEventListener("click", function(){
   if(isPaused2){
     audio2.play();
   }
 });
-
-
-let win=false;
-let winAux = Array(9);
-
-let auxMusic = Array(9);
 
 // bouton et affichage de la page modale lors de la victoire
 const modalWin = document.querySelector(".modalWin");
@@ -174,34 +172,9 @@ function buttonNextActive(){
 } 
 
 
-// pour l'affichage du score actuel
-const scoreDiv = document.getElementById("score");
-// pour l'affichage du best score
-const bestscore = document.getElementById("bestscore");
-const nbStars1 = document.getElementsByClassName("nbStars1");
-
-//fonction qui affiche les étoiles lorsqu'un level est terminé
-function afficherEtoiles(currentLevel){
-  for(let i = 0; i < nbStars1.length; i++){
-    switch(levels[currentLevel].stars){
-      case 1:
-        nbStars1[i].src = "sprite1Etoile.png";
-      break;
-      case 2:
-        nbStars1[i].src = "sprite2Etoile.png";
-      break;
-      case 3:
-        nbStars1[i].src = "sprite3Etoile.png";
-      break;
-      default:
-        nbStars1[i].src = "";
-    }
-  }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////   Déclaration des sprites   //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////   Déclaration des sprites   //////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //voiture rouge : voiture principale
 const redCarImage1 = new Image();
@@ -233,13 +206,20 @@ camion2H.src = "01 copie.png";
 const camion3H = new Image();
 camion3H.src = "02 copie.png";
 
-// let sprite = {sprite1Etoile: new Image().src = ""};
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////   Début du code du jeu à proprement parler   ///////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// Déclaration des variables, constantes et objets ///////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 let canvas = document.getElementById("cvs");
+// pour l'affichage du score actuel
+const scoreDiv = document.getElementById("score");
+// pour l'affichage du best score
+const bestscore = document.getElementById("bestscore");
+// pour l'affichage du nombre d'étoiles
+const nbStars1 = document.getElementsByClassName("nbStars1");
+
 
 // Dimensions du document et d'une case
 var blockSize = 100;
@@ -252,6 +232,8 @@ var heightInBlocks = ctxHeight/blockSize;
 // Déclaration des variables
 let context = null;
 let currentLevel = null;
+let win=false;
+let winAux = Array(9);
 
 // tableau contenant les différents levels contenant des instances de lv 
 let levels= Array(9);
@@ -285,7 +267,10 @@ function newPos(i, j){
 let posClic = newPos(0, 0);
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////   initialisations des levels   /////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //déclaration des variables du level 1
 let c;
@@ -578,8 +563,10 @@ caseLevel9.addEventListener("click", function(){
   }
 });
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-// instance des levels
+
+//////////////////////////////////////////////////////////////////////////////
+///////////////////////////  Instance des levels  ////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
 
 function instanceLv1(){
@@ -950,8 +937,9 @@ function instanceLv9(){
   levels[8].vTab[11] = ch4lv9;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////   Fonctions d'initialisations du jeu   //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Initialisation (appelée au chargement du corps du document <body onload="init">)    
 function init() {
@@ -1034,11 +1022,13 @@ function update(d) {
   isWin();
 } 
 
-// Fonction réalisant le rendu de l'état du jeu
+
+
+// Fonction réalisant le rendu de l'état du jeu en fonction du niveau choisi
 function render() {
-  ///////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////  Level 1  ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 1  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
   if(currentLevel==0){
     // effacement de l'écran
     context.clearRect(0, 0, context.width, context.height);
@@ -1058,9 +1048,9 @@ function render() {
   }
 
 
-  ///////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////  Level 2  ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 2  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   if(currentLevel==1){
     // effacement de l'écran
@@ -1080,9 +1070,9 @@ function render() {
   }
 
 
-  ///////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////  Level 3  ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 3  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   if(currentLevel==2){
     // effacement de l'écran
@@ -1104,9 +1094,9 @@ function render() {
   }
 
 
-  ///////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////  Level 4  ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 4  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   if(currentLevel==3){
     // effacement de l'écran
@@ -1127,9 +1117,9 @@ function render() {
   }
   
 
-  ///////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////  Level 5  ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 5  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   if(currentLevel==4){
     // effacement de l'écran
@@ -1150,9 +1140,9 @@ function render() {
   }
   
 
-  ///////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////  Level 6  ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 6  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   if(currentLevel==5){
     // effacement de l'écran
@@ -1174,9 +1164,9 @@ function render() {
   }
  
 
-  ///////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////  Level 7  ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 7  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   
   if(currentLevel==6){
@@ -1201,9 +1191,9 @@ function render() {
   }
 
 
-  ///////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////  Level 8  ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 8  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   if(currentLevel==7){
     // effacement de l'écran
@@ -1226,9 +1216,9 @@ function render() {
   }
   
 
-  ///////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////  Level 9  ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////  Level 9  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   if(currentLevel==8){
     // effacement de l'écran
@@ -1252,7 +1242,9 @@ function render() {
   }
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////   Fonctions utiles   ///////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //fonction de remise à zéro 
 function remiseAZero(){
@@ -1260,7 +1252,8 @@ function remiseAZero(){
   scoreDiv.textContent = levels[currentLevel].nbMouv;
 }
 
-//fonction qui place un véhicule dans la grille à partir d'une case définie par i et j, correspondant à la première case du véhicule. 
+//fonction qui place un véhicule dans la grille à partir d'une case définie par i et j, 
+// correspondant à la première case du véhicule. 
 function placementV(grild,car,i,j){
   //verification de i et de j 
   if((i>=0 && i<=5)&&(j>=0 && j<=5)){
@@ -1294,8 +1287,6 @@ function reinitialisationGrille(grild){
     };
   };
 }
-
-
 
 //fonction d'affichage des véhicules : utilisation de sprites
 function afficherCases(grild, c){
@@ -1359,8 +1350,10 @@ function afficherCases(grild, c){
   }
 }
 
-//fonction de déplacement d'une voiture dans la grille à partir de vecteur directionnel (x,y)(défini en fonction de l'appui des flèches du clavier)
-//la fonction regarde si le déplacement est possible et dans ce cas, elle déplace le véhicule dans la grille
+//Fonction de déplacement d'une voiture dans la grille à partir de vecteur directionnel (x,y)
+// (défini en fonction de l'appui des flèches du clavier)
+//La fonction regarde si le déplacement est possible et dans ce cas, 
+// elle déplace le véhicule dans la grille
 function deplacementV(grild, car,x , y){
   indv = rechercheVehicule(grild, car);
   let temp; 
@@ -1422,16 +1415,15 @@ function deplacementV(grild, car,x , y){
   }
 }
 
-
-//fonction qui détermine quand le joueur à gagner
-//le joueur gagne lorsque la voiture est sur la case devant la sortie  
-// affiche un écran modal lors de la victoire
+// Fonction qui détermine quand le joueur à gagner
+// Le joueur gagne lorsque la voiture est sur la case devant la sortie  
+//    affiche un écran modal lors de la victoire
 function isWin(){
   // Affichage de la fenetre modale de la victoire
   if(win){
-    // affiche la fenetre modale
+    // Affiche la fenetre modale
     modalWin.style.display = "flex"; 
-    // permet l'affichage du meilleur score
+    // Permet l'affichage du meilleur score
     if(levels[currentLevel].bestScore==null || levels[currentLevel].bestScore>levels[currentLevel].nbMouv){
       levels[currentLevel].bestScore = levels[currentLevel].nbMouv;
     }
@@ -1449,7 +1441,7 @@ function isWin(){
   }
 }
 
-//fonction qui calcule et affiche le nombre d'étoiles à la fin d'une partie
+// Fonction qui calcule et affiche le nombre d'étoiles à la fin d'une partie
 function calculNbEtoile(){
   if(levels[currentLevel].nbCoupMin >= levels[currentLevel].nbMouv){
     levels[currentLevel].stars = 3;
@@ -1463,8 +1455,27 @@ function calculNbEtoile(){
   }
 }
 
+//fonction qui affiche les étoiles lorsqu'un level est terminé
+function afficherEtoiles(currentLevel){
+  for(let i = 0; i < nbStars1.length; i++){
+    switch(levels[currentLevel].stars){
+      case 1:
+        nbStars1[i].src = "sprite1Etoile.png";
+      break;
+      case 2:
+        nbStars1[i].src = "sprite2Etoile.png";
+      break;
+      case 3:
+        nbStars1[i].src = "sprite3Etoile.png";
+      break;
+      default:
+        nbStars1[i].src = "";
+    }
+  }
+}
+
 // Fonction appelée lorsqu'une touche du clavier est appuyée
-// Associée à l'événement "keyDown"
+//    associée à l'événement "keyDown"
 function captureAppuiToucheClavier(event) {
   switch(event.code){
     case "ArrowRight":
@@ -1483,9 +1494,10 @@ function captureAppuiToucheClavier(event) {
 }
 
 // Fonction appelée lorsque la souris est appuyée
-// Associée à l'événement "click"
+//    associée à l'événement "click"
 function captureClicSouris(event) {
-  // calcul des coordonnées de la souris dans le canvas + conversion des clic en entier i: ligne et j: colonne
+  // Calcul des coordonnées de la souris dans le canvas + conversion des clic en 
+  //    entier i: ligne et j: colonne
   if (event.target.id == "cvs") {
     posClic.i = Math.floor(event.offsetX/(blockSize)); 
     posClic.j = Math.floor(event.offsetY/(blockSize));
@@ -1493,11 +1505,12 @@ function captureClicSouris(event) {
   selectVehicule();
 }
 
-//fonction qui sélectionne le véhicule lorsqu'on clique dessus
+// Fonction qui sélectionne le véhicule lorsqu'on clique dessus
 function selectVehicule(){
   let valeurCase=grild[posClic.i][posClic.j];
   if(valeurCase!=0){
-    //on regarde dans le tableau vehicule par level la voiture associée à la valeur de la case et on retourne la voiture
+    // On regarde dans le tableau vehicule par level la voiture associée à la valeur 
+    //    de la case et on retourne la voiture
     bufferCar = levels[currentLevel].vTab[valeurCase];
     levels[currentLevel].nbMouv +=1;
     scoreDiv.textContent = levels[currentLevel].nbMouv;
