@@ -220,7 +220,7 @@ var widthInBlocks = ctxWidth/blockSize;
 var heightInBlocks = ctxHeight/blockSize;
 
 
-// Déclaration des variables
+// Déclaration des variables$
 let context = null;
 let currentLevel = null;
 let win=false;
