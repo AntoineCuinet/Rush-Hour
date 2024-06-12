@@ -137,7 +137,7 @@ p{
     cursor: pointer;
     display: block;
     background-color: rgb(214, 211, 211);
-    background-image: url("icons8-paramètres-50.png");
+    background-image: url("iconparam.png");
     background-size: 90px;
     background-repeat: no-repeat;
     background-position: center;
@@ -155,7 +155,7 @@ p{
     background: beige;
     transform: scale(1.1);
     transform-origin: center;
-    background-image: url("icons8-paramètres-50.png");
+    background-image: url("iconparam.png");
     background-repeat: fill;
     background-size: 90px;
     background-repeat: no-repeat;
@@ -291,7 +291,7 @@ p{
     cursor: pointer;
     display: block;
     background-color: rgb(214, 211, 211);
-    background-image: url("icons8-rafraîchir-64\ \(1\).png");
+    background-image: url("icons-reload.png");
     background-size: 90px;
     background-repeat: no-repeat;
     background-position: center;
@@ -311,7 +311,7 @@ p{
     background: beige; 
     transform: scale(1.1);
     transform-origin: center;
-    background-image: url("icons8-rafraîchir-64\ \(1\).png");
+    background-image: url("icons-reload.png");
     background-repeat: fill;
     background-size: 90px;
     background-repeat: no-repeat;
